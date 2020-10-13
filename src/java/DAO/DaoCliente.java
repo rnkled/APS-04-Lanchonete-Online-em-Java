@@ -21,8 +21,11 @@ public class DaoCliente {
     }
     
     public void salvar(Cliente cliente){
-        String sql = "INSERT INTO tb_clientes(nome, sobrenome, telefone, usuario, senha, fg_ativo, id_endereco) "
-                + "VALUES(?,?,?,?,?,?,?)";
+        //String sql = "INSERT INTO tb_clientes(nome, sobrenome, telefone, usuario, senha, fg_ativo, id_endereco) "
+        //        + "VALUES(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO tb_clientes(nome, sobrenome, telefone, usuario, senha, fg_ativo) "
+                  + "VALUES(?,?,?,?,?,?)";
+        
         
         try{
             PreparedStatement stmt = conecta.prepareStatement(sql);
@@ -32,7 +35,7 @@ public class DaoCliente {
             stmt.setString(4, cliente.getUsuario());
             stmt.setString(5, cliente.getSenha());
             stmt.setInt(6, cliente.getFg_ativo());
-            stmt.setInt(7, cliente.getEndereco().getId_endereco());
+            //stmt.setInt(7, cliente.getEndereco().getId_endereco());
             stmt.execute();
             stmt.close();
             

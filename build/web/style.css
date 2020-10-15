@@ -1,8 +1,7 @@
 body {
     background-color: black;
     color: white;
-    font-size: 32px;
-
+    font-size: 20px;
 }
 
 #content {
@@ -23,6 +22,34 @@ body {
     margin: 10px;
 }
 
+#div-tabela {
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    background-color: rgb(27, 26, 26);
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    width: 34vw;
+    height: 50vh;
+    margin: 10px;
+}
+
+#scroll-div {
+    padding: 0;
+    margin: 0;
+    width: 34vw;
+    height: 50vh;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#scroll-div::-webkit-scrollbar {
+    display: none;
+}
+
+
 #submitBT {
     margin: 6px;
     margin-top: 12px;
@@ -36,6 +63,39 @@ body {
 }
 
 #submitBT:hover {
+    color: black;
+    background-color: white;
+}
+
+table {
+    border-collapse: collapse;
+    width: 34vw;
+    font-size: 1vw;
+}
+
+th,
+td {
+    height: 1vh;
+    padding: 6px;
+    text-align: left;
+    border-bottom: 1px solid rgb(143, 141, 141);
+    overflow: hidden;
+}
+
+
+#tabelaButton {
+    margin: 6px;
+    margin-top: 12px;
+    float: right;
+    background-color: transparent;
+    color: white;
+    border: 0.4px solid white;
+    border-radius: 6px;
+    padding: 6px;
+    transition-duration: 0.3s;
+}
+
+#tabelaButton:hover {
     color: black;
     background-color: white;
 }

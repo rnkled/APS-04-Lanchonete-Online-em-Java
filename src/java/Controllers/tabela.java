@@ -7,23 +7,20 @@ package Controllers;
 
 import DAO.DaoCliente;
 import Model.Cliente;
-import java.io.BufferedReader;
+import com.google.gson.Gson;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.json.JSONObject;
 
 /**
  *
  * @author kener_000
  */
-@WebServlet(name = "cadastro", urlPatterns = {"/cadastro"})
-public class cadastro extends HttpServlet {
+public class tabela extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,47 +32,23 @@ public class cadastro extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        //Seta o tipo de Conteudo que será recebido, nesse caso, um JSON
+        throws ServletException, IOException {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         
-        //Pra receber JSONs, é necessario utilizar esse Buffer pra receber os dados,
-        //Então tem que ser Feito assim:
-        BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
-        String json = "";
+        //Esse é o Servlet pra retornar os dados da Tabela, aqui ele instancia um DAO dos clientes
+        //e lista todos eles
+        DaoCliente clienteDao = new DaoCliente();
+        List<Cliente> clientes = clienteDao.listarTodos();
         
-        //Aqui ele checa se os Dados não tão vazios, por motivos de vai que
-        if (br != null) {
-            
-            //Converte os dados do JSON pra um Formato de Objeto que o Java consiga lidar
-            json = br.readLine();
-            JSONObject dados = new JSONObject(json);
-            
-            //Aqui, ele Instancia um objeto do Model Cliente, e Popula ele com os dados do JSON
-            Cliente cliente = new Cliente();
-            cliente.setNome(dados.getString("nome"));
-            cliente.setSobrenome(dados.getString("sobrenome"));
-            cliente.setTelefone(dados.getString("telefone"));
-            cliente.setUsuario(dados.getString("usuario"));
-            cliente.setSenha(dados.getString("senha"));
-            cliente.setFg_ativo(1);
-            //cliente.setEndereco();
-            
-            //E Para finalizar, salva no Banco usando o DAO dele
-            DaoCliente clienteDAO = new DaoCliente();
-            clienteDAO.salvar(cliente);
-            
-        }
-        
-        
-        
+        //Logo em seguida, ele utiliza-se da biblioteca Gson pra transformar os Objetos retornados em um JSON
+        Gson gson = new Gson();
+        String json = gson.toJson(clientes);
+                
         try (PrintWriter out = response.getWriter()) {
-            
-            //Aqui é onde a Resposta é mandada para o Cliente, dando um Feedback de que tudo deu certo.
-            out.println("Usuário Cadastrado!");
-
+            //E Aqui dentro ele envia esse JSON para o Cliente
+            out.print(json);
+            out.flush();
         }
     }
 

@@ -8,6 +8,11 @@ package DAO;
 import Model.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 /**
  *
  * @author kener_000
@@ -43,6 +48,42 @@ public class DaoCliente {
         }catch(Exception e){
             throw new RuntimeException(e);
         }
+    }
+    
+    public List<Cliente> listarTodos(){
+        String sql = "SELECT * FROM tb_clientes WHERE fg_Ativo='1' ORDER BY id_cliente";
+        ResultSet rs;
+        List<Cliente> clientes = new ArrayList<Cliente>();
+        
+        try{
+            
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+            
+                Cliente cliente = new Cliente();
+                cliente.setId_cliente(rs.getInt("id_cliente"));
+                cliente.setNome(rs.getString("nome"));
+                cliente.setSobrenome(rs.getString("sobrenome"));
+                cliente.setTelefone(rs.getString("telefone"));
+                cliente.setUsuario(rs.getString("usuario"));
+                cliente.setSenha(rs.getString("senha"));
+                cliente.setFg_ativo(1);
+                
+                
+                clientes.add(cliente);
+            }
+            rs.close();
+            stmt.close();
+            return clientes;
+        
+            
+        } catch(SQLException e){
+            
+             throw new RuntimeException(e);
+        }
+        
     }
     
 }

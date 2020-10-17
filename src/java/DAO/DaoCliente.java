@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import Helpers.EncryptadorMD5;
 import Model.Cliente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,7 +30,7 @@ public class DaoCliente {
         //String sql = "INSERT INTO tb_clientes(nome, sobrenome, telefone, usuario, senha, fg_ativo, id_endereco) "
         //        + "VALUES(?,?,?,?,?,?,?)";
         String sql = "INSERT INTO tb_clientes(nome, sobrenome, telefone, usuario, senha, fg_ativo) "
-                  + "VALUES(?,?,?,?,?,?)";
+                  + "VALUES(?,?,?,?, MD5(?),?)";
         
         
         try{
@@ -84,6 +85,38 @@ public class DaoCliente {
              throw new RuntimeException(e);
         }
         
+    }
+    
+    public boolean login(Cliente cliente){
+        String sql = "SELECT usuario, senha, fg_ativo FROM tb_clientes WHERE usuario = ?";
+        
+        try{
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            stmt.setString(1, cliente.getUsuario());
+        
+            ResultSet rs;
+            rs = stmt.executeQuery();
+            Cliente validCliente = new Cliente();
+            EncryptadorMD5 md5 = new EncryptadorMD5();
+            
+            while (rs.next()){    
+                validCliente.setUsuario(rs.getString("usuario"));
+                validCliente.setSenha(rs.getString("senha"));
+                validCliente.setFg_ativo(rs.getInt("fg_ativo"));
+            }
+            
+            rs.close();
+            stmt.close();
+            
+            if((md5.encryptar(cliente.getSenha()) == validCliente.getSenha()) && (validCliente.getFg_ativo() == 1)){
+                return true;
+            } else { return false; }
+            
+        } catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        return false;
     }
     
 }

@@ -51,11 +51,13 @@
 
 .iconArrow {
     width: 100%;
-    height: 15vh;
 }
 
-.iconArrowLeft {
-    height: 70%;
+.iconArrowLeft{
+    width: 7%;
+}
+#row{
+    width: 100%;
 }
 
 #Espaçamentotitle {
@@ -64,7 +66,7 @@
 
 .inputCadastroClient {
     width: 100%;
-    height: 100vh;
+    height: 60vh;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -82,9 +84,8 @@
     padding-top: 20px;
 
 }
-
-.TextInput {
-    width: 30vw;
+.TextInput{
+    width: 32vw;
     margin-top: 10px;
     height: 7vh;
     border: 1px solid #BDBDBD;
@@ -118,9 +119,8 @@
     padding-left: 15px;
 
 }
-
-.selectEstados {
-    width: 10vw;
+.selectEstados{
+    width: 12vw;
     height: 6vh;
     border: 1px solid #BDBDBD;
     border-radius: 10px;
@@ -131,9 +131,8 @@
 
 
 }
-
-.TextInputComplemento {
-    width: 10vw;
+.TextInputComplemento{
+    width: 12vw;
     height: 6vh;
     border: 1px solid #BDBDBD;
     border-radius: 10px;

@@ -11,7 +11,7 @@ function enviarLogin(){
         dados['senha'] = senha;
 
         
-        requisicao("", alertarResposta, JSON.stringify(dados));
+        requisicao("../../login", alertarResposta, JSON.stringify(dados));
     } else {
         alert("Digite as Informações!")
     }

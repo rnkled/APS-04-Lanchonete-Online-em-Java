@@ -108,7 +108,12 @@ public class DaoCliente {
             rs.close();
             stmt.close();
             
-            if((md5.encryptar(cliente.getSenha()) == validCliente.getSenha()) && (validCliente.getFg_ativo() == 1)){
+            System.out.println(md5.encryptar(cliente.getSenha()));
+            System.out.println(validCliente.getSenha());
+            
+            System.out.println((md5.encryptar(cliente.getSenha()).equals(validCliente.getSenha())));
+            
+            if((md5.encryptar(cliente.getSenha()).equals(validCliente.getSenha())) && (validCliente.getFg_ativo() == 1)){
                 return true;
             } else { return false; }
             

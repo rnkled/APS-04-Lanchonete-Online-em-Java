@@ -4,6 +4,25 @@
     background-image: url("../assets/fundoplano1.png")
 }
 
+#usuario {
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+#endereco {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    width: 100%;
+    position: relative;
+    left: 18.3vw;
+}
+
 .headerPage {
     width: 100vw;
     height: 12vh;
@@ -50,14 +69,18 @@
 }
 
 .iconArrow {
-    width: 100%;
+    width: auto;
 }
 
-.iconArrowLeft{
-    width: 7%;
+.iconArrowLeft {
+    width: 4vw;
+    display: block;
 }
-#row{
+
+#row {
     width: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
 #Espaçamentotitle {
@@ -66,12 +89,11 @@
 
 .inputCadastroClient {
     width: 100%;
-    height: 60vh;
+    height: 50vh;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
-
 }
 
 .buttonLink {
@@ -84,7 +106,8 @@
     padding-top: 20px;
 
 }
-.TextInput{
+
+.TextInput {
     width: 32vw;
     margin-top: 10px;
     height: 7vh;
@@ -93,17 +116,8 @@
     padding-left: 15px;
 }
 
-.InputEndereco {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 46.7%;
-    height: 11%;
-    margin-top: 10px
-}
-
 .TextInputCidade {
-    width: 19vw;
+    width: 19.6vw;
     height: 6vh;
     border: 1px solid #BDBDBD;
     border-radius: 10px;
@@ -112,14 +126,15 @@
 
 .TextInputBairro {
     margin: 0 5px;
-    width: 13vw;
+    width: 13.6vw;
     height: 6vh;
     border: 1px solid #BDBDBD;
     border-radius: 10px;
     padding-left: 15px;
 
 }
-.selectEstados{
+
+.selectEstados {
     width: 12vw;
     height: 6vh;
     border: 1px solid #BDBDBD;
@@ -131,7 +146,8 @@
 
 
 }
-.TextInputComplemento{
+
+.TextInputComplemento {
     width: 12vw;
     height: 6vh;
     border: 1px solid #BDBDBD;
@@ -196,4 +212,6 @@
     font-family: 'Sansita', sans-serif;
     font-size: 3.8rem;
     user-select: none;
+    position: relative;
+    left: 30%;
 }

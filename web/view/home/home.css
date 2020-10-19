@@ -1,0 +1,168 @@
+html { background-color:#F6F6F6 }
+
+    #top {
+    width: 100%;
+    height: 12vh;
+    background-color: #F16262;
+    display: flex;
+    flex-direction: row;
+        }
+
+
+
+    #logo {
+    width: 3vw;
+    height: 8vh;
+    background-color: white;
+    margin: 10px 25px 10px 25px;
+    width: 20vw;
+             }
+
+            
+    .sobre {
+    align-self: flex-end;
+    text-align: right;
+    }
+            
+     .opcoes, .sobre {
+     width: 3vw;
+    height: 8vh;
+    margin: 10px 25px 10px 25px;
+    position: relative;
+    top: 10%;
+    text-align: center;
+    vertical-align: center;
+    width: 15vw;
+    color: white;
+    font-family: 'Sansita', sans-serif;
+    align-items: center;
+    font-size: 2vw;
+    white-space: nowrap;
+                    }
+
+    a {
+    padding: 0px;
+    margin: 0px;
+    text-decoration: none;
+    color: inherit;
+    font-family: 'Sansita', sans-serif;
+                    }
+            
+    .sobre:hover {
+
+    padding-bottom: -30px;
+    border-bottom: 10px solid white;
+                    }
+
+    .opcoes:hover {
+
+    padding-bottom: -30px;
+    border-bottom: 10px solid white;
+                    }
+
+
+    body, html {
+    width: 100%;
+    height: 100%;
+    font-family: Arial, Tahoma, sans-serif;
+                
+                }
+
+
+
+                :root{
+        font-size: 60%;
+                }
+
+                *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+                }
+
+                html, body, #root{
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+
+                }
+
+                body{
+                }
+
+
+        body,
+        input,
+        button,
+        textarea {
+            font: 500 1.6rem Poppins;
+        }
+
+        .contHome{
+            height: 100vh;
+            width: 100vw;
+            background-image: url("../assets/home.jpg");
+            position: absolute;
+            
+        }
+            
+        .contFilho{
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            }
+
+            
+                    
+        .contFilho2{
+            width: 330px;
+            height: 500px;
+            margin-right: 70px;
+            margin-bottom: 100px;
+            background: #F16262;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            }
+            
+            .logo{
+                height: 150px;
+                width: 300px;
+                background: blue;
+                margin-top: 25px;
+            }
+            
+            .esp1, .esp2{
+                height: 20px;
+                width: 300px;
+                background: blue;
+                margin-top: 10px;
+            }
+            
+            .fantasia{
+                height: 110px;
+                width: 300px;
+                background: blue;
+                margin-top: 10px;
+            }
+            
+            .desc{
+                height: 110px;
+                width: 300px;
+                background: blue;
+                margin-top: 10px;
+            }
+            
+
+
+
+
+
+                footer { clear:both; width:700px; margin:0 auto; font-size:0.75em; text-align:center; background-color:#ECECEC; padding:5px; position:absolute; bottom: 0;  width:100%;
+            }
+

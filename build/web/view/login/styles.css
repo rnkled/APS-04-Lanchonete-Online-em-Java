@@ -52,7 +52,6 @@
 
 .iconArrow {
     width: 100%;
-    height: 15vh;
 }
 
 .inputLogin {
@@ -106,9 +105,8 @@
 }
 
 
-.iconArrowLeft {
-    /* width: 5%; */
-    height: 50%;
+.iconArrowLeft{
+    width: 7%;
 }
 
 .titlePage {

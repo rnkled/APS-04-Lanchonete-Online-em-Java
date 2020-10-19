@@ -8,6 +8,8 @@ package DAO;
 import Model.Endereco;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -41,7 +43,50 @@ public class DaoEndereco {
             throw new RuntimeException(e);
         }
     }
-}
+    
+    public Endereco pesquisarEnderecoPorObjeto(Endereco endereco){
+    
+        String where;
+        where = "WHERE bairro = ? AND rua = ? AND cidade = ? AND numero = ?";
+        String sql = "SELECT * FROM tb_enderecos "+where;
+        ResultSet rs;
+        Endereco resultado = new Endereco();
+
+
+        try{
+
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            stmt.setString(1, endereco.getBairro());
+            stmt.setString(2, endereco.getRua());
+            stmt.setString(3, endereco.getCidade());
+            stmt.setInt(4, endereco.getNumero());
+
+            rs = stmt.executeQuery();
+
+            while(rs.next()){
+                
+                resultado.setCidade(rs.getString("cidade"));
+                resultado.setEstado(rs.getString("estado"));
+                resultado.setBairro(rs.getString("bairro"));
+                resultado.setRua(rs.getString("rua"));
+                resultado.setNumero(rs.getInt("numero"));
+                resultado.setComplemento(rs.getString("complemento"));
+                resultado.setId_endereco(rs.getInt("id_endereco"));
+            }
+            rs.close();
+            stmt.close();
+
+            return resultado;
+
+        } catch(SQLException e){
+            System.out.println(e);
+        }
+
+        return resultado;
+    }
+    
+    }
+    
     
     
     

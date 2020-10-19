@@ -2,6 +2,8 @@
     <head>
         <title>Cadastro</title>
         <meta charset="UTF-8"/>
+        <script src="../scripts/conexao.js"></script>
+        <script src="./cadastro.js"></script>
         <link rel="stylesheet" type="text/CSS" href="styles.css"/>
         <link rel="stylesheet" type="text/CSS" href="../styles/global.css"/>
         <link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@1,700&display=swap" rel="stylesheet">
@@ -25,62 +27,66 @@
                         <div class="iconArrow">
                             <a href="/">
                                 <img class="iconArrowLeft" src="../assets/keyboard.svg"/>
-                            </a>     
+                            </a>    
                         </div>
-                        <div class="inputCadastroClient">
-                            <h1 class="titlePage">Cadastro Rápido</h1>
-                            <input class="TextInput" id="Espaçamentotitle" required placeholder="Nome" type="text"/>
-                            <input class="TextInput" required placeholder="Sobrenome" type="text"/>
-                            <input class="TextInput" required placeholder="Telefone" type="text"/>
-                            <input class="TextInput" required placeholder="Usuario" type="text"/>
-                            <input class="TextInput" required placeholder="Senha" type="password"/>
-                            <input class="TextInput" required placeholder="Rua" type="text"/>
-                        </div>
-                    </div>
-                    <div class="InputEndereco">
-                        <input class="TextInputNum" required placeholder="Nº" type="number"/>
-                        <input class="TextInputBairro" required placeholder="Bairro" type="text"/>
-                        <input class="TextInputComplemento" required placeholder="Complemento" type="text"/>
-                    </div>
-                    <div class="InputEndereco">
-                        <input class="TextInputCidade" required placeholder="Cidade" type="text"/>
-                        <select class="selectEstados" id="UF" name="UF" >
-                            <option value="">Estado</option>
-                            <option value="AC">AC</option>
-                            <option value="AL">AL</option>
-                            <option value="AP">AP</option>
-                            <option value="AM">AM</option>
-                            <option value="BA">BA</option>
-                            <option value="CE">CE</option>
-                            <option value="DF">DF</option>
-                            <option value="ES">ES</option>
-                            <option value="GO">GO</option>
-                            <option value="MA">MA</option>
-                            <option value="MS">MS</option>
-                            <option value="MT">MT</option>
-                            <option value="MG">MG</option>
-                            <option value="PA">PA</option>
-                            <option value="PB">PB</option>
-                            <option value="PR">PR</option>
-                            <option value="PE">PE</option>
-                            <option value="PI">PI</option>
-                            <option value="RJ">RJ</option>
-                            <option value="RN">RN</option>
-                            <option value="RS">RS</option>
-                            <option value="RO">RO</option>
-                            <option value="RR">RR</option>
-                            <option value="SC">SC</option>
-                            <option value="SP">SP</option>
-                            <option value="SE">SE</option>
-                            <option value="TO">TO</option>
-                         </select>
-                    </div>
+                        <h1 class="titlePage">Cadastro Rápido</h1>
+                    </div> 
+                    
+                        <form id="usuario">
+                            <input class="TextInput" name="nome" id="Espaçamentotitle" required placeholder="Nome" type="text"/>
+                            <input class="TextInput" name="sobrenome" required placeholder="Sobrenome" type="text"/>
+                            <input class="TextInput" name="telefone" required placeholder="Telefone" type="text"/>
+                            <input class="TextInput" name="usuario" required placeholder="Usuario" type="text"/>
+                            <input class="TextInput" name="senha" required placeholder="Senha" type="password"/>
+                         </form>
+                    
+                   
+                      
+                        <form id="endereco">  
+                            <input class="TextInput" name="rua" required placeholder="Rua" type="text"/><br><br>
+                            <input class="TextInputNum" name="numero" required placeholder="Nº" type="number"/>
+                            <input class="TextInputBairro" name="bairro" required placeholder="Bairro" type="text"/>
+                            <input class="TextInputComplemento" name="complemento" required placeholder="Complemento" type="text"/>
+                            <br><br>
+                            <input class="TextInputCidade" name="cidade" required placeholder="Cidade" type="text"/>
+                            <select class="selectEstados" id="UF" name="estado" >
+                                <option value="">Estado</option>
+                                <option value="AC">AC</option>
+                                <option value="AL">AL</option>
+                                <option value="AP">AP</option>
+                                <option value="AM">AM</option>
+                                <option value="BA">BA</option>
+                                <option value="CE">CE</option>
+                                <option value="DF">DF</option>
+                                <option value="ES">ES</option>
+                                <option value="GO">GO</option>
+                                <option value="MA">MA</option>
+                                <option value="MS">MS</option>
+                                <option value="MT">MT</option>
+                                <option value="MG">MG</option>
+                                <option value="PA">PA</option>
+                                <option value="PB">PB</option>
+                                <option value="PR">PR</option>
+                                <option value="PE">PE</option>
+                                <option value="PI">PI</option>
+                                <option value="RJ">RJ</option>
+                                <option value="RN">RN</option>
+                                <option value="RS">RS</option>
+                                <option value="RO">RO</option>
+                                <option value="RR">RR</option>
+                                <option value="SC">SC</option>
+                                <option value="SP">SP</option>
+                                <option value="SE">SE</option>
+                                <option value="TO">TO</option>
+                            </select>
+                        </form>
+                    
                     <div class="buttonLink">
                         <div class="containerButtonCancel">
                             <button class="buttonSubmitCancel">Cancelar</button>
                         </div>
                         <div class="containerButtonCad">
-                            <button class="buttonSubmit">Cadastrar</button>
+                            <button class="buttonSubmit" onclick="enviarCadastro()">Cadastrar</button>
                         </div>
                     </div>
 

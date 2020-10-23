@@ -41,7 +41,13 @@ public class DaoCliente {
             stmt.setString(4, cliente.getUsuario());
             stmt.setString(5, cliente.getSenha());
             stmt.setInt(6, cliente.getFg_ativo());
-            stmt.setInt(7, cliente.getEndereco().getId_endereco());
+            DaoEndereco dend = new DaoEndereco();
+            if(dend.validaEndereco(cliente.getEndereco()) == 0){
+                dend.salvar(cliente.getEndereco());
+                stmt.setInt(7, dend.validaEndereco(cliente.getEndereco()));
+            } else{
+                stmt.setInt(7, dend.validaEndereco(cliente.getEndereco()));
+            }
             stmt.execute();
             stmt.close();
             

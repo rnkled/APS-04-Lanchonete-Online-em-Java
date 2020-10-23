@@ -44,6 +44,41 @@ public class DaoEndereco {
         }
     }
     
+    public int validaEndereco(Endereco endereco){
+        String sql = "SELECT id_endereco "
+                + "FROM tb_enderecos "
+                + "WHERE rua = ? "
+                + "AND numero = ? "
+                + "AND complemento = ? "
+                + "AND bairro = ? "
+                + "AND cidade = ? "
+                + "AND estado = ? ";
+        Endereco end = new Endereco();
+        try{
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            stmt.setString(1, endereco.getRua());
+            System.out.println(endereco.getRua());
+            stmt.setInt(2, endereco.getNumero());
+            stmt.setString(3, endereco.getComplemento());
+            stmt.setString(4, endereco.getBairro());
+            stmt.setString(5, endereco.getCidade());
+            stmt.setString(6, endereco.getEstado());
+            
+            ResultSet rs;
+            rs = stmt.executeQuery();
+            if(rs.next()){
+                end.setId_endereco(rs.getInt("id_endereco"));
+                return end.getId_endereco();   
+            } else{
+                return 0;
+            }
+            
+        }catch(SQLException e){
+            System.out.println(e);;
+        }
+        return end.getId_endereco();
+    }
+    
     public Endereco pesquisarEnderecoPorObjeto(Endereco endereco){
     
         String where;

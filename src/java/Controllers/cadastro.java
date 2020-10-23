@@ -74,10 +74,7 @@ public class cadastro extends HttpServlet {
             cliente.setFg_ativo(1);
             
             //E Para finalizar, salva no Banco usando o DAO deles
-            DaoEndereco enderecoDao = new DaoEndereco();
-            
-            enderecoDao.salvar(endereco);
-            cliente.setEndereco(enderecoDao.pesquisarEnderecoPorObjeto(endereco));
+            cliente.setEndereco(endereco);
             
             DaoCliente clienteDAO = new DaoCliente();
             clienteDAO.salvar(cliente);

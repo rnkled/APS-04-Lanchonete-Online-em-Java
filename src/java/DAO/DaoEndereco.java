@@ -49,7 +49,6 @@ public class DaoEndereco {
                 + "FROM tb_enderecos "
                 + "WHERE rua = ? "
                 + "AND numero = ? "
-                + "AND complemento = ? "
                 + "AND bairro = ? "
                 + "AND cidade = ? "
                 + "AND estado = ? ";
@@ -59,10 +58,9 @@ public class DaoEndereco {
             stmt.setString(1, endereco.getRua());
             System.out.println(endereco.getRua());
             stmt.setInt(2, endereco.getNumero());
-            stmt.setString(3, endereco.getComplemento());
-            stmt.setString(4, endereco.getBairro());
-            stmt.setString(5, endereco.getCidade());
-            stmt.setString(6, endereco.getEstado());
+            stmt.setString(3, endereco.getBairro());
+            stmt.setString(4, endereco.getCidade());
+            stmt.setString(5, endereco.getEstado());
             
             ResultSet rs;
             rs = stmt.executeQuery();

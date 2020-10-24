@@ -1,12 +1,15 @@
 html { background-color:#F6F6F6 }
 
     #top {
-    width: 100%;
-    height: 12vh;
-    background-color: #F16262;
-    display: flex;
-    flex-direction: row;
-        }
+        width: 100vw;
+        height: 10vh;
+        background-color: #F16262;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding-left: 25px;
+    }
 
 
 
@@ -25,14 +28,11 @@ html { background-color:#F6F6F6 }
     }
             
      .opcoes, .sobre {
-     width: 3vw;
     height: 8vh;
     margin: 10px 25px 10px 25px;
     position: relative;
     top: 10%;
-    text-align: center;
     vertical-align: center;
-    width: 15vw;
     color: white;
     font-family: 'Sansita', sans-serif;
     align-items: center;
@@ -111,21 +111,31 @@ html { background-color:#F6F6F6 }
         }
             
         .contFilho{
-            height: 100vh;
+            height: 90vh;
             width: 100vw;
             position: fixed;
             display: flex;
             justify-content: flex-end;
             align-items: center;
+            /* background-color: blanchedalmond; */
             }
 
             
-                    
+        .logoHeader{
+            width: 15vw;
+            height: 75%;
+            border: solid 1px #FFF;
+            border-radius: 10px;
+        }
+
+
         .contFilho2{
-            width: 330px;
-            height: 500px;
+            /* background-color: aqua; */
+
+            width: 32vw;
+            height: 90vh;
             margin-right: 70px;
-            margin-bottom: 130px;
+            /* margin-bottom: 130px; */
 
             display: flex;
             flex-direction: column;
@@ -147,34 +157,42 @@ html { background-color:#F6F6F6 }
             
             .esp1, .esp2{
 
-                width: 301px;
+                width: 20vw;
                 height: 10px;
-                left: 972px;
-                top: 788px;
-                margin-top: 10px;
+                margin: 10px 0;
                 background: #FFFFFF;
                 border-radius: 20px;
             }
             
             .fantasia{
 
-                width: 430px;
-                height: 137px;
-                left: 848px;
-                top: 453px;
+                width: 100%;
+                height: 40vh;
 
-                font-family: Sansita One;
-                font-style: normal;
-                font-weight: normal;
-                font-size: 65px;
-                line-height: 76px;
+
+                flex-direction: column;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
                 text-align: center;
+                padding-bottom: 10px;
 
                 color: #FFFFFF;
 
                 opacity: 0.75;
 
                 border: 1px solid #FF0000;
+            }
+            .legendLogo{
+                font-family: 'Sansita', sans-serif;
+                font-size: 4.3rem;
+                
+                
+            }
+
+            .legendAtendimento{
+                font-family: 'Sansita', sans-serif;
+                font-size: 1.9rem;
             }
             
             .desc{
@@ -184,11 +202,6 @@ html { background-color:#F6F6F6 }
                 left: 894px;
                 top: 813px;
                 margin-top: 10px;
-                font-family: Sansita One;
-                font-style: normal;
-                font-weight: normal;
-                font-size: 25px;
-                line-height: 29px;
                 text-align: center;
 
                 color: #BCB2B2;
@@ -202,6 +215,10 @@ html { background-color:#F6F6F6 }
                 height: 61px;
                 left: 1035px;
                 top: 695px;
+                border: none;
+                font-family: 'Sansita', sans-serif;
+                font-size: 2rem;
+                color: #FFF;
 
                 background: #F16262;
                 border-radius: 30px;

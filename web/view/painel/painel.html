@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../scripts/conexao.js"></script>
+        <link rel="stylesheet" type="text/CSS" href="../styles/global.css"/>
+        <link rel="stylesheet" href="styles.css">
+        <script src="./setDiv.js"></script>
+        <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js">
+            $(document).ready(function(){
+                $('.money2').mask('000.000.000.000.000,00', {reverse: true});
+            });
+        </script>
+        <link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@1,700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="containerPainel">
+            <header class="headerPage">
+                <div class="containerLogo">
+                    
+                </div>
+                <div class="containerNavButton">
+                    <a onclick="showInicioDiv()" href="#" class="navButton">Inicio</a>
+                    <a href="#" class="navButton">Estoque</a>
+                    <a href="#" class="navButton">Relatório</a>
+
+                </div>
+                <div class="containerAction">
+                    <button class="buttonLogout">Logout</button>
+                </div>
+            </header>
+            <div class="containerPage">
+                <div class="containerConteudo">
+                    <div id="Agrupado" class="containerAgrupado">
+
+                        <div class="titleLanchonete">
+                            <h1 class="titlePage">Lanchonete...</h1>
+
+                        </div>
+                    <div class="containerGerenciador">
+                        <div class="titleContainer">
+                            <h1 class="legendTitle">Gerenciamento de serviços</h1>
+                        </div>
+                        <div class="containerButtons">
+                            <button class="buttonGerenciador">Abrir <br> lanchonete</button>
+                            <button class="buttonGerenciador">Fechar lanchonete</button>
+                        </div>
+                        
+                    </div>
+                    <div class="cadastroItems">
+                        <div class="titleContainer">
+                            <h1 class="legendTitle">Cadastro de Items</h1>
+                        </div>
+                        <div class="ButtonsGroupsCadastro">
+                            
+                            <div class="containerButtons1">
+                                <button type="button" onclick="" class="buttonGerenciador">Cadastrar Lanches</button>
+                                <button class="buttonGerenciador">Cadastrar Porções</button>
+                            </div>
+                            
+                            <div class="containerButtons2">
+                                <button onclick="showCadBebidaDiv()" class="buttonGerenciador">Cadastrar Bebidas</button>
+                                <button onclick="showCadIngredienteDiv()" class="buttonGerenciador">Cadastrar Ingredientes</button>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+                <div id="CadIngredientes" class="containerCadItems">
+                    <div class="titleCadPainel">
+                        <h1 class="titlePage">Cadastro de Ingredientes</h1>
+                    </div>
+
+                    <div class="form">
+
+                        <form id="addItem" class="formItems">
+                            
+                            <input placeholder="Produto" class="TextInput" type="text" name="nome" required>
+                            
+                            
+                            <select class="TextInput" name="tipo" required>
+                                <option value="">Tipo</option>
+                                <option value="1">Pão</option>
+                                <option value="2">Carne</option>
+                                <option value="3">Queijo</option>
+                                <option value="4">Molho</option>
+                                <option value="5">Vegetal</option></select>
+                        
+                                <input class="TextInput" placeholder="Quantidade" type="number" name="quantidade" required>
+                                
+                                <input class="TextInput" placeholder="Valor de compra" id="dinheiro" class="money2" type="text" name="ValorCompra" required/>
+                                
+                                <input class="TextInput" placeholder="Valor de venda" id="dinheiro" class="money2" type="text" name="ValorVenda" required/>
+                                
+                                <textarea id="textArea" class="TextInput"  placeholder="Descrição" rows="4" cols="50" name="descricao"></textarea>
+                                
+                                <div class="buttonInputContainer">
+                                    <input class="buttonSubmitCancel" type="button" onclick="" name="cancelar" value="Cancelar">
+                                    <input class="buttonSubmitSalvar" type="button" onclick="salvarItem()" name="salvar" value="Salvar">
+                                </div>
+                                
+                            </form>
+                        </div>
+                            
+                        </div>
+
+                        <div id="CadBebidas" class="containerCadItems">
+                            <div class="titleCadPainel">
+                                <h1 class="titlePage">Cadastro de Bebidas</h1>
+                            </div>
+        
+                            <div class="form">
+        
+                                <form id="addItem" class="formItems">
+                                    
+                                    <input placeholder="Bebida" class="TextInput" type="text" name="nome" required>
+                                    
+                                    
+                                    <select class="TextInput" name="tipoBebida" required>
+                                        <option value="">Tipo</option>
+                                        <option value="1">Alcoólica</option>
+                                        <option value="2">Refrigerante</option>
+                                        <option value="3">Suco</option>
+                                        <option value="4">Água</option>
+                                        <option value="5">Outros</option></select>
+                                
+                                        <input class="TextInput" placeholder="Quantidade" type="number" name="quantidade" required>
+                                        
+                                        <input class="TextInput" placeholder="Valor de compra" id="dinheiro" class="money2" type="text" name="ValorCompra" required/>
+                                        
+                                        <input class="TextInput" placeholder="Valor de venda" id="dinheiro" class="money2" type="text" name="ValorVenda" required/>
+                                        
+                                        <textarea id="textArea" class="TextInput"  placeholder="Descrição" rows="4" cols="50" name="descricao"></textarea>
+                                        
+                                        <div class="buttonInputContainer">
+                                            <input class="buttonSubmitCancel" type="button" onclick="" name="cancelar" value="Cancelar">
+                                            <input class="buttonSubmitSalvar" type="button" onclick="salvarItem()" name="salvar" value="Salvar">
+                                        </div>
+                                        
+                                    </form>
+                                </div>
+                                    
+                                </div>
+
+
+
+
+
+                    <footer  class="footerPainel">
+                        <div class="StatusLanchonete">
+                            <h1 class="legendStatus">Aberto agora!</h1>
+                        </div>
+                        
+                    </footer>
+                    
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -78,7 +78,6 @@ CREATE TABLE tb_pedidos(
 	data_pedido		VARCHAR(20) CONSTRAINT nn_tb_pedidos_data_pedido NOT NULL,
 	valor_total		NUMERIC(7,2),
 	CONSTRAINT pk_tb_pedidos_id_pedido PRIMARY KEY(id_pedido),
-	CONSTRAINT fk_tb_pedidos_id_lanche FOREIGN KEY(id_lanche) REFERENCES tb_lanches(id_lanche),
 	CONSTRAINT fk_tb_pedidos_id_cliente FOREIGN KEY(id_cliente) REFERENCES tb_clientes(id_cliente)
 );
 
@@ -92,7 +91,7 @@ CREATE TABLE tb_bebidas(
 	tipo			VARCHAR(40) CONSTRAINT nn_tb_bebidas_tipo NOT NULL,
 	fg_ativo		INTEGER CONSTRAINT nn_tb_bebidas_fg_ativo NOT NULL,
 	CONSTRAINT pk_tb_bebidas_id_bebida PRIMARY KEY(id_bebida)
-)
+);
 
 CREATE TABLE tb_lanches_pedido(
 	id_pedido		INTEGER,

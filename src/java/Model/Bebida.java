@@ -9,9 +9,9 @@ package Model;
  *
  * @author kener_000
  */
-public class Ingrediente {
+public class Bebida {
     
-    private int id_ingrediente;
+    private int id_bebida;
     private String nome;
     private String descricao;
     private int quantidade;
@@ -20,12 +20,12 @@ public class Ingrediente {
     private String tipo;
     private int fg_ativo;
 
-    public int getId_ingrediente() {
-        return id_ingrediente;
+    public int getId_bebida() {
+        return id_bebida;
     }
 
-    public void setId_ingrediente(int id_ingrediente) {
-        this.id_ingrediente = id_ingrediente;
+    public void setId_bebida(int id_bebida) {
+        this.id_bebida = id_bebida;
     }
 
     public String getNome() {
@@ -35,7 +35,6 @@ public class Ingrediente {
     public void setNome(String nome) {
         this.nome = nome;
     }
-
 
     public String getDescricao() {
         return descricao;
@@ -69,10 +68,6 @@ public class Ingrediente {
         this.valor_venda = valor_venda;
     }
 
-    public int getFg_ativo() {
-        return fg_ativo;
-    }
-
     public String getTipo() {
         return tipo;
     }
@@ -81,10 +76,13 @@ public class Ingrediente {
         this.tipo = tipo;
     }
 
+    public int getFg_ativo() {
+        return fg_ativo;
+    }
+
     public void setFg_ativo(int fg_ativo) {
         this.fg_ativo = fg_ativo;
     }
-    
     
     
 }

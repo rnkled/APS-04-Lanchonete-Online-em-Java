@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import Model.Ingrediente;
+import Model.Bebida;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
@@ -13,27 +13,27 @@ import java.sql.PreparedStatement;
  *
  * @author kener_000
  */
-public class DaoIngrediente {
+public class DaoBebida {
     private Connection conecta;
 
-    public DaoIngrediente() {
+    public DaoBebida() {
         this.conecta = new DaoUtil().conecta();
     }
     
-    public void salvar(Ingrediente ingrediente){
-        String sql = "INSERT INTO tb_ingredientes(nm_ingrediente, descricao, quantidade, valor_compra, valor_venda,"
+    public void salvar(Bebida bebida){
+        String sql = "INSERT INTO tb_bebidas(nm_bebida, descricao, quantidade, valor_compra, valor_venda,"
                 + " tipo, fg_ativo) "
                 + "VALUES(?,?,?,?,?,?,?)";
         
         try{
             PreparedStatement stmt = conecta.prepareStatement(sql);
-            stmt.setString(1, ingrediente.getNome());
-            stmt.setString(2, ingrediente.getDescricao());
-            stmt.setInt(3, ingrediente.getQuantidade());
-            stmt.setDouble(4, ingrediente.getValor_compra());
-            stmt.setDouble(5, ingrediente.getValor_venda());
-            stmt.setString(6, ingrediente.getTipo());
-            stmt.setInt(7, ingrediente.getFg_ativo());
+            stmt.setString(1, bebida.getNome());
+            stmt.setString(2, bebida.getDescricao());
+            stmt.setInt(3, bebida.getQuantidade());
+            stmt.setDouble(4, bebida.getValor_compra());
+            stmt.setDouble(5, bebida.getValor_venda());
+            stmt.setString(6, bebida.getTipo());
+            stmt.setInt(7, bebida.getFg_ativo());
             
             stmt.execute();
             stmt.close();

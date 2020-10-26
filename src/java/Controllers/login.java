@@ -6,11 +6,13 @@
 package Controllers;
 
 import DAO.DaoCliente;
+import DAO.DaoToken;
 import Model.Cliente;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.time.Instant;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -62,12 +64,14 @@ public class login extends HttpServlet {
             //E Para finalizar, salva no Banco usando o DAO dele
             
             DaoCliente clienteDAO = new DaoCliente();
+            DaoToken tokenDAO = new DaoToken();
             resultado = clienteDAO.login(cliente);
             
             if(resultado == true){
                 Cliente clienteCompleto = clienteDAO.pesquisaPorUsuario(cliente);
                 
-                Cookie cookie = new Cookie("token", clienteCompleto.getId_cliente()+"HashDoFuturo");
+                Cookie cookie = new Cookie("token", clienteCompleto.getId_cliente()+"-"+Instant.now().toString());
+                tokenDAO.salvar(cookie.getValue());
                 response.addCookie(cookie);
             }
         }

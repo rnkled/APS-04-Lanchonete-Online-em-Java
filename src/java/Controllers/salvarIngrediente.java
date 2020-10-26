@@ -6,12 +6,14 @@
 package Controllers;
 
 import DAO.DaoIngrediente;
+import Helpers.ValidadorCookie;
 import Model.Ingrediente;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -39,7 +41,16 @@ public class salvarIngrediente extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
         String json = "";
-        if (br != null) {
+        boolean resultado = false;
+        
+        try{
+        Cookie[] cookies = request.getCookies();
+        ValidadorCookie validar = new ValidadorCookie();
+        
+        resultado = validar.validarFuncionario(cookies);
+        }catch(java.lang.NullPointerException e){}
+        
+        if ((br != null) && resultado) {
             json = br.readLine();
             JSONObject dados = new JSONObject(json);
             
@@ -54,11 +65,16 @@ public class salvarIngrediente extends HttpServlet {
             
             DaoIngrediente ingredienteDAO = new DaoIngrediente();
             ingredienteDAO.salvar(ingrediente);
+            try (PrintWriter out = response.getWriter()) {
+            out.println("Ingrediente Salvo");
+            }
+        } else {
+            try (PrintWriter out = response.getWriter()) {
+            out.println("erro");
+        }
         }
         
-        try (PrintWriter out = response.getWriter()) {
-            out.println("Ingrediente Salvo");
-        }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

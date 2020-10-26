@@ -108,3 +108,9 @@ CREATE TABLE tb_bebidas_pedido(
 	CONSTRAINT pk_tb_bebidas_pedido PRIMARY KEY(id_pedido, id_bebida),
 	CONSTRAINT fk_tb_bp_id_bebida FOREIGN KEY(id_bebida) REFERENCES tb_bebidas(id_bebida)
 );
+
+CREATE TABLE tb_tokens(
+	id_token    SERIAL,
+	token       TEXT CONSTRAINT tb_tokens_token_nn NOT NULL UNIQUE,
+	CONSTRAINT pk_tb_tokens_id_token PRIMARY KEY (id_token)
+);

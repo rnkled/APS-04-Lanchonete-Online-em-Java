@@ -5,8 +5,8 @@
  */
 package Controllers;
 
-import DAO.DaoCliente;
-import Model.Cliente;
+import DAO.DaoFuncionario;
+import Model.Funcionario;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -22,7 +22,7 @@ import org.json.JSONObject;
  *
  * @author kener_000
  */
-public class login extends HttpServlet {
+public class loginFuncionario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -54,20 +54,20 @@ public class login extends HttpServlet {
             JSONObject dados = new JSONObject(json);
             
             //Aqui, ele Instancia um objeto do Model Cliente, e Popula ele com os dados do JSON
-            Cliente cliente = new Cliente();
-            cliente.setUsuario(dados.getString("usuario"));
-            cliente.setSenha(dados.getString("senha"));
+            Funcionario funcionario = new Funcionario();
+            funcionario.setUsuario(dados.getString("usuario"));
+            funcionario.setSenha(dados.getString("senha"));
             
             /////////////////////////
             //E Para finalizar, salva no Banco usando o DAO dele
             
-            DaoCliente clienteDAO = new DaoCliente();
-            resultado = clienteDAO.login(cliente);
+            DaoFuncionario funcionarioDAO = new DaoFuncionario();
+            resultado = funcionarioDAO.login(funcionario);
             
             if(resultado == true){
-                Cliente clienteCompleto = clienteDAO.pesquisaPorUsuario(cliente);
+                Funcionario funcionarioCompleto = funcionarioDAO.pesquisaPorUsuario(funcionario);
                 
-                Cookie cookie = new Cookie("token", clienteCompleto.getId_cliente()+"HashDoFuturo");
+                Cookie cookie = new Cookie("tokenFuncionario", funcionarioCompleto.getId()+"HashDoFuturo");
                 response.addCookie(cookie);
             }
         }
@@ -76,7 +76,7 @@ public class login extends HttpServlet {
             //Aqui é onde a Resposta é mandada para o Cliente, dando um Feedback de que tudo deu certo.
             
             if(resultado == true){
-                out.println("../resumo/resumo.html");
+                out.println("../painel/painel.html");
             } else {
                 out.println("erro");
             }

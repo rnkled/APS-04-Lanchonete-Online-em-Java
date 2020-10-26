@@ -15,6 +15,7 @@ public class Funcionario {
     private String sobrenome;
     private String usuario;
     private String senha;
+    private String cargo;
     private Double salario;
     private int cad_por;
     private int fg_ativo;
@@ -58,6 +59,16 @@ public class Funcionario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+    
+    
 
     public Double getSalario() {
         return salario;

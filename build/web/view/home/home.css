@@ -1,33 +1,36 @@
-html { background-color:#F6F6F6 }
+html {
+    background-color: #F6F6F6
+}
 
-    #top {
-        width: 100vw;
-        height: 10vh;
-        background-color: #F16262;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        padding-left: 25px;
-    }
+#top {
+    width: 100vw;
+    height: 10vh;
+    background-color: #F16262;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 25px;
+}
 
 
 
-    #logo {
+#logo {
     width: 3vw;
     height: 8vh;
     background-color: white;
     margin: 10px 25px 10px 25px;
     width: 20vw;
-             }
+}
 
-            
-    .sobre {
+
+.sobre {
     align-self: flex-end;
     text-align: right;
-    }
-            
-     .opcoes, .sobre {
+}
+
+.opcoes,
+.sobre {
     height: 8vh;
     margin: 10px 25px 10px 25px;
     position: relative;
@@ -38,194 +41,207 @@ html { background-color:#F6F6F6 }
     align-items: center;
     font-size: 2vw;
     white-space: nowrap;
-                    }
+}
 
-    a {
+a {
     padding: 0px;
     margin: 0px;
     text-decoration: none;
     color: inherit;
     font-family: 'Sansita', sans-serif;
-                    }
-            
-    .sobre:hover {
+}
+
+.sobre:hover {
 
     padding-bottom: -30px;
     border-bottom: 10px solid white;
-                    }
+}
 
-    .opcoes:hover {
+.opcoes:hover {
 
     padding-bottom: -30px;
     border-bottom: 10px solid white;
-                    }
+}
 
 
-    body, html {
+body,
+html {
     width: 100%;
     height: 100%;
     font-family: Arial, Tahoma, sans-serif;
-                
-                }
+
+}
 
 
 
-                :root{
-        font-size: 60%;
-                }
+:root {
+    font-size: 60%;
+}
 
-                *{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 
-                }
+}
 
-                html, body, #root{
-        height: 100vh;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
+html,
+body,
+#root {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 
-                }
+}
 
-                body{
-                }
-
-
-        body,
-        input,
-        button,
-        textarea {
-            font: 500 1.6rem Poppins;
-        }
-
-        .contHome{
-            height: 100vh;
-            width: 100vw;
-            background-image: url("../assets/home.jpg");
-            background-color: #32CD32;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-            
-        .contFilho{
-            height: 90vh;
-            width: 100vw;
-            position: fixed;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            /* background-color: blanchedalmond; */
-            }
-
-            
-        .logoHeader{
-            width: 15vw;
-            height: 75%;
-            border: solid 1px #FFF;
-            border-radius: 10px;
-        }
+body {}
 
 
-        .contFilho2{
-            /* background-color: aqua; */
+body,
+input,
+button,
+textarea {
+    font: 500 1.6rem Poppins;
+}
 
-            width: 32vw;
-            height: 90vh;
-            margin-right: 70px;
-            /* margin-bottom: 130px; */
+.contHome {
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../assets/home.jpg");
+    background-color: #32CD32;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            }
-            
-            .logo{
-                
-                width: 310px;
-                height: 150px;
-                left: 938px;
-                top: 184px;
-                margin-top: 20px;
-                background: #F16262;
-                border: 1px solid #FFFFFF;
-                box-sizing: border-box;
-
-            }
-            
-            .esp1, .esp2{
-
-                width: 20vw;
-                height: 10px;
-                margin: 10px 0;
-                background: #FFFFFF;
-                border-radius: 20px;
-            }
-            
-            .fantasia{
-
-                width: 100%;
-                height: 40vh;
+.contFilho {
+    height: 90vh;
+    width: 100vw;
+    position: fixed;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /* background-color: blanchedalmond; */
+}
 
 
-                flex-direction: column;
-                display: flex;
-                align-items: center;
-                justify-content: space-around;
-                text-align: center;
-                padding-bottom: 10px;
-
-                color: #FFFFFF;
-
-                opacity: 0.75;
-
-            }
-            .legendLogo{
-                font-family: 'Sansita', sans-serif;
-                font-size: 4.3rem;
-                
-                
-            }
-
-            .legendAtendimento{
-                font-family: 'Sansita', sans-serif;
-                font-size: 1.9rem;
-            }
-            
-            .desc{
-
-                width: 445px;
-                height: 47px;
-                left: 894px;
-                top: 813px;
-                margin-top: 10px;
-                text-align: center;
-
-                color: #BCB2B2;
-
-            }
-            
-
-            .button{
-                margin-top: 10px;
-                width: 175px;
-                height: 61px;
-                left: 1035px;
-                top: 695px;
-                border: none;
-                font-family: 'Sansita', sans-serif;
-                font-size: 2rem;
-                color: #FFF;
-
-                background: #F16262;
-                border-radius: 30px;
-            }
+.logoHeader {
+    width: 15vw;
+    height: 75%;
+    border: solid 1px #FFF;
+    border-radius: 10px;
+}
 
 
+.contFilho2 {
+    /* background-color: aqua; */
+
+    width: 32vw;
+    height: 90vh;
+    margin-right: 70px;
+    /* margin-bottom: 130px; */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+
+    width: 310px;
+    height: 150px;
+    left: 938px;
+    top: 184px;
+    margin-top: 20px;
+    background: #F16262;
+    border: 1px solid #FFFFFF;
+    box-sizing: border-box;
+
+}
+
+.esp1,
+.esp2 {
+
+    width: 20vw;
+    height: 10px;
+    margin: 10px 0;
+    background: #FFFFFF;
+    border-radius: 20px;
+}
+
+.fantasia {
+
+    width: 100%;
+    height: 40vh;
 
 
-                footer { clear:both; width:700px; margin:0 auto; font-size:0.75em; text-align:center; background-color:#ECECEC; padding:5px; position:absolute; bottom: 0;  width:100%;
-            }
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    padding-bottom: 10px;
 
+    color: #FFFFFF;
+
+    opacity: 0.75;
+
+}
+
+.legendLogo {
+    font-family: 'Sansita', sans-serif;
+    font-size: 4.3rem;
+
+
+}
+
+.legendAtendimento {
+    font-family: 'Sansita', sans-serif;
+    font-size: 1.9rem;
+}
+
+.desc {
+
+    width: 445px;
+    height: 47px;
+    left: 894px;
+    top: 813px;
+    margin-top: 10px;
+    text-align: center;
+
+    color: #BCB2B2;
+
+}
+
+
+.button {
+    margin-top: 10px;
+    width: 175px;
+    height: 61px;
+    left: 1035px;
+    top: 695px;
+    border: none;
+    font-family: 'Sansita', sans-serif;
+    font-size: 2rem;
+    color: #FFF;
+    cursor: pointer;
+    background: #F16262;
+    border-radius: 30px;
+}
+
+
+
+
+footer {
+    clear: both;
+    width: 700px;
+    margin: 0 auto;
+    font-size: 0.75em;
+    text-align: center;
+    background-color: #ECECEC;
+    padding: 5px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

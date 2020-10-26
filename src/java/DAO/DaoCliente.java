@@ -92,6 +92,39 @@ public class DaoCliente {
         
     }
     
+    public Cliente pesquisaPorUsuario(Cliente cliente){
+        String sql = "SELECT * FROM tb_clientes WHERE usuario='"+cliente.getUsuario()+"'";
+        ResultSet rs;
+        Cliente clienteResultado = new Cliente();
+        
+        try{
+            
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+            
+                clienteResultado.setId_cliente(rs.getInt("id_cliente"));
+                clienteResultado.setNome(rs.getString("nome"));
+                clienteResultado.setSobrenome(rs.getString("sobrenome"));
+                clienteResultado.setTelefone(rs.getString("telefone"));
+                clienteResultado.setUsuario(rs.getString("usuario"));
+                clienteResultado.setSenha(rs.getString("senha"));
+                clienteResultado.setFg_ativo(1);
+
+            }
+            rs.close();
+            stmt.close();
+            return clienteResultado;
+        
+            
+        } catch(SQLException e){
+            
+             throw new RuntimeException(e);
+        }
+        
+    }
+    
     public boolean login(Cliente cliente){
         String sql = "SELECT usuario, senha, fg_ativo FROM tb_clientes WHERE usuario = ?";
         

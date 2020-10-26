@@ -20,6 +20,10 @@
         <servlet-name>salvarBebida</servlet-name>
         <servlet-class>Controllers.salvarBebida</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>loginFuncionario</servlet-name>
+        <servlet-class>Controllers.loginFuncionario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>cadastro</servlet-name>
         <url-pattern>/cadastro</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>salvarBebida</servlet-name>
         <url-pattern>/salvarBebida</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>loginFuncionario</servlet-name>
+        <url-pattern>/loginFuncionario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

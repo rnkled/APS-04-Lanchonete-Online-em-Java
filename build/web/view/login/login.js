@@ -11,9 +11,18 @@ function enviarLogin(){
         dados['senha'] = senha;
 
         
-        requisicao("../../login", alertarResposta, JSON.stringify(dados));
+        requisicao("../../login", resolver, JSON.stringify(dados));
     } else {
-        alert("Digite as Informações!")
+        alert("Digite as Informações!");
     }
 
+}
+
+
+function resolver(resposta){
+    if(resposta.srcElement.responseText.localeCompare("erro") == -1){
+        window.location.replace(resposta.srcElement.responseText);
+    } else {
+        alert("Erro ao Logar! Tente novamente. Se Cadastre se não possuir uma conta!");
+    }
 }

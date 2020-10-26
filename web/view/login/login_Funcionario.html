@@ -8,6 +8,28 @@
         <link rel="stylesheet" type="text/CSS" href="../styles/global.css"/>
         <link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@1,700&display=swap" rel="stylesheet">
     </head>
+
+    <script>
+        function enviarLoginFuncionario(){
+
+            let usuario = document.getElementById("loginInput").value;
+            let senha = document.getElementById("senhaInput").value;
+
+            if(usuario && senha){
+
+                let dados = {};
+
+                dados['usuario'] = usuario;
+                dados['senha'] = senha;
+
+                requisicao("../../loginFuncionario", resolver, JSON.stringify(dados));
+            } else {
+                alert("Digite as Informações!")
+            }
+
+        }
+    </script>
+
     <body>
         <div class="containerLogin">
             <header class="headerPage">
@@ -30,15 +52,14 @@
 
                     </div>
                     <div class="inputLogin">
-                        <h1 class="titlePage">Login</h1>
+                        <h1 class="titlePage">Login Administrativo</h1>
                         <input class="TextInput" id="loginInput" required placeholder="E-mail" type="text"/>
                         <input class="TextInput" required placeholder="Senha" type="password" id="senhaInput"/>
 
 
                     </div>
                     <div class="buttonLink">
-                        <button class="buttonSubmit" onclick="enviarLogin()">Entrar</button>
-                        <a class="linkNewCreate" href="../cadastro/cadastro.html">Primera Vez? Crie uma nova conta!</a>
+                        <button class="buttonSubmit" onclick="enviarLoginFuncionario()">Entrar</button>
                     </div>
 
                 </div>

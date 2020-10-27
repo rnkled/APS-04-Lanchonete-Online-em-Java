@@ -25,6 +25,10 @@ body {
     background-color: white;
     margin: 10px 25px 10px 25px;
     width: 20vw;
+    background-image: url(../assets/logo02.png);
+    background-color: #32CD32;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .opcoes {

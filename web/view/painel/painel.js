@@ -65,6 +65,27 @@ function salvarBebida(){
     }
 
 }
+function showCadLanches(){
+    //CadLanches
+
+    let tip = document.getElementById("Agrupado");
+    let div = document.getElementById("CadLanches");
+    let divStatus = document.getElementById("statusId")
+    let divStatus2 = document.getElementById("statusId2")
+    let divcenter = document.getElementById("footerId");
+  
+    
+    if(div.style.display = 'none'){
+        tip.style.display = 'none';
+        div.style.display = 'block';
+        divStatus.style.display = 'flex';
+        divStatus2.style.display = 'flex';
+        divcenter.style.justifyContent = 'space-around';
+
+    }
+    
+
+}
 
 function resolver(resposta){
     if(resposta.srcElement.responseText.localeCompare("erro") == -1){

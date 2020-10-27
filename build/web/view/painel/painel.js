@@ -89,23 +89,29 @@ function showCadLanches(){
 }
 
 function resolver(resposta){
-    if(resposta.srcElement.responseText.localeCompare("erro") == -1){
-        alert(resposta.srcElement.responseText);
-    } else {
+    if(resposta.srcElement.responseText.includes("erro")){
         window.location.replace("../login/login_Funcionario.html?Action=TokenError");
+    } else {
+        alert(resposta.srcElement.responseText);
     }
 }
 
 function logout(){
+    requisicao("../../logout", deslogar)
     deleteAllCookies();
-    //window.location.replace("../home/home.html");
+}
+
+function deslogar(resposta){
+    alert(resposta.srcElement.responseText);
+    window.location.replace("../home/home.html");
 }
 
 function deleteAllCookies() {
 
     var cookies = document.cookie.split(";");
-    for (var i = 0; i < cookies.length; i++)
-    console.log(cookies[i].split("=")[0]);
+    for (var i = 0; i < cookies.length; i++){
+        console.log(cookies[i].split("=")[0].trim());
+        document.cookie = cookies[i].split("=")[0].trim()+"=; expires=Thu, 01 jan 1970 00:00:01 GTM;";}
 }
 
 function formularioParaObjeto(formulario){
@@ -129,12 +135,12 @@ function validar(formulario){
 
 function getIngredientes(resposta){
 
-    if(resposta.srcElement.responseText.localeCompare("erro") == -1){
-        dados = JSON.parse(resposta.srcElement.responseText);
-        console.log(dados);
+    if(resposta.srcElement.responseText.includes("erro")){
+        window.location.replace("../login/login_Funcionario.html?Action=TokenError");
     } 
     else {
-        window.location.replace("../login/login_Funcionario.html?Action=TokenError");
+        dados = JSON.parse(resposta.srcElement.responseText);
+        console.log(dados);
     }
 
 }

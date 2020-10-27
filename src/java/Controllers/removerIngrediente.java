@@ -5,14 +5,15 @@
  */
 package Controllers;
 
-import DAO.DaoCliente;
-import DAO.DaoToken;
-import Model.Cliente;
+import DAO.DaoIngrediente;
+import Helpers.ValidadorCookie;
+import Model.Ingrediente;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.time.Instant;
+import static java.nio.charset.StandardCharsets.ISO_8859_1;
+import static java.nio.charset.StandardCharsets.UTF_8;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +25,7 @@ import org.json.JSONObject;
  *
  * @author kener_000
  */
-public class login extends HttpServlet {
+public class removerIngrediente extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,57 +38,52 @@ public class login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       //Seta o tipo de Conteudo que será recebido, nesse caso, um JSON
+
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        
-        //Pra receber JSONs, é necessario utilizar esse Buffer pra receber os dados,
-        //Então tem que ser Feito assim:
         BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
         String json = "";
+        
+        ////////Validar Cookie
         boolean resultado = false;
         
+        try{
+        Cookie[] cookies = request.getCookies();
+        ValidadorCookie validar = new ValidadorCookie();
         
-        //Aqui ele checa se os Dados não tão vazios, por motivos de vai que
-        if (br != null) {
-            
-            //Converte os dados do JSON pra um Formato de Objeto que o Java consiga lidar
+        resultado = validar.validarFuncionario(cookies);
+        }catch(java.lang.NullPointerException e){}
+        //////////////
+        
+        if ((br != null) && resultado) {
             json = br.readLine();
-            JSONObject dados = new JSONObject(json);
+            byte[] bytes = json.getBytes(ISO_8859_1); 
+            String jsonStr = new String(bytes, UTF_8);            
+            JSONObject dados = new JSONObject(jsonStr);
             
-            //Aqui, ele Instancia um objeto do Model Cliente, e Popula ele com os dados do JSON
-            Cliente cliente = new Cliente();
-            cliente.setUsuario(dados.getString("usuario"));
-            cliente.setSenha(dados.getString("senha"));
+            Ingrediente ingrediente = new Ingrediente();
+            ingrediente.setId_ingrediente(dados.getInt("id"));
+            ingrediente.setNome(dados.getString("nome"));
+            ingrediente.setDescricao(dados.getString("descricao"));
+            ingrediente.setQuantidade(dados.getInt("quantidade"));
+            ingrediente.setValor_compra(dados.getDouble("ValorCompra"));
+            ingrediente.setValor_venda(dados.getDouble("ValorVenda"));
+            ingrediente.setTipo(dados.getString("tipo"));
+            ingrediente.setFg_ativo(1);
             
-            /////////////////////////
-            //E Para finalizar, salva no Banco usando o DAO dele
+            DaoIngrediente ingredienteDAO = new DaoIngrediente();
+            ingredienteDAO.remover(ingrediente);
             
-            DaoCliente clienteDAO = new DaoCliente();
-            DaoToken tokenDAO = new DaoToken();
-            resultado = clienteDAO.login(cliente);
-            
-            if(resultado == true){
-                Cliente clienteCompleto = clienteDAO.pesquisaPorUsuario(cliente);
-                
-                Cookie cookie = new Cookie("token", clienteCompleto.getId_cliente()+"-"+Instant.now().toString());
-                tokenDAO.salvar(cookie.getValue());
-                cookie.setMaxAge(30*60);
-                response.addCookie(cookie);
+            try (PrintWriter out = response.getWriter()) {
+            out.println("Ingrediente Alterado!");
             }
+        } else {
+            try (PrintWriter out = response.getWriter()) {
+            out.println("erro");
         }
-        try (PrintWriter out = response.getWriter()) {
-            
-            //Aqui é onde a Resposta é mandada para o Cliente, dando um Feedback de que tudo deu certo.
-            
-            if(resultado == true){
-                out.println("../resumo/resumo.html");
-            } else {
-                out.println("erro");
-            }
-            
-
         }
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

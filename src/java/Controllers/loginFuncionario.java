@@ -72,7 +72,7 @@ public class loginFuncionario extends HttpServlet {
                 
                 Cookie cookie = new Cookie("tokenFuncionario", funcionarioCompleto.getId()+"-"+Instant.now().toString());
                 tokenDAO.salvar(cookie.getValue());
-                cookie.setMaxAge(5*60);
+                cookie.setMaxAge(30*60);
                 response.addCookie(cookie);
             }
         }

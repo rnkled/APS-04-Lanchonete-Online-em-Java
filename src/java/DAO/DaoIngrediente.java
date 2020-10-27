@@ -85,4 +85,47 @@ public class DaoIngrediente {
         
     }
     
+    public void alterar(Ingrediente ingrediente){
+        String sql = "UPDATE tb_ingredientes SET nm_ingrediente=?, descricao=?, quantidade=?, valor_compra=?, valor_venda=?,"
+                + " tipo=? "
+                + "WHERE id_ingrediente =?";
+        
+        try{
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            stmt.setString(1, ingrediente.getNome());
+            stmt.setString(2, ingrediente.getDescricao());
+            stmt.setInt(3, ingrediente.getQuantidade());
+            stmt.setDouble(4, ingrediente.getValor_compra());
+            stmt.setDouble(5, ingrediente.getValor_venda());
+            stmt.setString(6, ingrediente.getTipo());
+            stmt.setInt(7, ingrediente.getId_ingrediente());
+            
+            stmt.execute();
+            stmt.close();
+            
+            
+        }catch(Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+    public void remover(Ingrediente ingrediente){
+        
+            
+        String sql = "DELETE FROM tb_ingredientes"
+                +" WHERE id_ingrediente=?";
+        
+        try{
+            
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            
+            stmt.setInt(1, ingrediente.getId_ingrediente());
+            
+            stmt.execute();
+            stmt.close();
+            
+        }catch(Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+    
 }

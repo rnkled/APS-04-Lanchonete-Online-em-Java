@@ -60,9 +60,39 @@ public class DaoToken {
             return resultado;
             
         } catch(SQLException e){
-            JOptionPane.showMessageDialog(null, e);
+            System.out.println(e);
         }
         
         return false;
     }
+    
+    public void remover(String token){
+        String sql = "DELETE FROM tb_tokens WHERE token = ?";
+        
+        try{
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            stmt.setString(1, token);
+            stmt.execute();
+            stmt.close();
+            
+        } catch(SQLException e){
+            System.out.println(e);
+        }
+        
+    }
+    
+    public void LimparTabela(){
+        String sql = "DELETE FROM tb_tokens";
+        
+        try{
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            stmt.execute();
+            stmt.close();
+            
+        } catch(SQLException e){
+            System.out.println(e);
+        }
+        
+    }
+        
     }

@@ -28,6 +28,30 @@
         <servlet-name>getIngredientes</servlet-name>
         <servlet-class>Controllers.getIngredientes</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>logout</servlet-name>
+        <servlet-class>Controllers.logout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getBebidas</servlet-name>
+        <servlet-class>Controllers.getBebidas</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>alterarIngrediente</servlet-name>
+        <servlet-class>Controllers.alterarIngrediente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>alterarBebida</servlet-name>
+        <servlet-class>Controllers.alterarBebida</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>removerIngrediente</servlet-name>
+        <servlet-class>Controllers.removerIngrediente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>removerBebida</servlet-name>
+        <servlet-class>Controllers.removerBebida</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>cadastro</servlet-name>
         <url-pattern>/cadastro</url-pattern>
@@ -55,6 +79,30 @@
     <servlet-mapping>
         <servlet-name>getIngredientes</servlet-name>
         <url-pattern>/getIngredientes</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getBebidas</servlet-name>
+        <url-pattern>/getBebidas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>alterarIngrediente</servlet-name>
+        <url-pattern>/alterarIngrediente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>alterarBebida</servlet-name>
+        <url-pattern>/alterarBebida</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>removerIngrediente</servlet-name>
+        <url-pattern>/removerIngrediente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>removerBebida</servlet-name>
+        <url-pattern>/removerBebida</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

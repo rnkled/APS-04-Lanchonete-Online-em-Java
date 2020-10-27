@@ -13,6 +13,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import static java.nio.charset.StandardCharsets.ISO_8859_1;
+import static java.nio.charset.StandardCharsets.UTF_8;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -53,7 +55,9 @@ public class cadastro extends HttpServlet {
             
             //Converte os dados do JSON pra um Formato de Objeto que o Java consiga lidar
             json = br.readLine();
-            JSONObject dados = new JSONObject(json);
+            byte[] bytes = json.getBytes(ISO_8859_1); 
+            String jsonStr = new String(bytes, UTF_8);            
+            JSONObject dados = new JSONObject(jsonStr);
             
             //Aqui, ele Instancia um objeto do Model endereco, e Popula ele com os dados do JSON
             Endereco endereco = new Endereco();

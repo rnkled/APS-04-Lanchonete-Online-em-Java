@@ -6,8 +6,13 @@
 package DAO;
 
 import Model.Bebida;
+import Model.Ingrediente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -38,6 +43,84 @@ public class DaoBebida {
             stmt.execute();
             stmt.close();
             
+            
+        }catch(Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public List<Bebida> listarTodos(){
+        String sql = "SELECT * FROM tb_bebidas WHERE fg_Ativo='1' ORDER BY id_bebida";
+        ResultSet rs;
+        List<Bebida> bebidas = new ArrayList<Bebida>();
+        
+        try{
+            
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+            
+                Bebida bebida = new Bebida();
+                bebida.setId_bebida(rs.getInt("id_bebida"));
+                bebida.setNome(rs.getString("nm_bebida"));
+                bebida.setDescricao(rs.getString("descricao"));
+                bebida.setQuantidade(rs.getInt("quantidade"));
+                bebida.setValor_compra(rs.getDouble("valor_compra"));
+                bebida.setValor_venda(rs.getDouble("valor_venda"));
+                bebida.setTipo(rs.getString("tipo"));
+                bebida.setFg_ativo(1);
+                
+                bebidas.add(bebida);
+            }
+            rs.close();
+            stmt.close();
+            return bebidas;
+        
+            
+        } catch(SQLException e){
+            
+             throw new RuntimeException(e);
+        }
+        
+    }
+    
+    public void alterar(Bebida bebida){
+        String sql = "UPDATE tb_bebidas SET nm_bebida=?, descricao=?, quantidade=?, valor_compra=?, valor_venda=?,"
+                + " tipo=? "
+                + "WHERE id_bebida =?";
+        
+        try{
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            stmt.setString(1, bebida.getNome());
+            stmt.setString(2, bebida.getDescricao());
+            stmt.setInt(3, bebida.getQuantidade());
+            stmt.setDouble(4, bebida.getValor_compra());
+            stmt.setDouble(5, bebida.getValor_venda());
+            stmt.setString(6, bebida.getTipo());
+            stmt.setInt(7, bebida.getId_bebida());
+            
+            stmt.execute();
+            stmt.close();
+            
+            
+        }catch(Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public void remover(Bebida bebida){
+        String sql = "DELETE FROM tb_bebidas"
+                +" WHERE id_bebida=?";
+        
+        try{
+            
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            
+            stmt.setInt(1, bebida.getId_bebida());
+            
+            stmt.execute();
+            stmt.close();
             
         }catch(Exception e){
             throw new RuntimeException(e);

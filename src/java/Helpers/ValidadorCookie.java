@@ -47,4 +47,20 @@ public class ValidadorCookie {
         
         return resultado;
     }
+        
+    public void deletar(Cookie[] cookies){
+        DaoToken tokenDAO = new DaoToken();
+        
+        for (int i = 0; i < cookies.length; i++) {
+            String name = cookies[i].getName();
+            String value = cookies[i].getValue();
+            
+            try{
+            if(name.equals("tokenFuncionario")||name.equals("token")){
+                tokenDAO.remover(value);
+            }}catch(Exception e){
+            throw new RuntimeException(e);
+        }
+        }
+    }
 }

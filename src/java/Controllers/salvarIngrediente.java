@@ -12,6 +12,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import static java.nio.charset.StandardCharsets.ISO_8859_1;
+import static java.nio.charset.StandardCharsets.UTF_8;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -55,7 +57,9 @@ public class salvarIngrediente extends HttpServlet {
         
         if ((br != null) && resultado) {
             json = br.readLine();
-            JSONObject dados = new JSONObject(json);
+            byte[] bytes = json.getBytes(ISO_8859_1); 
+            String jsonStr = new String(bytes, UTF_8);            
+            JSONObject dados = new JSONObject(jsonStr);
             
             Ingrediente ingrediente = new Ingrediente();
             ingrediente.setNome(dados.getString("nome"));
@@ -68,6 +72,7 @@ public class salvarIngrediente extends HttpServlet {
             
             DaoIngrediente ingredienteDAO = new DaoIngrediente();
             ingredienteDAO.salvar(ingrediente);
+            
             try (PrintWriter out = response.getWriter()) {
             out.println("Ingrediente Salvo!");
             }

@@ -41,6 +41,8 @@ public class salvarIngrediente extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
         String json = "";
+        
+        ////////Validar Cookie
         boolean resultado = false;
         
         try{
@@ -49,6 +51,7 @@ public class salvarIngrediente extends HttpServlet {
         
         resultado = validar.validarFuncionario(cookies);
         }catch(java.lang.NullPointerException e){}
+        //////////////
         
         if ((br != null) && resultado) {
             json = br.readLine();
@@ -66,7 +69,7 @@ public class salvarIngrediente extends HttpServlet {
             DaoIngrediente ingredienteDAO = new DaoIngrediente();
             ingredienteDAO.salvar(ingrediente);
             try (PrintWriter out = response.getWriter()) {
-            out.println("Ingrediente Salvo");
+            out.println("Ingrediente Salvo!");
             }
         } else {
             try (PrintWriter out = response.getWriter()) {

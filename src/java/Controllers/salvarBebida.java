@@ -6,12 +6,14 @@
 package Controllers;
 
 import DAO.DaoBebida;
+import Helpers.ValidadorCookie;
 import Model.Bebida;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -39,7 +41,19 @@ public class salvarBebida extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
         String json = "";
-        if (br != null) {
+        
+        ////////Validar Cookie
+        boolean resultado = false;
+        
+        try{
+        Cookie[] cookies = request.getCookies();
+        ValidadorCookie validar = new ValidadorCookie();
+        
+        resultado = validar.validarFuncionario(cookies);
+        }catch(java.lang.NullPointerException e){System.out.println(e);}
+        //////////////
+        
+        if ((br != null) && resultado) {
             json = br.readLine();
             JSONObject dados = new JSONObject(json);
             
@@ -54,13 +68,16 @@ public class salvarBebida extends HttpServlet {
             
             DaoBebida bebidaDAO = new DaoBebida();
             bebidaDAO.salvar(bebida);
-        }
-        
-        try (PrintWriter out = response.getWriter()) {
-            out.println("Bebida Salva");
+            
+            try (PrintWriter out = response.getWriter()) {
+            out.println("Bebida Salva!");
+            }
+        } else {
+            try (PrintWriter out = response.getWriter()) {
+            out.println("erro");
         }
     }
-
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

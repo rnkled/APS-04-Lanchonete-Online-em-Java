@@ -49,7 +49,7 @@ function salvarIngrediente(){
 
     if(validar(form)){
         dados = formularioParaObjeto(form);
-        requisicao("../../salvarIngrediente", alertarResposta, JSON.stringify(dados));
+        requisicao("../../salvarIngrediente", resolver, JSON.stringify(dados));
     }
 
 }
@@ -61,9 +61,17 @@ function salvarBebida(){
 
     if(validar(form)){
         dados = formularioParaObjeto(form);
-        requisicao("../../salvarBebida", alertarResposta, JSON.stringify(dados));
+        requisicao("../../salvarBebida", resolver, JSON.stringify(dados));
     }
 
+}
+
+function resolver(resposta){
+    if(resposta.srcElement.responseText.localeCompare("erro") == -1){
+        alert(resposta.srcElement.responseText);
+    } else {
+        window.location.replace("../login/login_Funcionario.html");
+    }
 }
 
 function formularioParaObjeto(formulario){

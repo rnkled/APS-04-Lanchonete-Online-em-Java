@@ -5,26 +5,24 @@
  */
 package Controllers;
 
-import DAO.DaoFuncionario;
-import DAO.DaoToken;
-import Model.Funcionario;
-import java.io.BufferedReader;
+import DAO.DaoIngrediente;
+import Helpers.ValidadorCookie;
+import Model.Ingrediente;
+import com.google.gson.Gson;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.time.Instant;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.json.JSONObject;
 
 /**
  *
  * @author kener_000
  */
-public class loginFuncionario extends HttpServlet {
+public class getIngredientes extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,56 +35,37 @@ public class loginFuncionario extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       //Seta o tipo de Conteudo que será recebido, nesse caso, um JSON
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         
-        //Pra receber JSONs, é necessario utilizar esse Buffer pra receber os dados,
-        //Então tem que ser Feito assim:
-        BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
-        String json = "";
+        ////////Validar Cookie
         boolean resultado = false;
         
+        try{
+        Cookie[] cookies = request.getCookies();
+        ValidadorCookie validar = new ValidadorCookie();
         
-        //Aqui ele checa se os Dados não tão vazios, por motivos de vai que
-        if (br != null) {
+        resultado = validar.validarFuncionario(cookies);
+        }catch(java.lang.NullPointerException e){System.out.println(e);}
+        //////////////
+        
+        if(resultado){
             
-            //Converte os dados do JSON pra um Formato de Objeto que o Java consiga lidar
-            json = br.readLine();
-            JSONObject dados = new JSONObject(json);
+            DaoIngrediente ingredienteDAO = new DaoIngrediente();
             
-            //Aqui, ele Instancia um objeto do Model Cliente, e Popula ele com os dados do JSON
-            Funcionario funcionario = new Funcionario();
-            funcionario.setUsuario(dados.getString("usuario"));
-            funcionario.setSenha(dados.getString("senha"));
+            List<Ingrediente> ingredientes = ingredienteDAO.listarTodos();
             
-            /////////////////////////
-            //E Para finalizar, salva no Banco usando o DAO dele
-            
-            DaoFuncionario funcionarioDAO = new DaoFuncionario();
-            DaoToken tokenDAO = new DaoToken();
-            resultado = funcionarioDAO.login(funcionario);
-            
-            if(resultado == true){
-                Funcionario funcionarioCompleto = funcionarioDAO.pesquisaPorUsuario(funcionario);
-                
-                Cookie cookie = new Cookie("tokenFuncionario", funcionarioCompleto.getId()+"-"+Instant.now().toString());
-                tokenDAO.salvar(cookie.getValue());
-                cookie.setMaxAge(5*60);
-                response.addCookie(cookie);
-            }
-        }
-        try (PrintWriter out = response.getWriter()) {
-            
-            //Aqui é onde a Resposta é mandada para o Cliente, dando um Feedback de que tudo deu certo.
-            
-            if(resultado == true){
-                out.println("../painel/painel.html");
-            } else {
-                out.println("erro");
-            }
-            
+            Gson gson = new Gson();
+            String json = gson.toJson(ingredientes);
 
+        try (PrintWriter out = response.getWriter()) {
+            out.print(json);
+            out.flush();
+            }
+        } else {
+            try (PrintWriter out = response.getWriter()) {
+            out.println("erro");
+            }
         }
     }
 

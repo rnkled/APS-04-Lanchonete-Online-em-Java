@@ -26,3 +26,4 @@ function resolver(resposta){
         alert("Erro ao Logar! Tente novamente. Se Cadastre se não possuir uma conta!");
     }
 }
+

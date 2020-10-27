@@ -24,6 +24,10 @@
         <servlet-name>loginFuncionario</servlet-name>
         <servlet-class>Controllers.loginFuncionario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getIngredientes</servlet-name>
+        <servlet-class>Controllers.getIngredientes</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>cadastro</servlet-name>
         <url-pattern>/cadastro</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>loginFuncionario</servlet-name>
         <url-pattern>/loginFuncionario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getIngredientes</servlet-name>
+        <url-pattern>/getIngredientes</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

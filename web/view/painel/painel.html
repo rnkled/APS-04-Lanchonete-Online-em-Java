@@ -16,8 +16,6 @@ and open the template in the editor.
         <script src="./painel.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@1,700&display=swap" rel="stylesheet">
     </head>
-    <script>
-    </script>
     <body>
         <div class="containerPainel">
             <header class="headerPage">
@@ -31,7 +29,7 @@ and open the template in the editor.
 
                 </div>
                 <div class="containerAction">
-                    <button class="buttonLogout">Logout</button>
+                    <button class="buttonLogout" type="button" onClick="logout()">Logout</button>
                 </div>
             </header>
             <div class="containerPage">
@@ -226,7 +224,7 @@ and open the template in the editor.
 
 
                                     <div class="buttonInputContainer">
-                                        <input class="buttonSubmitCancel" type="button" onclick="" name="cancelar" value="Cancelar">
+                                        <input class="buttonSubmitCancel" type="button" onclick="showInicioDiv()" name="cancelar" value="Cancelar">
                                         <input class="buttonSubmitSalvar" type="button" onclick="salvarItem()" name="salvar" value="Salvar">
                                     </div>
                                     

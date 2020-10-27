@@ -5,9 +5,14 @@
  */
 package DAO;
 
+import Model.Cliente;
 import Model.Ingrediente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -43,8 +48,41 @@ public class DaoIngrediente {
             throw new RuntimeException(e);
         }
     }
+    
+    public List<Ingrediente> listarTodos(){
+        String sql = "SELECT * FROM tb_ingredientes WHERE fg_Ativo='1' ORDER BY id_ingrediente";
+        ResultSet rs;
+        List<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
+        
+        try{
+            
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+            
+                Ingrediente ingrediente = new Ingrediente();
+                ingrediente.setId_ingrediente(rs.getInt("id_ingrediente"));
+                ingrediente.setNome(rs.getString("nm_ingrediente"));
+                ingrediente.setDescricao(rs.getString("descricao"));
+                ingrediente.setQuantidade(rs.getInt("quantidade"));
+                ingrediente.setValor_compra(rs.getDouble("valor_compra"));
+                ingrediente.setValor_venda(rs.getDouble("valor_venda"));
+                ingrediente.setTipo(rs.getString("tipo"));
+                ingrediente.setFg_ativo(1);
+                
+                ingredientes.add(ingrediente);
+            }
+            rs.close();
+            stmt.close();
+            return ingredientes;
+        
+            
+        } catch(SQLException e){
+            
+             throw new RuntimeException(e);
+        }
+        
+    }
+    
 }
-    
-    
-    
-    

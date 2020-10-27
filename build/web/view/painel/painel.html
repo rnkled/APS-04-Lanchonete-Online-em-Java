@@ -11,12 +11,11 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="../scripts/conexao.js"></script>
         <link rel="stylesheet" type="text/CSS" href="../styles/global.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="styles.css">
         <script src="./painel.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@1,700&display=swap" rel="stylesheet">
     </head>
-    <script>
-    </script>
     <body>
         <div class="containerPainel">
             <header class="headerPage">
@@ -30,7 +29,7 @@ and open the template in the editor.
 
                 </div>
                 <div class="containerAction">
-                    <button class="buttonLogout">Logout</button>
+                    <button class="buttonLogout" type="button" onClick="logout()">Logout</button>
                 </div>
             </header>
             <div class="containerPage">
@@ -58,7 +57,7 @@ and open the template in the editor.
                         <div class="ButtonsGroupsCadastro">
                             
                             <div class="containerButtons1">
-                                <button type="button" onclick="" class="buttonGerenciador">Cadastrar Lanches</button>
+                                <button type="button" onclick="showCadLanches()" class="buttonGerenciador">Cadastrar Lanches</button>
                                 <button class="buttonGerenciador">Cadastrar Porções</button>
                             </div>
                             
@@ -159,7 +158,100 @@ and open the template in the editor.
                         </div>
                         
                     </footer>
-                    
+
+
+                    <div id="CadLanches" class="containerCadItems">
+                        <div class="titleCadPainel">
+                            <h1 class="titlePage">Cadastro de lanches</h1>
+                        </div>
+    
+                        <div class="form">
+    
+                            <form id="addItem" class="formItems">
+                                
+                                <div class="containerInputs">
+                                    <input placeholder="Lanche" class="TextInputLanche" type="text" name="nome" required>
+                                    <select class="TextInputLanche" name="tipoPao" required>
+                                        <option value="">Pão</option>
+                                        <option value="1"></option>
+                                        <option value="2"></option>
+                                        <option value="3"></option>
+                                        <option value="4"></option>
+                                        <option value="5"></option>
+                                    </select>
+                                </div>                           
+                                    <textarea id="textArea" class="TextInput"  placeholder="Descrição" rows="4" cols="50" name="descricao"></textarea>
+                                    <div class="containerTitlePageLanche">
+                                        <h1 class="titleContainerLanche">Ingredientes</h1>
+                                    </div>
+                                <div class="opcIngredientes">
+                                    <div class="nameValue">
+                                        <p class="legendIngrediente">Bacon <br> +R$3,00</p>
+
+                                    </div>
+                                    <div class="containerIncremento">
+                                        <div class="contador">
+                                            <button class="buttonIcons">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                            <p class="legendIngrediente">0</p>
+                                            <button class="buttonIcons">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="opcIngredientes">
+                                    <div class="nameValue">
+                                        <p class="legendIngrediente">Bacon <br> +R$3,00</p>
+
+                                    </div>
+                                    <div class="containerIncremento">
+                                        <div class="contador">
+                                            <button class="buttonIcons">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                            <p class="legendIngrediente">0</p>
+                                            <button class="buttonIcons">
+                                                <i class="fa fa-minus"></i>
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                    <div class="buttonInputContainer">
+                                        <input class="buttonSubmitCancel" type="button" onclick="showInicioDiv()" name="cancelar" value="Cancelar">
+                                        <input class="buttonSubmitSalvar" type="button" onclick="salvarItem()" name="salvar" value="Salvar">
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                                
+                            </div>
+
+
+
+
+
+                <footer  class="footerPainel">
+                    <div id="footerId" class="containerFooter">
+                        <div id="statusId" class="StatusInfo">
+                            <h1 class="legendStatusInfo">Valor gasto</h1>
+                            <p class="legendStatusValue">R$ 20,00</p>
+                        </div>
+                        <div class="StatusLanchonete">
+                            <h1 class="legendStatus">Aberto agora!</h1>
+                        </div>
+                        <div id="statusId2" class="StatusInfo2">
+                            <h1 class="legendStatusInfo">Valor com lucro</h1>
+                            <input class="inputValorLucro" type="text" value="R$ 10,00"/>
+                        </div>
+                    </div>
+                </footer>
                 </div>
             </div>
         </div>

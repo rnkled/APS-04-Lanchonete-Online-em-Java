@@ -215,18 +215,19 @@
     border-radius: 0.5em;
 }
 
-.containerFooter{
+.containerFooter {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    
+    justify-content: space-around;
+
 }
-.StatusInfo2{
+
+.StatusInfo2 {
     border-radius: 0.5em;
     width: 10vw;
     height: 9vh;
-    background-color:  #F16262;
+    background-color: #F16262;
     border: 1px solid #FFF;
     flex-direction: column;
     padding: 5px;
@@ -235,23 +236,25 @@
     justify-content: space-between;
 
 }
-.StatusInfo{
+
+.StatusInfo {
     padding: 5px;
     border-radius: 0.5em;
     width: 10vw;
     height: 9vh;
-    background-color:  #F16262;
+    background-color: #F16262;
     border: 1px solid #FFF;
     flex-direction: column;
     display: none;
     align-items: center;
     justify-content: space-between;
 }
-.inputValorLucro{
+
+.inputValorLucro {
     width: 6vw;
     height: 5vh;
     border: none;
-    background-color:  #F16262;
+    background-color: #F16262;
     font-family: 'Ubuntu', sans-serif;
     color: #FFF;
     font-size: 1.4rem;
@@ -259,13 +262,14 @@
 
 }
 
-.legendStatusValue{
+.legendStatusValue {
     font-family: 'Ubuntu', sans-serif;
     color: #FFF;
     font-size: 1.4rem;
     margin-bottom: 5px;
 }
-.legendStatus{
+
+.legendStatus {
     font-family: 'Ubuntu', sans-serif;
     font-size: 1.9rem;
     color: #0CD008;
@@ -367,7 +371,7 @@
     cursor: pointer;
 }
 
-.containerInputs{
+.containerInputs {
     width: 32vw;
     height: 10vh;
     display: flex;
@@ -375,30 +379,31 @@
     justify-content: space-between;
 }
 
-.TextInputLanche{
+.TextInputLanche {
     width: 15vw;
     height: 7vh;
-    
+
     border: 1px solid #BDBDBD;
     border-radius: 10px;
-    padding-left: 15px;    
+    padding-left: 15px;
 }
-.containerTitlePageLanche{
+
+.containerTitlePageLanche {
     padding-left: 10px;
     width: 70vw;
     display: flex;
     align-items: center;
     height: 5vh;
-    background-color: #F16262;  
+    background-color: #F16262;
 }
 
-.titleContainerLanche{
+.titleContainerLanche {
     font-size: 2.2rem;
     font-family: 'Sansita', sans-serif;
     color: #FFF;
 }
 
-.opcIngredientes{
+.opcIngredientes {
     width: 85%;
     border-radius: 1em;
     height: 8vh;
@@ -410,13 +415,13 @@
     align-items: center;
 }
 
-.legendIngrediente{
+.legendIngrediente {
     font-family: 'Sansita', sans-serif;
     font-size: 1.5rem;
     color: #676464;
 }
 
-.contador{
+.contador {
     width: 8vw;
     height: 5vh;
     border: 2px solid #000;
@@ -427,11 +432,11 @@
     padding: 2px 15px;
 }
 
-.buttonIcons{
+.buttonIcons {
     border: none;
 }
 
-.legendStatusInfo{
+.legendStatusInfo {
     font-size: 1.3rem;
     font-family: 'Sansita', sans-serif;
     color: #FFF;

@@ -65,13 +65,47 @@ function salvarBebida(){
     }
 
 }
+function showCadLanches(){
+    //CadLanches
+
+    let tip = document.getElementById("Agrupado");
+    let div = document.getElementById("CadLanches");
+    //let divStatus = document.getElementById("statusId")
+    //let divStatus2 = document.getElementById("statusId2")
+    //let divcenter = document.getElementById("footerId");
+  
+    
+    if(div.style.display = 'none'){
+        tip.style.display = 'none';
+        div.style.display = 'block';
+        //divStatus.style.display = 'flex';
+        //divStatus2.style.display = 'flex';
+        //divcenter.style.justifyContent = 'space-around';
+
+    }
+    
+    requisicao("../../getIngredientes", getIngredientes);
+
+}
 
 function resolver(resposta){
     if(resposta.srcElement.responseText.localeCompare("erro") == -1){
         alert(resposta.srcElement.responseText);
     } else {
-        window.location.replace("../login/login_Funcionario.html");
+        window.location.replace("../login/login_Funcionario.html?Action=TokenError");
     }
+}
+
+function logout(){
+    deleteAllCookies();
+    //window.location.replace("../home/home.html");
+}
+
+function deleteAllCookies() {
+
+    var cookies = document.cookie.split(";");
+    for (var i = 0; i < cookies.length; i++)
+    console.log(cookies[i].split("=")[0]);
 }
 
 function formularioParaObjeto(formulario){
@@ -91,4 +125,16 @@ function validar(formulario){
             }
         }, {});
         return sucesso;
+}
+
+function getIngredientes(resposta){
+
+    if(resposta.srcElement.responseText.localeCompare("erro") == -1){
+        dados = JSON.parse(resposta.srcElement.responseText);
+        console.log(dados);
+    } 
+    else {
+        window.location.replace("../login/login_Funcionario.html?Action=TokenError");
+    }
+
 }

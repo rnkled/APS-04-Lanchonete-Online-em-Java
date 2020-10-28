@@ -76,6 +76,10 @@
         <servlet-name>salvarLanche</servlet-name>
         <servlet-class>Controllers.salvarLanche</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getIngredientesPorLanche</servlet-name>
+        <servlet-class>Controllers.getIngredientesPorLanche</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>cadastro</servlet-name>
         <url-pattern>/cadastro</url-pattern>
@@ -151,6 +155,10 @@
     <servlet-mapping>
         <servlet-name>salvarLanche</servlet-name>
         <url-pattern>/salvarLanche</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getIngredientesPorLanche</servlet-name>
+        <url-pattern>/getIngredientesPorLanche</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

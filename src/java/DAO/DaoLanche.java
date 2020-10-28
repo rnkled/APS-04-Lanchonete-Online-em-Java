@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import Model.Bebida;
+import Model.Ingrediente;
 import Model.Lanche;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -76,6 +76,56 @@ public class DaoLanche {
              throw new RuntimeException(e);
         }
         
+    }
+    
+    public Lanche pesquisaPorNome(Lanche lanche){
+        String sql = "SELECT * FROM tb_lanches WHERE nm_lanche='"+lanche.getNome()+"'";
+        ResultSet rs;
+        Lanche lancheResultado = new Lanche();
+        
+        try{
+            
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+            
+                lancheResultado.setId_lanche(rs.getInt("id_lanche"));
+                lancheResultado.setNome(rs.getString("nm_lanche"));
+                lancheResultado.setDescricao(rs.getString("descricao"));
+                lancheResultado.setValor_venda(rs.getDouble("valor_venda"));
+                lancheResultado.setFg_ativo(1);
+                
+            }
+            rs.close();
+            stmt.close();
+            return lancheResultado;
+        
+            
+        } catch(SQLException e){
+            
+             throw new RuntimeException(e);
+        }
+        
+    }
+    public void vincularIngrediente(Lanche lanche, Ingrediente ingrediente){
+        
+        String sql = "INSERT INTO tb_ingredientes_lanche(id_lanche, id_ingrediente, quantidade)"
+                + "VALUES(?,?,?)";
+        try{
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            stmt.setInt(1, lanche.getId_lanche());
+            stmt.setInt(2, ingrediente.getId_ingrediente());
+            stmt.setInt(3, ingrediente.getQuantidade());
+
+            
+            stmt.execute();
+            stmt.close();
+            
+        } catch(SQLException e){
+            
+             throw new RuntimeException(e);
+        }
     }
 }
     

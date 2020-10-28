@@ -1,7 +1,7 @@
 function getInfo(){
     requisicao("../../getIngredientes", getIngredientes);
     requisicao("../../getBebidas", getBebidas);
-    //requisicao("../../getIngredientes", getLanches);
+    requisicao("../../getLanches", getLanches);
 }
 
 
@@ -13,6 +13,18 @@ function getIngredientes(resposta){
     else {
         dados = JSON.parse(resposta.srcElement.responseText);
         atualizarIngredientes(dados);
+    }
+
+}
+
+function getLanches(resposta){
+
+    if(resposta.srcElement.responseText.includes("erro")){
+        window.location.replace("../login/login_Funcionario.html?Action=TokenError");
+    } 
+    else {
+        dados = JSON.parse(resposta.srcElement.responseText);
+        atualizarLanches(dados);
     }
 
 }
@@ -41,6 +53,18 @@ function atualizarIngredientes(dados){
     });
 }
 
+function atualizarLanches(dados){
+
+    let tabela = document.getElementById("tabelaLanches");   
+    Object.keys(dados).forEach(cadastro => {
+        let row = tabela.insertRow(1);
+        for (let key in dados[cadastro]) {
+            row.insertCell().innerHTML = dados[cadastro][key];
+            row.onclick = () => pegarLanche(dados[cadastro]);
+        }
+    });
+}
+
 function pegarIngrediente(dados) {
     document.getElementById("ingredientesID").value = dados["id_ingrediente"];
     document.getElementById("ingredientesNome").value = dados["nome"];
@@ -52,10 +76,56 @@ function pegarIngrediente(dados) {
     showIngrediente();
 };
 
+function pegarLanche(dados) {
+    document.getElementById("lanchesID").value = dados["id_lanche"];
+    document.getElementById("lanchesNome").value = dados["nome"];
+    document.getElementById("lanchesDescricao").value = dados["descricao"];;
+    document.getElementById("lanchesPrecoVenda").value = dados["valor_venda"];
+    getIngredientesLanche(dados["id_lanche"])
+    showLanche();
+};
+
+function getIngredientesLanche(id){
+    dados = {}
+    dados['id'] = id;
+    requisicao("../../getIngredientesPorLanche", setarIngredientes(), JSON.stringify(dados));
+    
+}
+
+function setarIngredientes(resposta){
+    console.log("Veio resposta");
+    console.log(resposta);
+    if(resposta.srcElement.responseText.includes("erro")){
+        window.location.replace("../login/login_Funcionario.html?Action=TokenError");
+    } 
+    else {
+        dados = JSON.parse(resposta.srcElement.responseText);
+        
+        let tabela = document.getElementById("ingredientesLanche");
+        Object.keys(dados).forEach(cadastro => {
+            let row = tabela.insertRow(1);
+            for (let key in dados[cadastro]) {
+                row.insertCell().innerHTML = dados[cadastro][key];
+            }
+    });
+    }
+}
+
+function showLanche(){
+    let ingredientes = document.getElementById("editarIngredientes");
+    let bebidas = document.getElementById("editarBebidas");
+    let lanches = document.getElementById("editarLanches");
+    lanches.style.display = 'block';
+    ingredientes.style.display = 'none';
+    bebidas.style.display = 'none';
+}
+
 
 function showIngrediente(){
     let ingredientes = document.getElementById("editarIngredientes");
     let bebidas = document.getElementById("editarBebidas");
+    let lanches = document.getElementById("editarLanches");
+    lanches.style.display = 'none';
     ingredientes.style.display = 'block';
     bebidas.style.display = 'none';
 }
@@ -88,6 +158,8 @@ function pegarBebida(dados){
 function showBebida(){
     let ingredientes = document.getElementById("editarIngredientes");
     let bebidas = document.getElementById("editarBebidas");
+    let lanches = document.getElementById("editarLanches");
+    lanches.style.display = 'none';
     ingredientes.style.display = 'none';
     bebidas.style.display = 'block';
 }

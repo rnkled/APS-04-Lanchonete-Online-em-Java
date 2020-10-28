@@ -10,47 +10,7 @@
         <script src="./estoque.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@1,700&display=swap" rel="stylesheet">
     </head>
-
-    <style>
-
-
-        table{
-            border-collapse: collapse;
-            table-layout: fixed;
-            height: 100px;  
-            overflow-y: auto;    
-            margin: 20px;
-            display: block;
-        }
-
-        th,
-        td {
-            height: 1vh;
-            padding: 6px;
-            text-align: left;
-            border-bottom: 1px solid rgb(143, 141, 141);
-            
-
-        }
-
-        tr:hover {
-            background-color: rgba(37, 37, 37, 0.356);
-        }
-
-        #editarIngredientes{
-            display: none;
-        }
-        #editarBebidas{
-            display: none;
-        }
-    </style>
-
-    <script>
-
-    getInfo();
-
-    </script>
-    
+    <script>getInfo();</script>
     <body>
         <div>
         <table id="tabelaLanches">
@@ -121,6 +81,28 @@
             <label>Tipo</label>
             <input id="bebidasTipo" name="tipo" type="text" readonly><br>
             <input type="button" value="Alterar" onclick="alterarBebida()"> <input type="button" value="Remover" onclick="removerBebida()">
+        </form>
+
+        <form id="editarLanches">
+            <label>ID</label>
+            <input id="lanchesID" name="id" type="text" readonly><br>
+            <label>Nome</label>
+            <input id="lanchesNome" name="nome" type="text"><br>
+            <label>Descrição</label>
+            <input id="lanchesDescricao" name="descricao" type="text"><br>
+            <label>Preço de Venda</label>
+            <input id="lanchesPrecoVenda" name="ValorVenda" type="text"><br>
+            <input type="button" value="Alterar" onclick="alterarLanche()"> <input type="button" value="Remover" onclick="removerLanche()">
+            <table id="ingredientesLanche">
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Quantidade</th>
+                <th>Preço de Compra</th>
+                <th>Preço de Venda</th>
+                <Th>Tipo</Th>
+                <th>Ativo</th>
+            </table>
         </form>
     </div>
     </body>

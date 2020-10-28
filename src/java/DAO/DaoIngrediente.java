@@ -85,6 +85,49 @@ public class DaoIngrediente {
         
     }
     
+    public List<Ingrediente> listarTodosPorLanche(String id){
+        String sql = "SELECT i.id_ingrediente, i.nm_ingrediente, i.descricao, il.quantidade, "
+                    + "i.valor_compra, i.valor_venda, i.tipo, i.fg_ativo"
+                    + " from tb_ingredientes i"
+                    + "INNER JOIN tb_ingredientes_lanche il "
+                    + "ON (i.id_ingrediente = il.id_ingrediente)"
+                    + "WHERE il.id_lanche = ?";
+
+        ResultSet rs;
+        List<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
+        
+        try{
+            
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            stmt.setString(1, id);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+            
+                Ingrediente ingrediente = new Ingrediente();
+                ingrediente.setId_ingrediente(rs.getInt("id_ingrediente"));
+                ingrediente.setNome(rs.getString("nm_ingrediente"));
+                ingrediente.setDescricao(rs.getString("descricao"));
+                ingrediente.setQuantidade(rs.getInt("quantidade"));
+                ingrediente.setValor_compra(rs.getDouble("valor_compra"));
+                ingrediente.setValor_venda(rs.getDouble("valor_venda"));
+                ingrediente.setTipo(rs.getString("tipo"));
+                ingrediente.setFg_ativo(1);
+                
+                ingredientes.add(ingrediente);
+            }
+            rs.close();
+            stmt.close();
+            return ingredientes;
+        
+            
+        } catch(SQLException e){
+            
+             throw new RuntimeException(e);
+        }
+        
+    }
+    
     public void alterar(Ingrediente ingrediente){
         String sql = "UPDATE tb_ingredientes SET nm_ingrediente=?, descricao=?, quantidade=?, valor_compra=?, valor_venda=?,"
                 + " tipo=? "
@@ -128,4 +171,37 @@ public class DaoIngrediente {
         }
     }
     
+    public Ingrediente pesquisaPorNome(Ingrediente ingrediente){
+        String sql = "SELECT * FROM tb_ingredientes WHERE nm_ingrediente='"+ingrediente.getNome()+"'";
+        ResultSet rs;
+        Ingrediente ingredienteResultado = new Ingrediente();
+        
+        try{
+            
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+            
+                ingredienteResultado.setId_ingrediente(rs.getInt("id_ingrediente"));
+                ingredienteResultado.setNome(rs.getString("nm_ingrediente"));
+                ingredienteResultado.setDescricao(rs.getString("descricao"));
+                ingredienteResultado.setQuantidade(rs.getInt("quantidade"));
+                ingredienteResultado.setValor_compra(rs.getDouble("valor_compra"));
+                ingredienteResultado.setValor_venda(rs.getDouble("valor_venda"));
+                ingredienteResultado.setTipo(rs.getString("tipo"));
+                ingredienteResultado.setFg_ativo(1);
+
+            }
+            rs.close();
+            stmt.close();
+            return ingredienteResultado;
+        
+            
+        } catch(SQLException e){
+            
+             throw new RuntimeException(e);
+        }
+        
+    }
 }

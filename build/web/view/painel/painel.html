@@ -16,6 +16,7 @@ and open the template in the editor.
         <script src="./painel.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@1,700&display=swap" rel="stylesheet">
     </head>
+    <script>validarToken()</script>
     <body>
         <div class="containerPainel">
             <header class="headerPage">
@@ -58,7 +59,7 @@ and open the template in the editor.
                             
                             <div class="containerButtons1">
                                 <button type="button" onclick="showCadLanches()" class="buttonGerenciador">Cadastrar Lanches</button>
-                                <button class="buttonGerenciador">Cadastrar Porções</button>
+                                <button class="buttonGerenciador">Cadastrar Funcionarios</button>
                             </div>
                             
                             <div class="containerButtons2">
@@ -94,11 +95,11 @@ and open the template in the editor.
                         
                                 <input class="TextInput" placeholder="Quantidade" type="number" name="quantidade" required>
                                 
-                                <input class="TextInput" type="number" min="0.01" step="0.01" max="2500" value="00.00" placeholder="Valor de compra" id="dinheiro" class="money2" name="ValorCompra" required/>
+                                <input class="TextInput" type="number" min="0.01" step="0.01" max="2500" value="00.00" placeholder="Valor de compra"  class="money2" name="ValorCompra" required/>
                                 
-                                <input class="TextInput" type="number" min="0.01" step="0.01" max="2500" value="00.00" placeholder="Valor de venda" id="dinheiro" class="money2" name="ValorVenda" required/>
+                                <input class="TextInput" type="number" min="0.01" step="0.01" max="2500" value="00.00" placeholder="Valor de venda"  class="money2" name="ValorVenda" required/>
                                 
-                                <textarea id="textArea" class="TextInput"  placeholder="Descrição" rows="4" cols="50" name="descricao"></textarea>
+                                <textarea id="textArea1" class="TextInput"  placeholder="Descrição" rows="4" cols="50" name="descricao"></textarea>
                                 
                                 <div class="buttonInputContainer">
                                     <input class="buttonSubmitCancel" type="button" onclick="showInicioDiv()" name="cancelar" value="Cancelar">
@@ -132,11 +133,11 @@ and open the template in the editor.
                                 
                                         <input class="TextInput" placeholder="Quantidade" type="number" name="quantidade" required>
                                         
-                                        <input class="TextInput" type="number" min="0.01" step="0.01" max="2500" value="00.00" placeholder="Valor de compra" id="dinheiro" class="money2" name="ValorCompra" required/>
+                                        <input class="TextInput" type="number" min="0.01" step="0.01" max="2500" value="00.00" placeholder="Valor de compra" class="money2" name="ValorCompra" required/>
                                         
-                                        <input type="number" min="0.01" step="0.01" max="2500" value="00.00" class="TextInput" placeholder="Valor de venda" id="dinheiro" class="money2" name="ValorVenda" required/>
+                                        <input type="number" min="0.01" step="0.01" max="2500" value="00.00" class="TextInput" placeholder="Valor de venda"  class="money2" name="ValorVenda" required/>
                                         
-                                        <textarea id="textArea" class="TextInput"  placeholder="Descrição" rows="4" cols="50" name="descricao"></textarea>
+                                        <textarea id="textArea2" class="TextInput"  placeholder="Descrição" rows="4" cols="50" name="descricao"></textarea>
                                         
                                         <div class="buttonInputContainer">
                                             <input class="buttonSubmitCancel" type="button" onclick="showInicioDiv()" name="cancelar" value="Cancelar">
@@ -180,52 +181,15 @@ and open the template in the editor.
                                         <option value="5"></option>
                                     </select>
                                 </div>                           
-                                    <textarea id="textArea" class="TextInput"  placeholder="Descrição" rows="4" cols="50" name="descricao"></textarea>
+                                    <textarea id="textArea3" class="TextInput"  placeholder="Descrição" rows="4" cols="50" name="descricao"></textarea>
                                     <div class="containerTitlePageLanche">
                                         <h1 class="titleContainerLanche">Ingredientes</h1>
                                     </div>
-                                <div class="opcIngredientes">
-                                    <div class="nameValue">
-                                        <p class="legendIngrediente">Bacon <br> +R$3,00</p>
-
-                                    </div>
-                                    <div class="containerIncremento">
-                                        <div class="contador">
-                                            <button class="buttonIcons">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                            <p class="legendIngrediente">0</p>
-                                            <button class="buttonIcons">
-                                                <i class="fa fa-minus"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="opcIngredientes">
-                                    <div class="nameValue">
-                                        <p class="legendIngrediente">Bacon <br> +R$3,00</p>
-
-                                    </div>
-                                    <div class="containerIncremento">
-                                        <div class="contador">
-                                            <button class="buttonIcons">
-                                                <i class="fa fa-plus"></i>
-                                            </button>
-                                            <p class="legendIngrediente">0</p>
-                                            <button class="buttonIcons">
-                                                <i class="fa fa-minus"></i>
-                                            </button>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
+                                <div id="ingredientes"></div>
                                     <div class="buttonInputContainer">
                                         <input class="buttonSubmitCancel" type="button" onclick="showInicioDiv()" name="cancelar" value="Cancelar">
                                         <input class="buttonSubmitSalvar" type="button" onclick="salvarItem()" name="salvar" value="Salvar">
+                                        
                                     </div>
                                     
                                 </form>

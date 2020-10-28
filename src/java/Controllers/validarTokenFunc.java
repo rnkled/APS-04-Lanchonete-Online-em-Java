@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author kener_000
  */
-public class validarToken extends HttpServlet {
+public class validarTokenFunc extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,7 +45,7 @@ public class validarToken extends HttpServlet {
         Cookie[] cookies = request.getCookies();
         ValidadorCookie validar = new ValidadorCookie();
         
-        resultado = validar.validar(cookies);
+        resultado = validar.validarFuncionario(cookies);
         }catch(java.lang.NullPointerException e){System.out.println(e);}
         //////////////
         

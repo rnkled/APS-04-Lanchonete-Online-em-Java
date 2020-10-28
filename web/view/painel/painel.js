@@ -1,3 +1,14 @@
+function validarToken(){
+    sessionStorage.clear();
+    requisicao("../../validarTokenFunc", check)
+}
+
+function check(resposta){
+    if(resposta.srcElement.responseText.includes("erro")){
+        window.location.replace("../login/login_Funcionario.html?Action=TokenError");
+    }
+}
+
 function showCadIngredienteDiv(){
     
     
@@ -134,7 +145,83 @@ function getIngredientes(resposta){
     } 
     else {
         dados = JSON.parse(resposta.srcElement.responseText);
-        console.log(dados);
+        Object.keys(dados).forEach( ingrediente => {
+        createIngredienteDiv(dados[ingrediente])
+        })
     }
 
+}
+
+function createIngredienteDiv(dados){
+    
+    let ingredientes = document.getElementById("ingredientes");
+
+    let opcIngredientes = document.createElement('div');
+    opcIngredientes.classList.add("opcIngredientes");
+
+    let nameValue = document.createElement('div');
+    nameValue.classList.add('nameValue');
+
+    let legendIngrediente = document.createElement('p');
+    legendIngrediente.classList.add('legendIngrediente');
+    legendIngrediente.innerHTML = dados['nome']+"<br> R$ "+dados['valor_venda'];
+
+    let containerIncremento = document.createElement('div');
+    containerIncremento.classList.add('containerIncremento');
+
+    let contador = document.createElement('div');
+    contador.classList.add('contador');
+
+    let p = document.createElement('p');
+    p.classList.add('legendIngrediente');
+    p.innerText = 0;
+
+    let buttonplus = document.createElement('button');
+    buttonplus.classList.add('buttonIcons');
+    buttonplus.type = "button";
+    buttonplus.onclick = ()=>{plusItem(p, dados['nome']);};
+
+    let plus = document.createElement('p');
+    plus.classList.add('icon');
+    plus.innerText = " +";
+
+    let buttonminus = document.createElement('button');
+    buttonminus.classList.add('buttonIcons');
+    buttonminus.type = "button";
+    buttonminus.onclick = ()=>{minusItem(p, dados['nome']);};
+
+    let minus = document.createElement('p');
+    minus.classList.add('icon');
+    minus.innerText = "– ";
+
+    
+    
+    ingredientes.appendChild(opcIngredientes);
+    opcIngredientes.appendChild(nameValue);
+    nameValue.appendChild(legendIngrediente);
+    opcIngredientes.appendChild(containerIncremento);
+    containerIncremento.appendChild(contador);
+    contador.appendChild(buttonminus);
+    buttonminus.appendChild(minus);
+    contador.appendChild(p);
+    contador.appendChild(buttonplus);
+    buttonplus.appendChild(plus);
+
+}   
+
+function plusItem(p, nome){
+    n = parseInt(p.innerText) + 1;
+    p.innerText = n;
+
+    sessionStorage.setItem(nome, p.innerText);
+    
+}
+
+function minusItem(p, nome){
+    if(parseInt(p.innerText) > 0){
+        n = parseInt(p.innerText) - 1;
+        p.innerText = n;
+    
+        sessionStorage.setItem(nome, p.innerText);
+    }
 }

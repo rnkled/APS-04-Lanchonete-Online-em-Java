@@ -27,3 +27,15 @@ function resolver(resposta){
     }
 }
 
+
+function validarToken(){
+    requisicao("../../validarToken", check)
+}
+
+function check(resposta){
+    if(resposta.srcElement.responseText.includes("erro")){
+        console.log("Token Inválido");
+    } else {
+        window.location.replace("../resumo/resumo.html");
+    }
+}

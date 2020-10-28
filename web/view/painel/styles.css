@@ -325,7 +325,21 @@
     padding-left: 15px;
 }
 
-#textArea {
+#textArea1 {
+    resize: none;
+    height: 10vh;
+    padding-top: 5px;
+    margin-bottom: 20px;
+}
+
+#textArea2 {
+    resize: none;
+    height: 10vh;
+    padding-top: 5px;
+    margin-bottom: 20px;
+}
+
+#textArea3 {
     resize: none;
     height: 10vh;
     padding-top: 5px;
@@ -438,6 +452,7 @@
 
 .buttonIcons {
     border: none;
+    background-color: Transparent;
 }
 
 .legendStatusInfo {
@@ -445,4 +460,22 @@
     font-family: 'Sansita', sans-serif;
     color: #FFF;
     /* text-align: center; */
+}
+
+#ingredientes {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 27vh;
+    width: 100%;
+    align-items: center;
+}
+
+#ingredientes::-webkit-scrollbar {
+    display: none;
+}
+
+.icon {
+    font-size: 2vw;
+    font-weight: bold;
 }

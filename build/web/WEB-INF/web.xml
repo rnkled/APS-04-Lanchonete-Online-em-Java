@@ -68,6 +68,10 @@
         <servlet-name>getBebidasCliente</servlet-name>
         <servlet-class>Controllers.getBebidasCliente</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>validarTokenFunc</servlet-name>
+        <servlet-class>Controllers.validarTokenFunc</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>cadastro</servlet-name>
         <url-pattern>/cadastro</url-pattern>
@@ -135,6 +139,10 @@
     <servlet-mapping>
         <servlet-name>getBebidasCliente</servlet-name>
         <url-pattern>/getBebidasCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>validarTokenFunc</servlet-name>
+        <url-pattern>/validarTokenFunc</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

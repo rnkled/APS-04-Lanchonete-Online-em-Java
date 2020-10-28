@@ -171,14 +171,10 @@ and open the template in the editor.
                             <form id="addItem" class="formItems">
                                 
                                 <div class="containerInputs">
-                                    <input placeholder="Lanche" class="TextInputLanche" type="text" name="nome" required>
-                                    <select class="TextInputLanche" name="tipoPao" required>
-                                        <option value="">Pão</option>
-                                        <option value="1"></option>
-                                        <option value="2"></option>
-                                        <option value="3"></option>
-                                        <option value="4"></option>
-                                        <option value="5"></option>
+                                    <input placeholder="Nome" id="nomeLanche" class="TextInputLanche" type="text" name="nome" required>
+                                    <select id="selectPao" class="TextInputLanche" name="tipoPao" required>
+                                        <option value="">Escolha o pão</option>
+
                                     </select>
                                 </div>                           
                                     <textarea id="textArea3" class="TextInput"  placeholder="Descrição" rows="4" cols="50" name="descricao"></textarea>
@@ -188,7 +184,7 @@ and open the template in the editor.
                                 <div id="ingredientes"></div>
                                     <div class="buttonInputContainer">
                                         <input class="buttonSubmitCancel" type="button" onclick="showInicioDiv()" name="cancelar" value="Cancelar">
-                                        <input class="buttonSubmitSalvar" type="button" onclick="salvarItem()" name="salvar" value="Salvar">
+                                        <input class="buttonSubmitSalvar" type="button" onclick="salvarLanche()" name="salvar" value="Salvar">
                                         
                                     </div>
                                     

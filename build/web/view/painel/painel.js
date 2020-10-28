@@ -146,7 +146,12 @@ function getIngredientes(resposta){
     else {
         dados = JSON.parse(resposta.srcElement.responseText);
         Object.keys(dados).forEach( ingrediente => {
-        createIngredienteDiv(dados[ingrediente])
+            if(dados[ingrediente]['tipo'] == 'pao'){
+                option = document.createElement('option');
+                option.innerText=dados[ingrediente]['nome'];
+                document.getElementById('selectPao').add(option);
+            } else {
+            createIngredienteDiv(dados[ingrediente])}
         })
     }
 
@@ -224,4 +229,57 @@ function minusItem(p, nome){
     
         sessionStorage.setItem(nome, p.innerText);
     }
+}
+
+function salvarLanche(){
+
+    let dados = {};
+
+    if(validarLanche()){
+        dados = dadosDoLanche();
+        console.log(dados);
+        requisicao("../../salvarLanche", resolver, JSON.stringify(dados));
+    }
+
+}
+
+function validarLanche(){
+    let nome = document.getElementById("nomeLanche");
+    let descricao = document.getElementById("textArea3");
+    let pao = document.getElementById("selectPao");
+    let resultado = true;
+    if(nome.value == ""){
+        alert("Campo Nome Vazio!")
+        resultado = false;
+    }
+    if(descricao.value == ""){
+        alert("Campo Descrição Vazio!")
+        resultado = false;
+    }
+    if(pao.selectedIndex == 0){
+        alert("Campo Pão Vazio!")
+        resultado = false;
+    }
+    return resultado;
+}
+
+function dadosDoLanche(){
+    let dados = {};
+    let ingredientes = {};
+
+    let nome = document.getElementById("nomeLanche");
+    let descricao = document.getElementById("textArea3");
+    let pao = document.getElementById("selectPao");
+
+    dados['nome'] = nome.value;
+    dados['descricao'] = descricao.value;
+
+    ingredientes[pao.value] = "1";
+    Object.keys(sessionStorage).forEach(
+        (key) => {
+            ingredientes[key] = sessionStorage.getItem(key);
+        }
+    )
+    dados['ingredientes'] = ingredientes;
+    return dados
 }

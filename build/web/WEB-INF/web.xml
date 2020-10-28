@@ -72,6 +72,10 @@
         <servlet-name>validarTokenFunc</servlet-name>
         <servlet-class>Controllers.validarTokenFunc</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>salvarLanche</servlet-name>
+        <servlet-class>Controllers.salvarLanche</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>cadastro</servlet-name>
         <url-pattern>/cadastro</url-pattern>
@@ -143,6 +147,10 @@
     <servlet-mapping>
         <servlet-name>validarTokenFunc</servlet-name>
         <url-pattern>/validarTokenFunc</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>salvarLanche</servlet-name>
+        <url-pattern>/salvarLanche</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

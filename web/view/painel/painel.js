@@ -22,9 +22,6 @@ function showCadBebidaDiv(){
         tip.style.display = 'none';
         div.style.display = 'block';
     }
-    
-    
-
 }
 
 function showInicioDiv(){
@@ -37,9 +34,6 @@ function showInicioDiv(){
         tip.style.display = 'block';
         div.style.display = 'none';
     }
-    
-    
-
 }
 
 function salvarIngrediente(){

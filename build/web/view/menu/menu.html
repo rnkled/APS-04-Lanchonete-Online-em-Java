@@ -10,28 +10,30 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="../scripts/conexao.js"></script>
+        <script src="./menu.js"></script>
         <link rel="stylesheet" href="styles.css">
         <link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@1,700&display=swap" rel="stylesheet">
     </head>
+    <script>loadData()</script>
     <body>
         <div id="content">
             <div id="top">
                 <div id="logo"><a href="#"></div></a>
 
-                <div class="opcoes"><a href="#">Carne</a></div>
+                <div class="opcoes"><a href="javascript:showLanches()">Lanches</a></div>
                 
-                <div class="opcoes"><a href="#">Frango</a></div>
+                <div class="opcoes"><a href="javascript:showBebidas()">Bebidas</a></div>
                 
-                <div class="opcoes"><a href="#">Porções</a></div>
+                <div class="opcoes"><a href="javascript:showPorcoes()">Porções</a></div>
                 
                 <div class="opcoes"><a href="#">Monte já o Seu!</a></div>
 
                 <div id="carrinho"><a href="../login/login.html">Meu Carrinho</a></div>
             </div>
             <div id="background">
-                <div id="screen">
-
-                </div> 
+                <div id="screen"></div>
+                <div id="screenBebidas"></div>
+                <div id="screenPorcoes"><h1 class="emBreve">Em Breve... <br> Aguardem Novidades!</h1></div> 
             </div>
         </div>
     </body>

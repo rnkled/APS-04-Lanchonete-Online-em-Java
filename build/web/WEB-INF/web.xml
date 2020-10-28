@@ -52,6 +52,22 @@
         <servlet-name>removerBebida</servlet-name>
         <servlet-class>Controllers.removerBebida</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getLanches</servlet-name>
+        <servlet-class>Controllers.getLanches</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getLanchesCliente</servlet-name>
+        <servlet-class>Controllers.getLanchesCliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>validarToken</servlet-name>
+        <servlet-class>Controllers.validarToken</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getBebidasCliente</servlet-name>
+        <servlet-class>Controllers.getBebidasCliente</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>cadastro</servlet-name>
         <url-pattern>/cadastro</url-pattern>
@@ -103,6 +119,22 @@
     <servlet-mapping>
         <servlet-name>removerBebida</servlet-name>
         <url-pattern>/removerBebida</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getLanches</servlet-name>
+        <url-pattern>/getLanches</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getLanchesCliente</servlet-name>
+        <url-pattern>/getLanchesCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>validarToken</servlet-name>
+        <url-pattern>/validarToken</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getBebidasCliente</servlet-name>
+        <url-pattern>/getBebidasCliente</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

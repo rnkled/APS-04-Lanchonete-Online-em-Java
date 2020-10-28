@@ -5,9 +5,14 @@
  */
 package DAO;
 
+import Model.Bebida;
 import Model.Lanche;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -39,6 +44,38 @@ public class DaoLanche {
         }catch(Exception e){
             throw new RuntimeException(e);
         }
+    }
+    public List<Lanche> listarTodos(){
+        String sql = "SELECT * FROM tb_lanches WHERE fg_Ativo='1' ORDER BY id_lanche";
+        ResultSet rs;
+        List<Lanche> lanches = new ArrayList<Lanche>();
+        
+        try{
+            
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+            
+                Lanche lanche = new Lanche();
+                lanche.setId_lanche(rs.getInt("id_lanche"));
+                lanche.setNome(rs.getString("nm_lanche"));
+                lanche.setDescricao(rs.getString("descricao"));
+                lanche.setValor_venda(rs.getDouble("valor_venda"));
+                lanche.setFg_ativo(1);
+                
+                lanches.add(lanche);
+            }
+            rs.close();
+            stmt.close();
+            return lanches;
+        
+            
+        } catch(SQLException e){
+            
+             throw new RuntimeException(e);
+        }
+        
     }
 }
     

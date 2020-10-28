@@ -25,6 +25,10 @@ body {
     background-color: white;
     margin: 10px 25px 10px 25px;
     width: 20vw;
+    background-image: url(../assets/logo02.png);
+    background-color: #32CD32;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .opcoes {
@@ -86,7 +90,7 @@ a {
     background-color: white;
     align-items: center;
     background-image: url("../assets/fundoplano1.png");
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     background-size: auto;
     display: flex;
     justify-content: center;
@@ -96,6 +100,125 @@ a {
     width: 60vw;
     height: 88vh;
     background-color: white;
+    overflow-y: scroll;
+    scrollbar-color: white;
 
+}
 
+#screen::-webkit-scrollbar {
+    display: none;
+}
+
+#screenBebidas {
+    width: 60vw;
+    height: 88vh;
+    background-color: white;
+    overflow-y: scroll;
+    scrollbar-color: white;
+    display: none;
+}
+
+#screenBebidas::-webkit-scrollbar {
+    display: none;
+}
+
+#screenPorcoes {
+    width: 60vw;
+    height: 88vh;
+    background-color: white;
+    overflow-y: scroll;
+    scrollbar-color: white;
+    display: none;
+}
+
+#screenPorcoes::-webkit-scrollbar {
+    display: none;
+}
+
+.divLanche {
+    width: 100%;
+    height: 30vh;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block;
+    /*background-color: rgba(167, 156, 156, 0.116);*/
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.divImagem {
+    display: block;
+    margin: 3vw;
+    width: 13vw;
+    height: 23vh;
+    margin-right: 0vw;
+}
+
+.lancheIMG {
+    width: 13vw;
+    height: 100%;
+    border-radius: 10%;
+}
+
+.divConteudo {
+    display: block;
+    margin: 3vh;
+    width: 70%;
+    height: 23vh;
+}
+
+.tituloLanche {
+    font-size: 2vw;
+    margin: 1vw;
+    margin-left: 0.5vw;
+    margin-bottom: 0.5vh;
+    border-bottom: 2px solid black;
+}
+
+.descricaoLanche {
+    background-color: rgba(238, 134, 116, 0.301);
+    width: 28vw;
+    height: 17.5vh;
+    margin: 0.5vw;
+    border-radius: 10px;
+    display: block;
+    color: rgb(70, 70, 70);
+}
+
+.textoDescricao {
+    margin: 5px;
+    height: 50%;
+}
+
+.preco {
+    position: relative;
+    bottom: 1vh;
+    left: 21.5vw;
+    color: red;
+    font-size: 22px;
+}
+
+.botaoLanche {
+    width: 10vw;
+    height: 6vh;
+    margin: 2vh;
+    background-color: cornsilk;
+    border-radius: 6px;
+    color: rgb(70, 70, 70);
+    font-size: 12px;
+}
+
+.emBreve {
+    position: relative;
+    top: 30%;
+    text-align: center;
+    color: black;
 }

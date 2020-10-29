@@ -55,6 +55,7 @@ function salvarIngrediente(){
     if(validar(form)){
         dados = formularioParaObjeto(form);
         requisicao("../../salvarIngrediente", resolver, JSON.stringify(dados));
+        
     }
 
 }
@@ -67,6 +68,7 @@ function salvarBebida(){
     if(validar(form)){
         dados = formularioParaObjeto(form);
         requisicao("../../salvarBebida", resolver, JSON.stringify(dados));
+        
     }
 
 }
@@ -75,6 +77,7 @@ function showCadLanches(){
 
     let tip = document.getElementById("Agrupado");
     let div = document.getElementById("CadLanches");
+    let div2 = document.getElementById("CadBebidas")
     //let divStatus = document.getElementById("statusId")
     //let divStatus2 = document.getElementById("statusId2")
     //let divcenter = document.getElementById("footerId");
@@ -83,6 +86,7 @@ function showCadLanches(){
     if(div.style.display = 'none'){
         tip.style.display = 'none';
         div.style.display = 'block';
+        div2.style.display = 'none';
         //divStatus.style.display = 'flex';
         //divStatus2.style.display = 'flex';
         //divcenter.style.justifyContent = 'space-around';
@@ -98,12 +102,15 @@ function resolver(resposta){
         window.location.replace("../login/login_Funcionario.html?Action=TokenError");
     } else {
         alert(resposta.srcElement.responseText);
+        window.location.reload();
     }
 }
 
 function logout(){
-    requisicao("../../logout", deslogar)
     deleteAllCookies();
+    deleteAllSession();
+    sessionStorage.clear();
+    requisicao("../../logout", deslogar)
 }
 
 function deslogar(resposta){
@@ -117,6 +124,16 @@ function deleteAllCookies() {
     for (var i = 0; i < cookies.length; i++){
         console.log(cookies[i].split("=")[0].trim());
         document.cookie = cookies[i].split("=")[0].trim()+"=; expires=Thu, 01 jan 1970 00:00:01 GTM;";}
+}
+
+function deleteAllSession() {
+    
+    console.log("Ué");
+    Object.keys(sessionStorage).forEach(
+        (key) => {
+            sessionStorage.removeItem(key);
+        }
+    )
 }
 
 function formularioParaObjeto(formulario){
@@ -238,7 +255,9 @@ function salvarLanche(){
     if(validarLanche()){
         dados = dadosDoLanche();
         console.log(dados);
+        sessionStorage.clear()
         requisicao("../../salvarLanche", resolver, JSON.stringify(dados));
+        window.location.reload();
     }
 
 }

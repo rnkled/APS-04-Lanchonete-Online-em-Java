@@ -239,12 +239,12 @@ function mostrarIngredientes(resposta){
 
 function lancheProCarrinho(nome, preco){
     console.log("Ativado")
-    sessionStorage.setItem(nome, preco);
+    sessionStorage.setItem(nome, preco+";lanche;1");
     alert("Lanche salvo! Faça login no Carrinho para Prosseguir ou Removê-lo");
 }
 
-function bebidaProCarrinho(nome, preco){
+function bebidaProCarrinho(nome, preco,){
     console.log("Ativado")
-    sessionStorage.setItem(nome, preco);
+    sessionStorage.setItem(nome, preco+";bebida;1");
     alert("Bebida salva! Faça login no Carrinho para Prosseguir ou Removê-lo");
 }

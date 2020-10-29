@@ -67,11 +67,23 @@
     justify-content: flex-start;
 }
 
+.containerConteudo2 {
+    background-color: #F6F6F6;
+    width: 70vw;
+    height: 88vh;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 45px;
+    justify-content: flex-start;
+}
+
 .ItemPedido {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-direction: row;
 }
 
 .itemPedidoContainer {
@@ -79,6 +91,11 @@
     display: flex;
     width: 100%;
     height: 100%;
+    overflow-y: scroll;
+}
+
+.itemPedidoContainer:-webkit-scrollbar {
+    display: none;
 }
 
 .InformacoesPessoais {
@@ -137,6 +154,13 @@
     justify-content: center;
 }
 
+.containerTitle2 {
+    width: 100%;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: center;
+}
+
 .buttonRemove {
     border-radius: 1em;
     width: 25px;
@@ -151,6 +175,29 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.legendanome {
+    width: 40%;
+    font-size: 1.5vw;
+    display: block;
+}
+
+.legendapreco {
+    width: 30%;
+    font-size: 1.5vw;
+    display: block;
+}
+
+.contador {
+    width: 6vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    float: right;
+    font-size: 3.4vh;
+    font-weight: bolder;
 }
 
 .buttonInputContainer {
@@ -179,6 +226,24 @@
     cursor: pointer;
 }
 
+.buttonVoltar {
+    background-color: #978D8D;
+    width: 13vw;
+    border: none;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    font-size: 1.7rem;
+    font-family: 'Sansita', sans-serif;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    float: left;
+    position: relative;
+    left: -25vw;
+    top: 0vh;
+}
 
 
 .buttonSubmitSalvar {
@@ -221,4 +286,131 @@
     font-family: 'Ubuntu', sans-serif;
     font-size: 1.9rem;
     color: #FFF;
+}
+
+.iconArrow {
+    width: 100%;
+}
+
+.iconArrowLeft {
+    width: 7%;
+}
+
+.containerResumo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 30%;
+    /* background-color: lightpink; */
+}
+
+.containerTextResumo {
+    width: 90%;
+    height: 65%;
+    margin-top: 20px;
+    border: solid 2px #F16262;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.totalPedido {
+    width: 40%;
+    height: 100%;
+    background-color: #F16262;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.containerTipoPagamento {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    /* background-color: lightsalmon; */
+}
+
+.chekPagamento {
+    width: 80%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.checkPedido {
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+}
+
+.typePagament {
+    width: 15px;
+    height: 15px;
+}
+
+
+
+
+.containerReciboPedido {
+    width: 100%;
+    height: 40%;
+    /* background-color: lightseagreen; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttonSubmit {
+    background-color: #F16262;
+    width: 20%;
+    height: 25%;
+    border: none;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    font-size: 2.4rem;
+    font-family: 'Sansita', sans-serif;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.legendResumoContainer {
+    width: 60%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+.legendResumoContainer:-webkit-scrollbar {
+    display: none;
+}
+
+.legendResumo {
+    font: 400 1.4rem 'Ubuntu', sans-serif;
+}
+
+.titleValor {
+    font: 700 3.4rem 'Sansita', sans-serif;
+    color: #FFF;
+}
+
+.valorCompra {
+    font: 400 2.4rem 'Ubuntu', sans-serif;
+    color: #FFF
 }

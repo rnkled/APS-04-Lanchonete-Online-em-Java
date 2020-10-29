@@ -36,6 +36,6 @@ function check(resposta){
     if(resposta.srcElement.responseText.includes("erro")){
         console.log("Token Inválido");
     } else {
-        window.location.replace("../resumo/resumo.html");
+        window.location.replace("../carrinho/carrinho.html");
     }
 }

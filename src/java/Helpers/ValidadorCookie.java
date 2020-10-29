@@ -6,6 +6,8 @@
 package Helpers;
 
 import DAO.DaoToken;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.Cookie;
 
 /**
@@ -62,5 +64,33 @@ public class ValidadorCookie {
             throw new RuntimeException(e);
         }
         }
+    }
+    
+    public String getCookieIdCliente(Cookie[] cookies){
+        
+        for (int i = 0; i < cookies.length; i++) {
+            String name = cookies[i].getName();
+            String value = cookies[i].getValue();
+            
+            if(name.equals("token")){
+                String[] palavras;
+                palavras = value.split("-");
+                return palavras[0];
+            }
+        }
+        return "erro";
+    }
+    
+    public String getCookieIdFuncionario(Cookie[] cookies){
+        
+        for (int i = 0; i < cookies.length; i++) {
+            String name = cookies[i].getName();
+            String value = cookies[i].getValue();
+            
+            if(name.equals("tokenFuncionario")){
+                return value;
+            }
+        }
+        return "erro";
     }
 }

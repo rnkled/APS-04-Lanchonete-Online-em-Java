@@ -8,7 +8,19 @@
         <link rel="stylesheet" type="text/CSS" href="../styles/global.css"/>
         <link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@1,700&display=swap" rel="stylesheet">
     </head>
-    <script>validarToken();</script>
+    <script>
+        validarToken();
+        
+        function checkAction(){
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            if(urlParams.get('Action').localeCompare("TokenError") == 0){
+                alert("Sua sessão expirou ou Algum erro Ocorreu e Você foi desconectado! Refaça seu Login para continuar.")
+            }
+        }
+        checkAction();
+
+    </script>
     <body>
         <div class="containerLogin">
             <header class="headerPage">

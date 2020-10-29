@@ -118,6 +118,72 @@ public class DaoEndereco {
         return resultado;
     }
     
+    public Endereco pesquisarEnderecoPorID(String id){
+   
+        String sql = "SELECT * FROM tb_enderecos WHERE id_endereco = '"+id+"'";
+        ResultSet rs;
+        Endereco resultado = new Endereco();
+        
+        try{
+
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while(rs.next()){
+                
+                resultado.setCidade(rs.getString("cidade"));
+                resultado.setEstado(rs.getString("estado"));
+                resultado.setBairro(rs.getString("bairro"));
+                resultado.setRua(rs.getString("rua"));
+                resultado.setNumero(rs.getInt("numero"));
+                resultado.setComplemento(rs.getString("complemento"));
+                resultado.setId_endereco(rs.getInt("id_endereco"));
+            }
+            rs.close();
+            stmt.close();
+
+            return resultado;
+
+        } catch(SQLException e){
+            System.out.println(e);
+        }
+
+        return resultado;
+    }
+    
+    public Endereco pesquisarEnderecoPorID(int id){
+   
+        String sql = "SELECT * FROM tb_enderecos WHERE id_endereco = '"+String.valueOf(id)+"'";
+        ResultSet rs;
+        Endereco resultado = new Endereco();
+        
+        try{
+
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while(rs.next()){
+                
+                resultado.setCidade(rs.getString("cidade"));
+                resultado.setEstado(rs.getString("estado"));
+                resultado.setBairro(rs.getString("bairro"));
+                resultado.setRua(rs.getString("rua"));
+                resultado.setNumero(rs.getInt("numero"));
+                resultado.setComplemento(rs.getString("complemento"));
+                resultado.setId_endereco(rs.getInt("id_endereco"));
+            }
+            rs.close();
+            stmt.close();
+
+            return resultado;
+
+        } catch(SQLException e){
+            System.out.println(e);
+        }
+
+        return resultado;
+    }
+    
     }
     
     

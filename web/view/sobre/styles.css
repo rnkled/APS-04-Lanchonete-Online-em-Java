@@ -1,0 +1,118 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#top {
+    width: 100vw;
+    height: 10vh;
+    background-color: #F16262;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 25px;
+}
+
+
+
+.logo {
+
+    width: 30vw;
+    height: 26vh;
+    margin-top: 20px;
+    border: none;
+    background-color: transparent;
+}
+
+#imagemLogo2 {
+    width: 19vw;
+    height: 9vh;
+    position: relative;
+    left: -1.1vw;
+    top: 1.1vh;
+}
+
+
+.opcoes {
+    height: 8vh;
+    margin: 10px 25px 10px 25px;
+    position: relative;
+    top: 10%;
+    vertical-align: center;
+    color: white;
+    font-family: 'Sansita', sans-serif;
+    align-items: center;
+    font-size: 2vw;
+    white-space: nowrap;
+}
+
+a {
+    padding: 0px;
+    margin: 0px;
+    text-decoration: none;
+    color: inherit;
+    font-family: 'Sansita', sans-serif;
+}
+
+.opcoes:hover {
+
+    padding-bottom: -30px;
+    border-bottom: 10px solid white;
+}
+
+
+
+
+
+#background {
+    height: 88vh;
+    width: 100%;
+    background-color: white;
+    align-items: center;
+    background-image: url("../Documents/APS4/APS-04/web/view/assets/fundoplano1.png");
+    background-repeat: repeat;
+    background-size: auto;
+    display: flex;
+    justify-content: center;
+}
+
+#screen {
+    width: 60vw;
+    height: 88vh;
+    background-color: white;
+    overflow-y: scroll;
+    scrollbar-color: white;
+
+}
+
+#screen::-webkit-scrollbar {
+    display: none;
+}
+
+h1{
+    text-align: center;
+}
+
+p { font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size:0.9em; color:#555;
+    line-height:1.8;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+
+            
+
+
+
+
+
+
+

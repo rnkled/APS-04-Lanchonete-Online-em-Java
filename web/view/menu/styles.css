@@ -19,17 +19,23 @@ body {
 
 
 
-#logo {
-    width: 3vw;
-    height: 8vh;
-    background-color: white;
-    margin: 10px 25px 10px 25px;
-    width: 20vw;
-    background-image: url(../assets/logo02.png);
-    background-color: #32CD32;
-    background-size: cover;
-    background-repeat: no-repeat;
+.logo {
+
+    width: 30vw;
+    height: 26vh;
+    margin-top: 20px;
+    border: none;
+    background-color: transparent;
 }
+
+#imagemLogo2 {
+    width: 19vw;
+    height: 9vh;
+    position: relative;
+    left: -1.1vw;
+    top: 1.1vh;
+}
+
 
 .opcoes {
     width: 3vw;
@@ -191,17 +197,24 @@ a {
     border-radius: 10px;
     display: block;
     color: rgb(70, 70, 70);
+
 }
+
+.textoDescricao::-webkit-scrollbar {
+    display: none;
+}
+
 
 .textoDescricao {
     margin: 5px;
-    height: 50%;
+    height: 100%;
+    overflow-y: scroll;
 }
 
 .preco {
     position: relative;
-    bottom: 1vh;
-    left: 21.5vw;
+    top: -9vh;
+    float: right;
     color: red;
     font-size: 22px;
 }

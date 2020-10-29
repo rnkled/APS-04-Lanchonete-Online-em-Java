@@ -80,6 +80,10 @@
         <servlet-name>getIngredientesPorLanche</servlet-name>
         <servlet-class>Controllers.getIngredientesPorLanche</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getIngredientesPorLancheCliente</servlet-name>
+        <servlet-class>Controllers.getIngredientesPorLancheCliente</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>cadastro</servlet-name>
         <url-pattern>/cadastro</url-pattern>
@@ -159,6 +163,10 @@
     <servlet-mapping>
         <servlet-name>getIngredientesPorLanche</servlet-name>
         <url-pattern>/getIngredientesPorLanche</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getIngredientesPorLancheCliente</servlet-name>
+        <url-pattern>/getIngredientesPorLancheCliente</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

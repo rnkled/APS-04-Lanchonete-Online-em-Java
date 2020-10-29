@@ -94,14 +94,17 @@
             <input id="lanchesPrecoVenda" name="ValorVenda" type="text"><br>
             <input type="button" value="Alterar" onclick="alterarLanche()"> <input type="button" value="Remover" onclick="removerLanche()">
             <table id="ingredientesLanche">
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Quantidade</th>
-                <th>Preço de Compra</th>
-                <th>Preço de Venda</th>
-                <Th>Tipo</Th>
-                <th>Ativo</th>
+                <thead>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Quantidade</th>
+                    <th>Preço de Compra</th>
+                    <th>Preço de Venda</th>
+                    <Th>Tipo</Th>
+                    <th>Ativo</th>
+                </thead>
+                <tbody id="otbody"></tbody>
             </table>
         </form>
     </div>

@@ -85,10 +85,10 @@ public class DaoIngrediente {
         
     }
     
-    public List<Ingrediente> listarTodosPorLanche(String id){
+    public List<Ingrediente> listarTodosPorLanche(int id){
         String sql = "SELECT i.id_ingrediente, i.nm_ingrediente, i.descricao, il.quantidade, "
-                    + "i.valor_compra, i.valor_venda, i.tipo, i.fg_ativo"
-                    + " from tb_ingredientes i"
+                    + "i.valor_compra, i.valor_venda, i.tipo, i.fg_ativo "
+                    + "FROM tb_ingredientes i "
                     + "INNER JOIN tb_ingredientes_lanche il "
                     + "ON (i.id_ingrediente = il.id_ingrediente)"
                     + "WHERE il.id_lanche = ?";
@@ -99,7 +99,7 @@ public class DaoIngrediente {
         try{
             
             PreparedStatement stmt = conecta.prepareStatement(sql);
-            stmt.setString(1, id);
+            stmt.setInt(1, id);
             rs = stmt.executeQuery();
             
             while (rs.next()){

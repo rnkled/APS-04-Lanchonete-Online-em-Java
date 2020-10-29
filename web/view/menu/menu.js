@@ -48,10 +48,14 @@ function divConstructor(dados){
     let botaoLanche1 = document.createElement("button");
     botaoLanche1.classList.add("botaoLanche");
     botaoLanche1.innerText = "Veja os Ingredientes"
+    botaoLanche1.onclick = () => {showIngredientes(dados['id_lanche']);
+                                    campoSelecionado = p;};
+
 
     let botaoLanche2 = document.createElement("button");
     botaoLanche2.classList.add("botaoLanche");
     botaoLanche2.innerText = "Adicionar ao Carrinho"
+    botaoLanche2.onclick = () => {lancheProCarrinho(dados['nome'], dados['valor_venda']);};
 
     screen.appendChild(divLanche);
     divLanche.appendChild(row);
@@ -116,6 +120,7 @@ function divConstructorBebidas(dados){
     let botaoLanche2 = document.createElement("button");
     botaoLanche2.classList.add("botaoLanche");
     botaoLanche2.innerText = "Adicionar ao Carrinho"
+    botaoLanche2.onclick = () => {bebidaProCarrinho(dados['nome'], dados['valor_venda']);};
 
     screen.appendChild(divLanche);
     divLanche.appendChild(row);
@@ -210,4 +215,36 @@ function showPorcoes(){
 
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
+
+function showIngredientes(id){
+    getIngredientesLanche(id);
+}
+
+function getIngredientesLanche(id){
+    dados = {}
+    dados['id'] = id;
+    requisicao("../../getIngredientesPorLancheCliente", mostrarIngredientes, JSON.stringify(dados));    
+}
+
+function mostrarIngredientes(resposta){
+    dados = JSON.parse(resposta.srcElement.responseText);
+    let string="";
+    Object.keys(dados).forEach(ingrediente => {
+        string += "-"+dados[ingrediente]['nome']+"\r\n"}
+    )
+    campoSelecionado.innerText = string;
+}
+
+function lancheProCarrinho(nome, preco){
+    console.log("Ativado")
+    sessionStorage.setItem(nome, preco);
+    alert("Lanche salvo! Faça login no Carrinho para Prosseguir ou Removê-lo");
+}
+
+function bebidaProCarrinho(nome, preco){
+    console.log("Ativado")
+    sessionStorage.setItem(nome, preco);
+    alert("Bebida salva! Faça login no Carrinho para Prosseguir ou Removê-lo");
 }

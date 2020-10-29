@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>Carrinho</title>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" type="text/CSS" href="styles.css"/>
+        <link rel="stylesheet" type="text/CSS" href="../styles/global.css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@1,700&display=swap" rel="stylesheet">
+        <script src="./resumo.js"></script>
+        <script src="../scripts/conexao.js"></script>
+    </head>
+    <body>
+        <div class="containerLogin">
+            <header class="headerPage">
+                <div class="containerLogo">
+                    <img src="../assets/logo02.png" id="imagemLogo2">
+                </div>
+                <div class="containerNavButton">
+
+                </div>
+                <div class="containerAction">
+                    <button class="buttonLogout" type="button" onClick="logout()">Logout</button>
+                </div>
+            </header>
+            <div class="containerPage">
+                <div class="containerConteudo">
+                    <div class="InformacoesPessoais">
+                        <div class="nomeCliente">
+                            <p class="legendInformacao">Maria JoséFina Pereira da Silva</p>
+                        </div>
+                        <div class="enderecoCliente">
+                            <p class="legendInformacao">Rua Jardim Paulista, 415, Vila São José - Ribeirão Preto-SP</p>
+                        </div>
+                    </div>
+                    <div class="containerTitle">
+                        <h1 class="titleTypeContainer">Meus pedidos</h1>
+                    </div>
+                    <div class="containerPedidos">
+                        <div class="itemPedidoContainer">
+                            <div class="ItemPedido">
+                                <p>1...X MEGA TUDO TRIPLO...R$20,00</p>
+                                <button class="buttonRemove">-</button>
+                            </div>
+                        </div>
+                        <div class="TotalCompraContainer">
+                            <h1  class="labelTotal">Total</h1>
+                            <p class="valuePedidos">R$ 40,00</p>
+                        </div>
+                    </div>
+                    <div class="buttonInputContainer">
+                        <input class="buttonSubmitCancel" type="button" onclick="showInicioDiv()" name="cancelar" value="Cancelar">
+                        <input class="buttonSubmitSalvar" type="button" onclick="salvarBebida()" name="Metodopagamento" value="Forma de pagamento">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -64,9 +64,9 @@ public class getIngredientesPorLanche extends HttpServlet {
             JSONObject dados = new JSONObject(jsonStr);
             
             DaoIngrediente ingredienteDAO = new DaoIngrediente();
-            System.out.println(dados.getString("id"));
+            System.out.println(dados.getInt("id"));
 
-            List<Ingrediente> ingredientes = ingredienteDAO.listarTodosPorLanche(dados.getString("id"));
+            List<Ingrediente> ingredientes = ingredienteDAO.listarTodosPorLanche(dados.getInt("id"));
             
             Gson gson = new Gson();
             String json = gson.toJson(ingredientes);

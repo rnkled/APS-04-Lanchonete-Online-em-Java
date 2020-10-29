@@ -31,17 +31,6 @@
     align-items: center;
 }
 
-.containerLogo {
-    width: 20vw;
-    height: 10vh;
-    border: solid 1px #FFF;
-    border-radius: 10px;
-    margin: 10px;
-    background-image: url(../assets/logo02.png);
-    background-color: #32CD32;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
 
 .containerNavButton {
     width: 60vw;

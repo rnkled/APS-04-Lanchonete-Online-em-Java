@@ -88,20 +88,20 @@ function pegarLanche(dados) {
 function getIngredientesLanche(id){
     dados = {}
     dados['id'] = id;
-    requisicao("../../getIngredientesPorLanche", setarIngredientes(), JSON.stringify(dados));
+    requisicao("../../getIngredientesPorLanche", setarIngredientes, JSON.stringify(dados));
     
 }
 
 function setarIngredientes(resposta){
-    console.log("Veio resposta");
-    console.log(resposta);
+    let tabela = document.getElementById("ingredientesLanche");
+    limparTabela(tabela);
+
     if(resposta.srcElement.responseText.includes("erro")){
         window.location.replace("../login/login_Funcionario.html?Action=TokenError");
     } 
     else {
         dados = JSON.parse(resposta.srcElement.responseText);
         
-        let tabela = document.getElementById("ingredientesLanche");
         Object.keys(dados).forEach(cadastro => {
             let row = tabela.insertRow(1);
             for (let key in dados[cadastro]) {
@@ -109,6 +109,14 @@ function setarIngredientes(resposta){
             }
     });
     }
+}
+
+function limparTabela(tabela){
+    //let tableRows = tabela.getElementsByTagName('tr');
+
+    while(tabela.rows.length > 1) {
+        tabela.deleteRow(1);
+      }
 }
 
 function showLanche(){

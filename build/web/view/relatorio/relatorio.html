@@ -6,37 +6,10 @@
         <script src="../scripts/conexao.js"></script>
         <link rel="stylesheet" type="text/CSS" href="../styles/global.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="./styles.css">
         <script src="./relatorio.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@1,700&display=swap" rel="stylesheet">
     </head>
-
-    <style>
-
-
-        table{
-            border-collapse: collapse;
-            table-layout: fixed;
-            height: 100px;  
-            overflow-y: auto;    
-            margin: 20px;
-            display: block;
-        }
-
-        th,
-        td {
-            height: 1vh;
-            padding: 6px;
-            text-align: left;
-            border-bottom: 1px solid rgb(143, 141, 141);
-            
-
-        }
-
-        tr:hover {
-            background-color: rgba(37, 37, 37, 0.356);
-        }
-    </style>
 
     <script>
 
@@ -45,8 +18,30 @@
     </script>
     
     <body>
-        <div>
-            <h1>Relatório Geral</h1>
+        <div class="containerRelatorio">
+            <header class="headerPage">
+                <div class="containerLogo">
+                    <img src="../assets/logo02.png" id="imagemLogo2">
+                </div>
+                <div class="containerNavButton">
+
+                </div>
+                <div class="containerAction">
+                    <button class="buttonLogout" type="button" onClick="logout()">Logout</button>
+                </div>
+            </header>
+            <div class="containerPage">
+                
+                <div class="containerConteudo">
+                        <div class="iconArrow">
+                            <a href="../painel/painel.html">
+                                <img class="iconArrowLeft" src="../assets/keyboard.svg"/>
+                            </a>     
+                        </div>
+                        <div class="containerTitle">
+                            <h1 class="titleTypeContainer">Relatório Geral</h1>
+                        </div>
+        <div class="containerTable">
             <table id="tbRelatorioGastos">
                 <tr>
                     <th>Gastos</th>
@@ -54,7 +49,7 @@
                     <th>Lucro</th>
                 </tr>
             </table>
-            <h1>Relatório Bebidas por Pedidos</h1>
+            <h1 class="titleTypeContainer">Relatório Bebidas por Pedidos</h1>
             <table id="tbRelatorioBebidas">
                 <tr>
                     <th>ID Pedido</th>
@@ -69,7 +64,7 @@
                     <th>Lucro Pedido</th>
                 </tr>
             </table>
-            <h1>Relatório Lanches Detalhado</h1>
+            <h1 class="titleTypeContainer">Relatório Lanches Detalhado</h1>
             <table id="tbRelatorioLanches">
                 <tr>
                     <th>Lanche</th>

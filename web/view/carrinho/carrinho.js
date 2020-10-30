@@ -167,3 +167,17 @@ function textoResumo() {
     })
     document.getElementById("textResumo").innerText = string;
 }
+
+function realizarCompra(){
+    console.log(dados);
+    requisicao("../../comprar", resolver, JSON.stringify(dados));
+}
+
+function resolver(resposta){
+    if(resposta.srcElement.responseText.includes("erro")){
+        //window.location.replace("../login/login_Funcionario.html?Action=TokenError");
+    } else {
+        alert(resposta.srcElement.responseText);
+        //window.location.reload();
+    }
+}

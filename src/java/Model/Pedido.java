@@ -11,7 +11,6 @@ package Model;
  */
 public class Pedido {
     private int id_pedido;
-    private Lanche lanche;
     private Cliente cliente;
     private String data_pedido;
     private Double valor_total;
@@ -22,14 +21,6 @@ public class Pedido {
 
     public void setId_pedido(int id_pedido) {
         this.id_pedido = id_pedido;
-    }
-
-    public Lanche getLanche() {
-        return lanche;
-    }
-
-    public void setLanche(Lanche lanche) {
-        this.lanche = lanche;
     }
 
     public Cliente getCliente() {

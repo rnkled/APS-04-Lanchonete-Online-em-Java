@@ -75,7 +75,7 @@ CREATE TABLE tb_ingredientes_lanche(
 CREATE TABLE tb_pedidos(
 	id_pedido		SERIAL,
 	id_cliente		INTEGER CONSTRAINT nn_tb_pedidos_id_cliente NOT NULL,
-	data_pedido		VARCHAR(20) CONSTRAINT nn_tb_pedidos_data_pedido NOT NULL,
+	data_pedido		TEXT CONSTRAINT nn_tb_pedidos_data_pedido NOT NULL,
 	valor_total		NUMERIC(7,2),
 	CONSTRAINT pk_tb_pedidos_id_pedido PRIMARY KEY(id_pedido),
 	CONSTRAINT fk_tb_pedidos_id_cliente FOREIGN KEY(id_cliente) REFERENCES tb_clientes(id_cliente)

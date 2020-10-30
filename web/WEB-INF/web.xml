@@ -88,6 +88,10 @@
         <servlet-name>getCliente</servlet-name>
         <servlet-class>Controllers.getCliente</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>comprar</servlet-name>
+        <servlet-class>Controllers.comprar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>cadastro</servlet-name>
         <url-pattern>/cadastro</url-pattern>
@@ -175,6 +179,10 @@
     <servlet-mapping>
         <servlet-name>getCliente</servlet-name>
         <url-pattern>/getCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>comprar</servlet-name>
+        <url-pattern>/comprar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

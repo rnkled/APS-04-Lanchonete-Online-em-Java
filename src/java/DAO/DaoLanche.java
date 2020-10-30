@@ -108,6 +108,37 @@ public class DaoLanche {
         }
         
     }
+    
+    public Lanche pesquisaPorNome(String nome){
+        String sql = "SELECT * FROM tb_lanches WHERE nm_lanche='"+nome+"'";
+        ResultSet rs;
+        Lanche lancheResultado = new Lanche();
+        
+        try{
+            
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+            
+                lancheResultado.setId_lanche(rs.getInt("id_lanche"));
+                lancheResultado.setNome(rs.getString("nm_lanche"));
+                lancheResultado.setDescricao(rs.getString("descricao"));
+                lancheResultado.setValor_venda(rs.getDouble("valor_venda"));
+                lancheResultado.setFg_ativo(1);
+                
+            }
+            rs.close();
+            stmt.close();
+            return lancheResultado;
+        
+            
+        } catch(SQLException e){
+            
+             throw new RuntimeException(e);
+        }
+        
+    }
     public void vincularIngrediente(Lanche lanche, Ingrediente ingrediente){
         
         String sql = "INSERT INTO tb_ingredientes_lanche(id_lanche, id_ingrediente, quantidade)"

@@ -136,13 +136,11 @@ public class DaoCliente {
             rs = stmt.executeQuery();
             
             while (rs.next()){
-            
                 clienteResultado.setId_cliente(rs.getInt("id_cliente"));
                 clienteResultado.setNome(rs.getString("nome"));
                 clienteResultado.setSobrenome(rs.getString("sobrenome"));
                 clienteResultado.setTelefone(rs.getString("telefone"));
                 clienteResultado.setFg_ativo(1);
-
             }
             rs.close();
             stmt.close();

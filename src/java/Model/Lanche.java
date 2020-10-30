@@ -16,6 +16,7 @@ public class Lanche {
     private Double valor_venda;
     private int fg_ativo;
     private Double valor_lanche;
+    private int quantidade;
 
     public int getId_lanche() {
         return id_lanche;
@@ -65,6 +66,13 @@ public class Lanche {
         this.valor_lanche = valor_lanche;
     }
     
-    
+     public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
     
 }

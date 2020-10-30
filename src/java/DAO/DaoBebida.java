@@ -7,6 +7,7 @@ package DAO;
 
 import Model.Bebida;
 import Model.Ingrediente;
+import Model.Lanche;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -125,6 +126,39 @@ public class DaoBebida {
         }catch(Exception e){
             throw new RuntimeException(e);
         }
+    }
+    public Bebida pesquisaPorNome(String nome){
+        String sql = "SELECT * FROM tb_bebidas WHERE nm_bebida='"+nome+"'";
+        ResultSet rs;
+        Bebida bebidaResultado = new Bebida();
+        
+        try{
+            
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            
+            while (rs.next()){
+            
+                bebidaResultado.setId_bebida(rs.getInt("id_bebida"));
+                bebidaResultado.setNome(rs.getString("nm_bebida"));
+                bebidaResultado.setDescricao(rs.getString("descricao"));
+                bebidaResultado.setQuantidade(rs.getInt("quantidade"));
+                bebidaResultado.setValor_compra(rs.getDouble("valor_compra"));
+                bebidaResultado.setValor_venda(rs.getDouble("valor_venda"));
+                bebidaResultado.setTipo(rs.getString("tipo"));
+                bebidaResultado.setFg_ativo(1);
+                
+            }
+            rs.close();
+            stmt.close();
+            return bebidaResultado;
+        
+            
+        } catch(SQLException e){
+            
+             throw new RuntimeException(e);
+        }
+        
     }
 }
     

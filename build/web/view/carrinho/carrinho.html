@@ -1,20 +1,26 @@
 <html>
-    <head>
-        <title>Carrinho</title>
-        <meta charset="UTF-8"/>
-        <link rel="stylesheet" type="text/CSS" href="styles.css"/>
-        <link rel="stylesheet" type="text/CSS" href="../styles/global.css"/>
-        <link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@1,700&display=swap" rel="stylesheet">
-        <script src="./carrinho.js"></script>
-        <script src="../scripts/conexao.js"></script>
-    </head>
-    <script>validarToken(); getUsuario();</script>
-    <body onload="pegarPedidos()">
+
+<head>
+    <title>Carrinho</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/CSS" href="styles.css" />
+    <link rel="stylesheet" type="text/CSS" href="../styles/global.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@1,700&display=swap" rel="stylesheet">
+    <script src="./carrinho.js"></script>
+    <script src="../scripts/conexao.js"></script>
+</head>
+<script>
+    validarToken();
+    getUsuario();
+</script>
+
+<body onload="pegarPedidos()">
+
     <body>
         <div class="containerLogin">
             <header class="headerPage">
                 <div class="containerLogo"><a href="../menu/menu.html">
-                    <img src="../assets/logo02.png" id="imagemLogo2">
+                        <img src="../assets/logo02.png" id="imagemLogo2">
                     </a>
                 </div>
                 <div class="containerNavButton">
@@ -39,16 +45,17 @@
                     </div>
                     <div class="containerPedidos">
                         <div class="itemPedidoContainer" id="containerPedido">
-                            
+
                         </div>
                         <div class="TotalCompraContainer">
-                            <h1  class="labelTotal">Total</h1>
+                            <h1 class="labelTotal">Total</h1>
                             <p class="valuePedidos" id="valor1">0</p>
                         </div>
                     </div>
                     <div class="buttonInputContainer">
                         <input class="buttonSubmitCancel" type="button" onclick="" name="cancelar" value="Cancelar">
-                        <input class="buttonSubmitSalvar" type="button" onclick="showConteudo2()" name="Metodopagamento" value="Forma de pagamento">
+                        <input class="buttonSubmitSalvar" type="button" onclick="showConteudo2()" name="Metodopagamento"
+                            value="Forma de pagamento">
                     </div>
                 </div>
                 <div class="containerConteudo2" id="conteudo2">
@@ -62,7 +69,7 @@
                     </div>
                     <div class="containerResumo">
                         <div class="containerTitle2">
-                            
+
                             <h1 class="titleTypeContainer">Resumo</h1>
                         </div>
                         <div class="containerTextResumo">
@@ -73,9 +80,9 @@
                             <div class="totalPedido">
                                 <h1 class="titleValor">Valor total</h1>
                                 <h3 class="valorCompra" id="valor2">0</h3>
-                                
+
                             </div>
-                            
+
                         </div>
                     </div>
                     <div class="containerTipoPagamento">
@@ -111,11 +118,12 @@
                                 <labe>No estabelecimento</labe>
                             </div>
                         </div>
-                        <button class="buttonSubmit" onclick="console.log(dados)">Finalizar</button>
+                        <button class="buttonSubmit" onclick="realizarCompra()">Finalizar</button>
                     </div>
                     <button class="buttonVoltar" onclick="showConteudo1()">Voltar para os <br>Pedidos</button>
                 </div>
             </div>
         </div>
     </body>
+
 </html>

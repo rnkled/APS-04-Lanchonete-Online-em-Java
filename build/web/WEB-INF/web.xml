@@ -92,6 +92,18 @@
         <servlet-name>comprar</servlet-name>
         <servlet-class>Controllers.comprar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getRelatorioBebidas</servlet-name>
+        <servlet-class>Controllers.getRelatorioBebidas</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getRelatorioGastos</servlet-name>
+        <servlet-class>Controllers.getRelatorioGastos</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getRelatorioLanches</servlet-name>
+        <servlet-class>Controllers.getRelatorioLanches</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>cadastro</servlet-name>
         <url-pattern>/cadastro</url-pattern>
@@ -183,6 +195,18 @@
     <servlet-mapping>
         <servlet-name>comprar</servlet-name>
         <url-pattern>/comprar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getRelatorioBebidas</servlet-name>
+        <url-pattern>/getRelatorioBebidas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getRelatorioGastos</servlet-name>
+        <url-pattern>/getRelatorioGastos</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getRelatorioLanches</servlet-name>
+        <url-pattern>/getRelatorioLanches</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

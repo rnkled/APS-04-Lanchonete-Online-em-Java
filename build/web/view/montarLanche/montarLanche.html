@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <title>Painel de Controle</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="../scripts/conexao.js"></script>
+        <link rel="stylesheet" type="text/CSS" href="../styles/global.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="./styles.css">
+        <script src="./montarLanche.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@1,700&display=swap" rel="stylesheet">
+    </head>    
+    <script>getInfo()</script>
+    <body>
+        <div class="containerMontar">
+            <header class="headerPage">
+                <div id="logo"><a href="../home/home.html"><img src="../assets/logo02.png" id="imagemLogo2"></a></div>
+
+                <div class="containerNavButton">
+
+                </div>
+                <div class="containerAction">
+                </div>
+            </header>
+            <div class="containerPage">
+                
+                <div class="containerConteudo">
+                        <div class="iconArrow">
+                            <a href="../home/home.html">
+                                <img class="iconArrowLeft" src="../assets/keyboard.svg"/>
+                            </a>     
+                        </div>
+                        <div class="containerAgrupados">
+                            <div class="containerEspaco">
+                                
+                            </div>
+                            <div class="containerEspacoB">
+                                <div class="containerTitle">
+                                    <h1 class="titleTypeContainer">Monte agora seu lanche!</h1>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="containerTitleTable">
+                            <h1 class="titleTypeContainerTable">Defina o seu lanche</h1>
+                        </div>
+                        <div class="containerInputSelect">
+                            <input id="nomeLanche" class="TextInput" name="nome" placeholder="Lanche" required/>
+                            <textarea id="textArea3" class="TextInput"  placeholder="Descrição" rows="4" cols="50" name="descricao"></textarea>
+                        </div>
+                        <div class="containerTitleTable">
+                            <h1 class="titleTypeContainerTable">Escolha o seu pão</h1>
+                        </div>
+                        <div class="containerInputSelect">
+                            <select id="SelectPao" class="TextInput" name="tipo" required>
+                                <option value="">Pão</option>
+                            </select>
+                        </div>
+                        <div class="containerTitleTable">
+                            <h1 class="titleTypeContainerTable">Vamos turbinar ?</h1>
+                        </div>
+                        <div id="ingredientes">
+
+                        </div>
+                        <div class="buttonInputContainer">
+                            <button class="buttonSubmitCancel" onclick="window.location.replace('../menu/menu.html')" name="cancelar" >Cancelar</button>
+                            <button class="buttonSubmitSalvar" onclick="salvarLanche()" name="Adicionar">Adicionar <br> <p id="valor1">R$ 0.00</p></button>
+                            
+                        </div>
+                    

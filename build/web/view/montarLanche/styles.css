@@ -1,0 +1,277 @@
+.containerMontar {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../assets/fundoplano1.png")
+}
+
+.headerPage {
+    width: 100vw;
+    height: 12vh;
+    background-color: #F16262;
+    display: flex;
+    align-items: center;
+}
+
+.containerAgrupados {
+    width: 100%;
+    height: 5vh;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.titleTypeContainer {
+    font-size: 2.8rem;
+    font-family: 'Sansita', sans-serif;
+    color: #000;
+    text-align: center;
+}
+
+.containerEspaco {
+    height: 100%;
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerEspacoB {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: 100%;
+    width: 70%;
+
+}
+
+
+.containerValue {
+    width: 40%;
+    height: 60%;
+    display: flex;
+    border: 1px solid #F16262;
+    border-radius: 1em;
+    padding: 5px 0 5px 0;
+    align-items: center;
+    flex-direction: column;
+}
+
+.buttonLogout {
+    width: 12vw;
+    height: 7vh;
+    border-radius: 1em;
+    border: none;
+    background-color: white;
+    font-family: 'Sansita', sans-serif;
+    font-size: 2.4rem;
+    color: black;
+}
+
+
+.containerNavButton {
+    width: 60vw;
+    height: 10vh;
+    /* background-color: aquamarine; */
+
+}
+
+.containerAction {
+    width: 20vw;
+    height: 10vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.containerPage {
+    width: 100vw;
+    height: 88vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerConteudo {
+    background-color: #F6F6F6;
+    width: 70vw;
+    height: 88vh;
+    display: block;
+    overflow-y: scroll;
+    flex-direction: column;
+    align-items: center;
+    /* padding-top: 45px; */
+    justify-content: flex-start;
+}
+
+.iconArrow {
+    width: 100%;
+}
+
+.iconArrowLeft {
+    width: 4%;
+}
+
+.legendValue {
+    font-family: 'Ubuntu', sans-serif;
+    color: #FFF;
+    font-size: 1.8rem;
+
+}
+
+.containerValueLanche {
+    margin-top: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F16262;
+}
+
+.legendTitleContainer {
+    font-family: 'Sansita', sans-serif;
+    font-size: 2.2rem;
+    color: black;
+    user-select: none;
+}
+
+.titleTypeContainerTable {
+    font-size: 2.2rem;
+    font-family: 'Sansita', sans-serif;
+    color: #FFF;
+}
+
+.containerTitleTable {
+    width: 100%;
+    height: 5vh;
+    margin: 10px 0;
+    background-color: #F16262;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2px 10px;
+}
+
+.TextInput {
+    width: 32vw;
+    margin-top: 10px;
+    height: 7vh;
+    border: 1px solid #BDBDBD;
+    border-radius: 10px;
+    padding-left: 15px;
+}
+
+#SelectPao {
+    margin-bottom: 10px;
+}
+
+
+.opcIngredientes {
+    width: 75%;
+    border-radius: 1em;
+    height: 8vh;
+    border: solid 2px #F16262;
+    margin: 15px 0;
+    padding: 2px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contador {
+    width: 8vw;
+    height: 5vh;
+    border: 2px solid #000;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2px 15px;
+}
+
+.buttonIcons {
+    border: none;
+    background-color: Transparent;
+}
+
+.legendIngrediente {
+    font-family: 'Sansita', sans-serif;
+    font-size: 1.5rem;
+    color: #676464;
+}
+
+.buttonInputContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 15%;
+    margin-top: 10px;
+    /* background-color: chartreuse; */
+}
+
+.buttonSubmitCancel {
+    background-color: #978D8D;
+    width: 30%;
+    height: 90%;
+    border: none;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    font-size: 2rem;
+    font-family: 'Sansita', sans-serif;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+
+.buttonSubmitSalvar {
+    background-color: #F16262;
+    width: 30%;
+    height: 90%;
+    border: none;
+    border-radius: 20px;
+    margin-bottom: 25px;
+    font-size: 2rem;
+    font-family: 'Sansita', sans-serif;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.containerInputSelect {
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+}
+
+#textArea3 {
+    resize: none;
+    height: 10vh;
+    padding-top: 5px;
+    margin-bottom: 20px;
+}
+
+#ingredientes {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 27vh;
+    width: 100%;
+    align-items: center;
+}
+
+#ingredientes::-webkit-scrollbar {
+    display: none;
+}
+
+
+.icon {
+    font-size: 2vw;
+    font-weight: bold;
+}

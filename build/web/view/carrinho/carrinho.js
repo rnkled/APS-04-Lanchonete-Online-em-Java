@@ -20,7 +20,7 @@ function itemConstructor(nome, preco){
 
     let legendaPreco = document.createElement("p");
     legendaPreco.classList.add('legendaPreco');
-    legendaPreco.innerText = "R$ "+preco;
+    legendaPreco.innerText = "R$ "+parseFloat(preco);
 
     let contador = document.createElement('div');
     contador.classList.add("contador");
@@ -51,6 +51,7 @@ function itemConstructor(nome, preco){
 function pegarPedidos(){
     dados = {};
     valor = 0;
+    pegarCustomizado();
     Object.keys(sessionStorage).forEach(
         (key) => {
             preco = sessionStorage.getItem(key).split(";");
@@ -163,7 +164,8 @@ function textoResumo() {
     let string = "";
     Object.keys(dados).forEach( key => {
         let pontinhos = "."
-        string += "x"+dados[key][2]+pontinhos.repeat(30)+key+pontinhos.repeat(58-key.length)+"R$ "+dados[key][0]+"\n";
+        if(key != "id"){
+        string += "x"+dados[key][2]+pontinhos.repeat(30)+key+pontinhos.repeat(58-key.length)+"R$ "+dados[key][0]+"\n";}
     })
     document.getElementById("textResumo").innerText = string;
 }
@@ -175,9 +177,24 @@ function realizarCompra(){
 
 function resolver(resposta){
     if(resposta.srcElement.responseText.includes("erro")){
-        //window.location.replace("../login/login_Funcionario.html?Action=TokenError");
+        alert("Ocorreu um Erro com seu Pedido! tente logar Novamente.")
+        window.location.replace("../login/login.html");
     } else {
         alert(resposta.srcElement.responseText);
-        //window.location.reload();
+        sessionStorage.clear();
+        window.location.replace("../carrinho/carrinho.html");
     }
+}
+
+///Teste não consigo entender
+
+function pegarCustomizado(){
+    let queryString = window.location.search;
+    let urlParams = new URLSearchParams(queryString);
+    nome = urlParams.get('nome');
+    preco = [urlParams.get('preco'), "lanche", "1"];
+    if(nome){
+    itemConstructor(nome, preco[0]);
+    dados[nome] = preco;
+    valor += parseFloat(preco[0]);}
 }

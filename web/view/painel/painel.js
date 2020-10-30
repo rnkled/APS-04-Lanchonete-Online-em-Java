@@ -14,13 +14,15 @@ function showCadIngredienteDiv(){
     
     let tip = document.getElementById("Agrupado");
     let div = document.getElementById("CadIngredientes");
-    let div2 = document.getElementById("CadIngredientes");
+    let div2 = document.getElementById("CadBebidas");
+    let div3 = document.getElementById("CadFuncionarios");
+    let div4 = document.getElementById("CadLanches");
     
-    if(div.style.display = 'none'){
         tip.style.display = 'none';
         div.style.display = 'block';
-    }
-
+        div2.style.display = 'none';
+        div3.style.display = 'none';
+        div4.style.display = 'none';
 }
 
 function showCadBebidaDiv(){
@@ -28,23 +30,32 @@ function showCadBebidaDiv(){
     let tip = document.getElementById("Agrupado");
     let div = document.getElementById("CadBebidas");
     let div2 = document.getElementById("CadIngredientes");
+    let div3 = document.getElementById("CadFuncionarios");
+    let div4 = document.getElementById("CadLanches");
+
     
-    if(div.style.display = 'none'){
         tip.style.display = 'none';
         div.style.display = 'block';
-    }
+        div2.style.display = 'none';
+        div3.style.display = 'none';
+        div4.style.display = 'none';
+    
 }
 
 function showInicioDiv(){
 
     let tip = document.getElementById("Agrupado");
+    let div = document.getElementById("CadBebidas");
+    let div2 = document.getElementById("CadIngredientes");
+    let div3 = document.getElementById("CadFuncionarios");
+    let div4 = document.getElementById("CadLanches");
+
     
-    let div = document.getElementById("CadIngredientes");
-    
-    if(div.style.display = 'block'){
         tip.style.display = 'block';
         div.style.display = 'none';
-    }
+        div2.style.display = 'none';
+        div3.style.display = 'none';
+        div4.style.display = 'none';
 }
 
 function salvarIngrediente(){
@@ -72,26 +83,43 @@ function salvarBebida(){
     }
 
 }
+
+function salvarFuncionario(){
+
+    let form = document.getElementById("addFuncionario");
+    let dados = {};
+
+    if(validar(form)){
+        dados = formularioParaObjeto(form);
+        console.log(dados);
+        requisicao("../../salvarFuncionario", resolver, JSON.stringify(dados));
+        
+    }
+    
+}
+
 function showCadLanches(){
     //CadLanches
 
     let tip = document.getElementById("Agrupado");
     let div = document.getElementById("CadLanches");
-    let div2 = document.getElementById("CadBebidas")
+    let div2 = document.getElementById("CadBebidas");
+    let div3 = document.getElementById("CadFuncionarios");
+    let div4 = document.getElementById("CadIngredientes");
     //let divStatus = document.getElementById("statusId")
     //let divStatus2 = document.getElementById("statusId2")
     //let divcenter = document.getElementById("footerId");
   
     
-    if(div.style.display = 'none'){
         tip.style.display = 'none';
         div.style.display = 'block';
         div2.style.display = 'none';
+        div3.style.display = 'none';
+        div4.style.display = 'none';
         //divStatus.style.display = 'flex';
         //divStatus2.style.display = 'flex';
         //divcenter.style.justifyContent = 'space-around';
 
-    }
     
     requisicao("../../getIngredientes", getIngredientes);
 
@@ -134,6 +162,20 @@ function deleteAllSession() {
             sessionStorage.removeItem(key);
         }
     )
+}
+
+function showCadFuncionario(){
+
+    let tip = document.getElementById("Agrupado");
+    let div = document.getElementById("CadLanches");
+    let div2 = document.getElementById("CadBebidas");
+    let div3 = document.getElementById("CadFuncionarios")
+    
+    
+        tip.style.display = 'none';
+        div.style.display = 'none';
+        div2.style.display = 'none';
+        div3.style.display = 'block';
 }
 
 function formularioParaObjeto(formulario){
@@ -262,10 +304,12 @@ function salvarLanche(){
 
 }
 
+
 function validarLanche(){
     let nome = document.getElementById("nomeLanche");
     let descricao = document.getElementById("textArea3");
     let pao = document.getElementById("selectPao");
+    let valor = document.getElementById("ValorLanche");
     let resultado = true;
     if(nome.value == ""){
         alert("Campo Nome Vazio!")
@@ -279,6 +323,10 @@ function validarLanche(){
         alert("Campo Pão Vazio!")
         resultado = false;
     }
+    if(valor.value == 0){
+        alert("Campo Valor Vazio!")
+        resultado = false;
+    }
     return resultado;
 }
 
@@ -289,9 +337,11 @@ function dadosDoLanche(){
     let nome = document.getElementById("nomeLanche");
     let descricao = document.getElementById("textArea3");
     let pao = document.getElementById("selectPao");
+    let valor = document.getElementById("ValorLanche");
 
     dados['nome'] = nome.value;
     dados['descricao'] = descricao.value;
+    dados['ValorVenda'] = parseFloat(valor.value);
 
     ingredientes[pao.value] = "1";
     Object.keys(sessionStorage).forEach(

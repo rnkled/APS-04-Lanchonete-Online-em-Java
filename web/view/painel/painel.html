@@ -59,7 +59,7 @@ and open the template in the editor.
                             
                             <div class="containerButtons1">
                                 <button type="button" onclick="showCadLanches()" class="buttonGerenciador">Cadastrar Lanches</button>
-                                <button class="buttonGerenciador">Cadastrar Funcionarios</button>
+                                <button class="buttonGerenciador" onclick="showCadFuncionario()">Cadastrar Funcionarios</button>
                             </div>
                             
                             <div class="containerButtons2">
@@ -146,12 +146,39 @@ and open the template in the editor.
                                         
                                     </form>
                                 </div>
-                                    
+                            </div>
+                            <div id="CadFuncionarios" class="containerCadItems">
+                                <div class="titleCadPainel">
+                                    <h1 class="titlePage">Cadastro de Funcionários</h1>
                                 </div>
+            
+                                <div class="form">
+            
+                                    <form id="addFuncionario" class="formItems">
+                                        
+                                        <input placeholder="Nome" class="TextInput" type="text" name="nome" required>
+                                    
+                                        <input class="TextInput" placeholder="Sobrenome" type="text" name="sobrenome" required>
+                                            
+                                        <input class="TextInput" type="text" placeholder="Usuário" name="usuarioFuncionario" required/>
 
+                                        <input class="TextInput" type="password" placeholder="Senha" name="senhaFuncionario" required/>
 
+                                        <input class="TextInput" type="text" placeholder="Cargo" name="cargo" required/>
 
-
+                                        <input class="TextInput" type="text" placeholder="Salário" name="salario" required/>
+                                            
+                                                                                       
+                                                                                        
+                                            <div class="buttonInputContainer">
+                                                <input class="buttonSubmitCancel" type="button" onclick="showInicioDiv()" name="cancelar" value="Cancelar">
+                                                <input class="buttonSubmitSalvar" type="button" onclick="salvarFuncionario()" name="salvar" value="Salvar">
+                                            </div>
+                                            
+                                        </form>
+                                    </div>
+                                        
+                                    </div>
 
                     <footer  class="footerPainel">
                         <div class="StatusLanchonete">
@@ -164,6 +191,15 @@ and open the template in the editor.
                     <div id="CadLanches" class="containerCadItems">
                         <div class="titleCadPainel">
                             <h1 class="titlePage">Cadastro de lanches</h1>
+                        </div>
+
+                        <div class="containerGastos">
+                            <div class="titleLucro">
+                                <h1 class="titleContainerLucro">Preço do Lanche</h1>
+                            </div>
+                            <div class="LabelGastos">
+                                <p style="color: white; margin-right:0.5vw;">R$</p>  <input class="inputPreco" id="ValorLanche" min="0.01" step="0.01" max="2500" value="00.00">
+                            </div>
                         </div>
     
                         <div class="form">

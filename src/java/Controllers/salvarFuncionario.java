@@ -5,18 +5,15 @@
  */
 package Controllers;
 
-import DAO.DaoIngrediente;
-import DAO.DaoLanche;
+import DAO.DaoFuncionario;
 import Helpers.ValidadorCookie;
-import Model.Ingrediente;
-import Model.Lanche;
+import Model.Funcionario;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import static java.nio.charset.StandardCharsets.ISO_8859_1;
 import static java.nio.charset.StandardCharsets.UTF_8;
-import java.util.Iterator;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +25,7 @@ import org.json.JSONObject;
  *
  * @author kener_000
  */
-public class salvarLanche extends HttpServlet {
+public class salvarFuncionario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,7 +43,7 @@ public class salvarLanche extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
         String json = "";
-        
+        String ID = "1";
         ////////Validar Cookie
         boolean resultado = false;
         
@@ -54,8 +51,9 @@ public class salvarLanche extends HttpServlet {
         Cookie[] cookies = request.getCookies();
         ValidadorCookie validar = new ValidadorCookie();
         
+        ID = validar.getCookieIdFuncionario(cookies);
         resultado = validar.validarFuncionario(cookies);
-        }catch(java.lang.NullPointerException e){}
+        }catch(java.lang.NullPointerException e){System.out.println(e);}
         //////////////
         
         if ((br != null) && resultado) {
@@ -63,46 +61,29 @@ public class salvarLanche extends HttpServlet {
             byte[] bytes = json.getBytes(ISO_8859_1); 
             String jsonStr = new String(bytes, UTF_8);            
             JSONObject dados = new JSONObject(jsonStr);
-            JSONObject ingredientes = dados.getJSONObject("ingredientes");
-       
-            Lanche lanche = new Lanche();
             
-            lanche.setNome(dados.getString("nome"));
-            lanche.setDescricao(dados.getString("descricao"));
-            lanche.setValor_venda(dados.getDouble("ValorVenda"));
+            Funcionario funcionario = new Funcionario();
+            funcionario.setCad_por(Integer.valueOf(ID));
+            funcionario.setNome(dados.getString("nome"));
+            funcionario.setCargo("cargo");
+            funcionario.setSalario(dados.getDouble("salario"));
+            funcionario.setUsuario(dados.getString("usuarioFuncionario"));
+            funcionario.setSenha(dados.getString("senhaFuncionario"));
+            funcionario.setSobrenome("sobrenome");
+            funcionario.setFg_ativo(1);
             
-            DaoLanche lancheDao = new DaoLanche();
-            DaoIngrediente ingredienteDao = new DaoIngrediente();
-            
-            lancheDao.salvar(lanche);
-            
-            Lanche lancheComID = lancheDao.pesquisaPorNome(lanche);
-            
-            Iterator<String> keys = ingredientes.keys();
-            
-            while(keys.hasNext()) {
-                
-                String key = keys.next(); 
-                Ingrediente ingredienteLanche = new Ingrediente();
-                ingredienteLanche.setNome(key);
-                
-                Ingrediente ingredienteComID = ingredienteDao.pesquisaPorNome(ingredienteLanche);
-                ingredienteComID.setQuantidade(ingredientes.getInt(key));
-                lancheDao.vincularIngrediente(lancheComID, ingredienteComID);
-            }
+            DaoFuncionario funcionarioDAO = new DaoFuncionario();
+            funcionarioDAO.salvar(funcionario);
             
             try (PrintWriter out = response.getWriter()) {
-            out.println("Lanche Salvo com Sucesso!");
+            out.println("Funcionario Cadastrado!");
             }
         } else {
             try (PrintWriter out = response.getWriter()) {
             out.println("erro");
         }
-        }
-        
-        
     }
-
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

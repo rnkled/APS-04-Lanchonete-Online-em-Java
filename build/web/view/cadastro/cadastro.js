@@ -7,7 +7,7 @@ function enviarCadastro(){
     if(validar(usuario) && validar(endereco)){
         dados['usuario'] = formularioParaObjeto(usuario);
         dados['endereco'] = formularioParaObjeto(endereco);
-        requisicao("../../cadastro", alertarResposta, JSON.stringify(dados));
+        requisicao("../../cadastro", resolver, JSON.stringify(dados));
     }
 
 }
@@ -29,4 +29,13 @@ function validar(formulario){
             }
         }, {});
         return sucesso;
+}
+
+function resolver(resposta){
+    if(resposta.srcElement.responseText.includes("erro")){
+        alert("Ops... Ocorreu um erro no Cadastro, Tente novamente mais Tarde!");
+    } else {
+        alert(resposta.srcElement.responseText);
+        window.location.replace("../login/login.html");
+    }
 }

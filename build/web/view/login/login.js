@@ -21,7 +21,16 @@ function enviarLogin(){
 
 function resolver(resposta){
     if(resposta.srcElement.responseText.localeCompare("erro") == -1){
-        window.location.replace(resposta.srcElement.responseText);
+        let queryString = window.location.search;
+        let urlParams = new URLSearchParams(queryString);
+        if(urlParams.get('Action')){
+            if(urlParams.get('Action').localeCompare("montarLanche") == 0){
+                window.location.replace("../montarLanche/montarLanche.html");
+            } else {
+                window.location.replace(resposta.srcElement.responseText);}
+        } else {
+            window.location.replace(resposta.srcElement.responseText);
+        }
     } else {
         alert("Erro ao Logar! Tente novamente. Se Cadastre se não possuir uma conta!");
     }
@@ -36,6 +45,13 @@ function check(resposta){
     if(resposta.srcElement.responseText.includes("erro")){
         console.log("Token Inválido");
     } else {
-        window.location.replace("../carrinho/carrinho.html");
+        let queryString = window.location.search;
+        let urlParams = new URLSearchParams(queryString);
+        if(urlParams.get('Action')){
+            if(urlParams.get('Action').localeCompare("montarLanche") == 0){
+                window.location.replace("../montarLanche/montarLanche.html");
+            } else {
+                window.location.replace("../carrinho/carrinho.html");}
+        } else {window.location.replace("../carrinho/carrinho.html");}
     }
 }

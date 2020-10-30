@@ -6,107 +6,163 @@
         <script src="../scripts/conexao.js"></script>
         <link rel="stylesheet" type="text/CSS" href="../styles/global.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="./styles.css">
         <script src="./estoque.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=Sansita:ital,wght@1,700&display=swap" rel="stylesheet">
     </head>
-    <script>getInfo();</script>
+
+
+    <script>
+
+    getInfo();
+
+    </script>
+    
     <body>
-        <div>
-        <table id="tabelaLanches">
-            <tr>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Preço</th>
-                <th>Ativo</th>
-            </tr>
-        </table>
+        <div class="containerEstoque">
+            <header class="headerPage">
+                <div class="containerLogo">
+                    <img src="../assets/logo02.png" id="imagemLogo2">
+                </div>
+                <div class="containerNavButton">
 
-        <table id="tabelaIngredientes">
-            <tr>
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Descrição</th>
-                <th>Quantidade</th>
-                <th>Preço de Compra</th>
-                <th>Preço de Venda</th>
-                <Th>Tipo</Th>
-                <th>Ativo</th>
-            </tr>
-        </table>
-        <table id="tabelaBebidas">
-            <th>Id</th>
-            <th>Nome</th>
-            <th>Descrição</th>
-            <th>Quantidade</th>
-            <th>Preço de Compra</th>
-            <th>Preço de Venda</th>
-            <Th>Tipo</Th>
-            <th>Ativo</th>
-        </table>
-    </div>
-    <div>
-        <form id="editarIngredientes">
-            <label>ID</label>
-            <input id="ingredientesID" name="id" type="text" readonly><br>
-            <label>Nome</label>
-            <input id="ingredientesNome" name="nome" type="text"><br>
-            <label>Descrição</label>
-            <input id="ingredientesDescricao" name="descricao" type="text"><br>
-            <label>Quantidade</label>
-            <input id="ingredientesQuantidade" name="quantidade" type="text"><br>
-            <label>Preço de Compra</label>
-            <input id="ingredientesPrecoCompra" name="ValorCompra" type="text"><br>
-            <label>Preço de Venda</label>
-            <input id="ingredientesPrecoVenda" name="ValorVenda" type="text"><br>
-            <label>Tipo</label>
-            <input id="ingredientesTipo" name="tipo" type="text" readonly><br>
-            <input type="button" value="Alterar" onclick="alterarIngrediente()"> <input type="button" value="Remover" onclick="removerIngrediente()">
-        </form>
+                </div>
+                <div class="containerAction">
+                    <button class="buttonLogout" type="button" onClick="logout()">Logout</button>
+                </div>
+            </header>
+            <div class="containerPage">
+                
+                <div class="containerConteudo">
+                        <div class="iconArrow">
+                            <a href="">
+                                <img class="iconArrowLeft" src="../assets/keyboard.svg"/>
+                            </a>     
+                        </div>
+                        <div class="containerTitle">
+                            <h1 class="titleTypeContainer">Estoque</h1>
+                        </div>
+                    <div class="containerTable">
+                        <div class="containerTitleTable">
+                            <h1 class="titleTypeContainerTable">Estoque Lanche</h1>
+                        </div>
+                    <table id="tabelaLanches">
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Preço</th>
+                            <th>Ativo</th>
+                        </tr>
+                    </table>
+                    <form id="editarLanches">
+                        <label>Edite o Lanche</label>
+                        <br>
+                        <label>ID</label>
+                        <input id="lanchesID" name="id" type="text" readonly><br>
+                        <label>Nome</label>
+                        <input id="lanchesNome" name="nome" type="text"><br>
+                        <label>Descrição</label>
+                        <input id="lanchesDescricao" name="descricao" type="text"><br>
+                        <label>Preço de Venda</label>
+                        <input id="lanchesPrecoVenda" name="ValorVenda" type="text"><br>
+                        <input type="button" value="Alterar" onclick="alterarLanche()"> <input type="button" value="Remover" onclick="removerLanche()">
+                        
+                        <label></label>
+                        <br>
+                        <label>Ingredientes Contidos</label>
 
-        <form id="editarBebidas">
-            <label>ID</label>
-            <input id="bebidasID" name="id" type="text" readonly><br>
-            <label>Nome</label>
-            <input id="bebidasNome" name="nome" type="text"><br>
-            <label>Descrição</label>
-            <input id="bebidasDescricao" name="descricao" type="text"><br>
-            <label>Quantidade</label>
-            <input id="bebidasQuantidade" name="quantidade" type="text"><br>
-            <label>Preço de Compra</label>
-            <input id="bebidasPrecoCompra" name="ValorCompra" type="text"><br>
-            <label>Preço de Venda</label>
-            <input id="bebidasPrecoVenda" name="ValorVenda" type="text"><br>
-            <label>Tipo</label>
-            <input id="bebidasTipo" name="tipo" type="text" readonly><br>
-            <input type="button" value="Alterar" onclick="alterarBebida()"> <input type="button" value="Remover" onclick="removerBebida()">
-        </form>
+                        <h1 class="titleTypeContainerTable">Estoque Lanche</h1>
+                        <table id="ingredientesLanche">
+                            <thead>
+                                <th>Id</th>
+                                <th>Nome</th>
+                                <th>Descrição</th>
+                                <th>Quantidade</th>
+                                <th>Preço de Compra</th>
+                                <th>Preço de Venda</th>
+                                <Th>Tipo</Th>
+                                <th>Ativo</th>
+                            </thead>
+                            <tbody id="otbody"></tbody>
+                        </table>
+                    </form>
+                    <div class="containerTitleTable">
+                        <h1 class="titleTypeContainerTable">Estoque Ingredientes</h1>
+                    </div>
+                    <table id="tabelaIngredientes">
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>Descrição</th>
+                            <th>Quantidade</th>
+                            <th>Preço de Compra</th>
+                            <th>Preço de Venda</th>
+                            <Th>Tipo</Th>
+                            <th>Ativo</th>
+                        </tr>
+                    </table>
+                    <form id="editarIngredientes">
+                        
+                        <label>Edite o Ingrediente</label>
+                        <br><label>ID</label>
+                        <input id="ingredientesID" name="id" type="text" readonly><br>
+                        <label>Nome</label>
+                        <input id="ingredientesNome" name="nome" type="text"><br>
+                        <label>Descrição</label>
+                        <input id="ingredientesDescricao" name="descricao" type="text"><br>
+                        <label>Quantidade</label>
+                        <input id="ingredientesQuantidade" name="quantidade" type="text"><br>
+                        <label>Preço de Compra</label>
+                        <input id="ingredientesPrecoCompra" name="ValorCompra" type="text"><br>
+                        <label>Preço de Venda</label>
+                        <input id="ingredientesPrecoVenda" name="ValorVenda" type="text"><br>
+                        <label>Tipo</label>
+                        <input id="ingredientesTipo" name="tipo" type="text" readonly><br>
+                        <input type="button" value="Alterar" onclick="alterarIngrediente()"> <input type="button" value="Remover" onclick="removerIngrediente()">
+                    </form>
+                    <div class="containerTitleTable">
+                        <h1 class="titleTypeContainerTable">Estoque Bebidas</h1>
+                    </div>
+                    <table id="tabelaBebidas">
+                        <th>Id</th>
+                        <th>Nome</th>
+                        <th>Descrição</th>
+                        <th>Quantidade</th>
+                        <th>Preço de Compra</th>
+                        <th>Preço de Venda</th>
+                        <Th>Tipo</Th>
+                        <th>Ativo</th>
+                    </table>
+                    <form id="editarBebidas">
+                        <label>Edite a bebida</label>
+                        <br>
+                        <label>ID</label>
+                        <input id="bebidasID" name="id" type="text" readonly><br>
+                        <label>Nome</label>
+                        <input id="bebidasNome" name="nome" type="text"><br>
+                        <label>Descrição</label>
+                        <input id="bebidasDescricao" name="descricao" type="text"><br>
+                        <label>Quantidade</label>
+                        <input id="bebidasQuantidade" name="quantidade" type="text"><br>
+                        <label>Preço de Compra</label>
+                        <input id="bebidasPrecoCompra" name="ValorCompra" type="text"><br>
+                        <label>Preço de Venda</label>
+                        <input id="bebidasPrecoVenda" name="ValorVenda" type="text"><br>
+                        <label>Tipo</label>
+                        <input id="bebidasTipo" name="tipo" type="text" readonly><br>
+                        <input type="button" value="Alterar" onclick="alterarBebida()"> <input type="button" value="Remover" onclick="removerBebida()">
+                    </form>
+                </div>
+                <div>
+                    
 
-        <form id="editarLanches">
-            <label>ID</label>
-            <input id="lanchesID" name="id" type="text" readonly><br>
-            <label>Nome</label>
-            <input id="lanchesNome" name="nome" type="text"><br>
-            <label>Descrição</label>
-            <input id="lanchesDescricao" name="descricao" type="text"><br>
-            <label>Preço de Venda</label>
-            <input id="lanchesPrecoVenda" name="ValorVenda" type="text"><br>
-            <input type="button" value="Alterar" onclick="alterarLanche()"> <input type="button" value="Remover" onclick="removerLanche()">
-            <table id="ingredientesLanche">
-                <thead>
-                    <th>Id</th>
-                    <th>Nome</th>
-                    <th>Descrição</th>
-                    <th>Quantidade</th>
-                    <th>Preço de Compra</th>
-                    <th>Preço de Venda</th>
-                    <Th>Tipo</Th>
-                    <th>Ativo</th>
-                </thead>
-                <tbody id="otbody"></tbody>
-            </table>
-        </form>
-    </div>
+                    
+
+                    
+                </div>
+
+            </div>
+        </div>
     </body>
 </html>

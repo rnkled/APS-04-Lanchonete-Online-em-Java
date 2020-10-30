@@ -33,7 +33,7 @@ public class DaoLanche {
             PreparedStatement stmt = conecta.prepareStatement(sql);
             stmt.setString(1, lanche.getNome());
             stmt.setString(2, lanche.getDescricao());
-            stmt.setDouble(3, 18.43);
+            stmt.setDouble(3, lanche.getValor_venda());
             stmt.setInt(4, 1);
 
             
@@ -45,6 +45,28 @@ public class DaoLanche {
             throw new RuntimeException(e);
         }
     }
+    
+    public void salvarCliente(Lanche lanche){
+        String sql = "INSERT INTO tb_lanches(nm_lanche, descricao, valor_venda, fg_ativo) "
+                + "VALUES(?,?,?,?)";
+        
+        try{
+            PreparedStatement stmt = conecta.prepareStatement(sql);
+            stmt.setString(1, lanche.getNome());
+            stmt.setString(2, lanche.getDescricao());
+            stmt.setDouble(3, lanche.getValor_venda());
+            stmt.setInt(4, 0);
+
+            
+            stmt.execute();
+            stmt.close();
+            
+            
+        }catch(Exception e){
+            throw new RuntimeException(e);
+        }
+    }
+    
     public List<Lanche> listarTodos(){
         String sql = "SELECT * FROM tb_lanches WHERE fg_Ativo='1' ORDER BY id_lanche";
         ResultSet rs;

@@ -466,3 +466,73 @@
     font-size: 2vw;
     font-weight: bold;
 }
+
+
+
+
+.containerGastos {
+    width: 13vw;
+    height: 19vh;
+    border: 1px solid #F16262;
+    /* background-color: cyan; */
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    border-radius: 1em;
+    position: absolute;
+    top: 25vh;
+    right: 18vw;
+}
+
+.containerLucro {
+    width: 20%;
+    height: 70%;
+    border: solid 1px #F16262;
+    border-radius: 1em;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    /* background-color: darkblue; */
+
+}
+
+.titleLucro {
+    margin-bottom: 15px;
+}
+
+.titleContainerLucro {
+    font-family: 'Sansita', sans-serif;
+    font-size: 2.2rem;
+    color: black;
+    user-select: none;
+
+}
+
+.inputPreco {
+    width: 10vw;
+    margin-top: 10px;
+    height: 4.5vh;
+    border: 1px solid #BDBDBD;
+    border-radius: 10px;
+    padding-left: 15px;
+    position: relative;
+    top: -0.8vh;
+    align-items: center;
+
+}
+
+.legendGastos {
+    font-family: 'Ubuntu', sans-serif;
+    color: #FFF;
+    font-size: 1.4rem;
+
+}
+
+.LabelGastos {
+    width: 100%;
+    height: 5vh;
+    background-color: #F16262;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

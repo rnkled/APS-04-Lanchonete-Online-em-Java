@@ -104,6 +104,18 @@
         <servlet-name>getRelatorioLanches</servlet-name>
         <servlet-class>Controllers.getRelatorioLanches</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>getIngredientesCliente</servlet-name>
+        <servlet-class>Controllers.getIngredientesCliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>salvarLancheCliente</servlet-name>
+        <servlet-class>Controllers.salvarLancheCliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>salvarFuncionario</servlet-name>
+        <servlet-class>Controllers.salvarFuncionario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>cadastro</servlet-name>
         <url-pattern>/cadastro</url-pattern>
@@ -207,6 +219,18 @@
     <servlet-mapping>
         <servlet-name>getRelatorioLanches</servlet-name>
         <url-pattern>/getRelatorioLanches</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getIngredientesCliente</servlet-name>
+        <url-pattern>/getIngredientesCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>salvarLancheCliente</servlet-name>
+        <url-pattern>/salvarLancheCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>salvarFuncionario</servlet-name>
+        <url-pattern>/salvarFuncionario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

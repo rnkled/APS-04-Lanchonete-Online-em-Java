@@ -1,26 +1,3 @@
-table {
-    border-collapse: collapse;
-    table-layout: fixed;
-    height: 100px;
-    overflow-y: auto;
-    margin: 20px;
-    display: block;
-}
-
-th,
-td {
-    height: 1vh;
-    padding: 6px;
-    text-align: left;
-    border-bottom: 1px solid rgb(143, 141, 141);
-
-
-}
-
-tr:hover {
-    background-color: rgba(37, 37, 37, 0.356);
-}
-
 #editarIngredientes {
     display: none;
 }
@@ -31,4 +8,163 @@ tr:hover {
 
 #editarLanches {
     display: none;
+}
+
+.containerEstoque {
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../assets/fundoplano1.png")
+}
+
+.headerPage {
+    width: 100vw;
+    height: 12vh;
+    background-color: #F16262;
+    display: flex;
+    align-items: center;
+}
+
+.buttonLogout {
+    width: 12vw;
+    height: 7vh;
+    border-radius: 1em;
+    border: none;
+    background-color: white;
+    font-family: 'Sansita', sans-serif;
+    font-size: 2.4rem;
+    color: black;
+}
+
+
+.containerNavButton {
+    width: 60vw;
+    height: 10vh;
+    /* background-color: aquamarine; */
+
+}
+
+.containerAction {
+    width: 20vw;
+    height: 10vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.containerPage {
+    width: 100vw;
+    height: 88vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerConteudo {
+    background-color: #F6F6F6;
+    width: 70vw;
+    height: 88vh;
+    display: flex;
+    overflow-y: auto;
+    flex-direction: column;
+    align-items: center;
+    /* padding-top: 45px; */
+    justify-content: flex-start;
+}
+
+
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+    margin: 20px;
+    display: contents;
+    margin: 10vh;
+}
+
+th,
+td {
+    height: 1vh;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid rgb(143, 141, 141);
+
+
+}
+
+tr:hover {
+    background-color: rgba(37, 37, 37, 0.356);
+}
+
+form {
+    margin: 10vh;
+    display: flexbox;
+    justify-content: space-evenly;
+}
+
+label {
+    font-family: 'Sansita', sans-serif;
+    position: relative;
+    margin: 6vh;
+}
+
+input {
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+
+
+#editarIngredientes {
+    display: none;
+}
+
+#editarBebidas {
+    display: none;
+}
+
+.titleTypeContainer {
+    font-size: 2.8rem;
+    font-family: 'Sansita', sans-serif;
+    color: #000;
+}
+
+.containerTitle {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.containerTable {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.titleTypeContainerTable {
+    font-size: 2.2rem;
+    font-family: 'Sansita', sans-serif;
+    color: #FFF;
+}
+
+.containerTitleTable {
+    width: 100%;
+    height: 5vh;
+    background-color: #F16262;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2px 10px;
+}
+
+.iconArrow {
+    width: 100%;
+}
+
+.iconArrowLeft {
+    width: 4%;
 }

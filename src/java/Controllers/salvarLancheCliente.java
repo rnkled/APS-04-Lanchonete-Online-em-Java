@@ -28,7 +28,7 @@ import org.json.JSONObject;
  *
  * @author kener_000
  */
-public class salvarLanche extends HttpServlet {
+public class salvarLancheCliente extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -54,7 +54,7 @@ public class salvarLanche extends HttpServlet {
         Cookie[] cookies = request.getCookies();
         ValidadorCookie validar = new ValidadorCookie();
         
-        resultado = validar.validarFuncionario(cookies);
+        resultado = validar.validar(cookies);
         }catch(java.lang.NullPointerException e){}
         //////////////
         
@@ -64,21 +64,35 @@ public class salvarLanche extends HttpServlet {
             String jsonStr = new String(bytes, UTF_8);            
             JSONObject dados = new JSONObject(jsonStr);
             JSONObject ingredientes = dados.getJSONObject("ingredientes");
-       
+            
+            double precoDoLanche = 0.00;
+            
             Lanche lanche = new Lanche();
             
             lanche.setNome(dados.getString("nome"));
             lanche.setDescricao(dados.getString("descricao"));
-            lanche.setValor_venda(dados.getDouble("ValorVenda"));
+            
             
             DaoLanche lancheDao = new DaoLanche();
             DaoIngrediente ingredienteDao = new DaoIngrediente();
             
-            lancheDao.salvar(lanche);
+            Iterator<String> keys = ingredientes.keys();
+            
+            while(keys.hasNext()) {
+                
+                String key = keys.next(); 
+                Ingrediente ingredienteLanche = new Ingrediente();
+                ingredienteLanche.setNome(key);
+                
+                Ingrediente ingredienteComID = ingredienteDao.pesquisaPorNome(ingredienteLanche);
+                precoDoLanche += ingredienteComID.getValor_venda() * Double.valueOf(ingredientes.getInt(key));
+            }
+            
+            
+            lanche.setValor_venda(precoDoLanche);
+            lancheDao.salvarCliente(lanche);
             
             Lanche lancheComID = lancheDao.pesquisaPorNome(lanche);
-            
-            Iterator<String> keys = ingredientes.keys();
             
             while(keys.hasNext()) {
                 
@@ -92,7 +106,7 @@ public class salvarLanche extends HttpServlet {
             }
             
             try (PrintWriter out = response.getWriter()) {
-            out.println("Lanche Salvo com Sucesso!");
+            out.println("../carrinho/carrinho.html?nome="+String.valueOf(lancheComID.getNome())+"&preco="+String.valueOf(lancheComID.getValor_venda()));
             }
         } else {
             try (PrintWriter out = response.getWriter()) {

@@ -6,29 +6,23 @@
 package Controllers;
 
 import DAO.DaoIngrediente;
-import DAO.DaoLanche;
 import Helpers.ValidadorCookie;
 import Model.Ingrediente;
-import Model.Lanche;
-import java.io.BufferedReader;
+import com.google.gson.Gson;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import static java.nio.charset.StandardCharsets.ISO_8859_1;
-import static java.nio.charset.StandardCharsets.UTF_8;
-import java.util.Iterator;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.json.JSONObject;
 
 /**
  *
  * @author kener_000
  */
-public class salvarLanche extends HttpServlet {
+public class getIngredientesCliente extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,66 +35,29 @@ public class salvarLanche extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
-        BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
-        String json = "";
         
-        ////////Validar Cookie
-        boolean resultado = false;
+        boolean resultado = true;
         
-        try{
-        Cookie[] cookies = request.getCookies();
-        ValidadorCookie validar = new ValidadorCookie();
-        
-        resultado = validar.validarFuncionario(cookies);
-        }catch(java.lang.NullPointerException e){}
-        //////////////
-        
-        if ((br != null) && resultado) {
-            json = br.readLine();
-            byte[] bytes = json.getBytes(ISO_8859_1); 
-            String jsonStr = new String(bytes, UTF_8);            
-            JSONObject dados = new JSONObject(jsonStr);
-            JSONObject ingredientes = dados.getJSONObject("ingredientes");
-       
-            Lanche lanche = new Lanche();
+        if(resultado){
             
-            lanche.setNome(dados.getString("nome"));
-            lanche.setDescricao(dados.getString("descricao"));
-            lanche.setValor_venda(dados.getDouble("ValorVenda"));
+            DaoIngrediente ingredienteDAO = new DaoIngrediente();
             
-            DaoLanche lancheDao = new DaoLanche();
-            DaoIngrediente ingredienteDao = new DaoIngrediente();
+            List<Ingrediente> ingredientes = ingredienteDAO.listarTodos();
             
-            lancheDao.salvar(lanche);
-            
-            Lanche lancheComID = lancheDao.pesquisaPorNome(lanche);
-            
-            Iterator<String> keys = ingredientes.keys();
-            
-            while(keys.hasNext()) {
-                
-                String key = keys.next(); 
-                Ingrediente ingredienteLanche = new Ingrediente();
-                ingredienteLanche.setNome(key);
-                
-                Ingrediente ingredienteComID = ingredienteDao.pesquisaPorNome(ingredienteLanche);
-                ingredienteComID.setQuantidade(ingredientes.getInt(key));
-                lancheDao.vincularIngrediente(lancheComID, ingredienteComID);
-            }
-            
-            try (PrintWriter out = response.getWriter()) {
-            out.println("Lanche Salvo com Sucesso!");
+            Gson gson = new Gson();
+            String json = gson.toJson(ingredientes);
+
+        try (PrintWriter out = response.getWriter()) {
+            out.print(json);
+            out.flush();
             }
         } else {
             try (PrintWriter out = response.getWriter()) {
             out.println("erro");
+            }
         }
-        }
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

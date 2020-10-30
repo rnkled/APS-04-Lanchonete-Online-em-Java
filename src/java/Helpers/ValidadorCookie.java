@@ -88,7 +88,9 @@ public class ValidadorCookie {
             String value = cookies[i].getValue();
             
             if(name.equals("tokenFuncionario")){
-                return value;
+                String[] palavras;
+                palavras = value.split("-");
+                return palavras[0];
             }
         }
         return "erro";
